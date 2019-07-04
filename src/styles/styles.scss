@@ -1,6 +1,4 @@
-$vin-blue: #5bb7db;
-$vin-green: #60b044;
-$vin-red: #ff0000;
+
 $break-small: 586px;
 $break-large: 1024px;
 
@@ -27,8 +25,6 @@ html {
   color: #DDF45B;
 }
 
-
-
 .center-v-h {
   margin: 0;
   position: absolute;
@@ -38,19 +34,17 @@ html {
   transform: translate(-50%, -65%);
 }
 
-.cccc {
+.form-wrapper {
   margin: 24px
 }
-
-
 
 .get-it-done-button {
   margin: 24px;
   margin-left: auto;
 }
 
-textarea, select, input, button {
+textarea, select, input, button, button:focus {
   outline: none;
-  box-shadow:none; 
   resize: none;
+  box-shadow:none !important;
 }

@@ -1,6 +1,5 @@
 /* eslint-disable import/no-named-as-default */
-import { NavLink, Route, Switch } from "react-router-dom";
-
+import { Route, Switch } from "react-router-dom";
 import AboutPage from "./pages/AboutPage";
 import FuelSavingsPage from "./pages/FuelSavingsPage";
 import HomePage from "./pages/HomePage";
@@ -15,7 +14,6 @@ import { hot } from "react-hot-loader";
 
 class App extends React.Component {
   render() {
-    const activeStyle = { color: 'blue' };
     return (
       <div>
         <Switch>
