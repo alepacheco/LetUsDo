@@ -1,31 +1,56 @@
-/* Variables */
 $vin-blue: #5bb7db;
 $vin-green: #60b044;
 $vin-red: #ff0000;
+$break-small: 586px;
+$break-large: 1024px;
 
-/* Styles */
-body {
-  font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  line-height: 1.4em;
-  color: #4d4d4d;
-  min-width: 230px;
-  max-width: 550px;
-  margin: 0 auto;
-  -webkit-font-smoothing: antialiased;
-  -moz-font-smoothing: antialiased;
-  font-smoothing: antialiased;
-  font-weight: 300;
+html {
+  background-color: #141115;
 }
 
-td {
-	padding: 12px;
+.home-page {
+
+  width: 446px;
+
+  @media screen and (max-width: $break-small) {
+    width: 75vw;
+  }
 }
 
-h2 {
-	color: $vin-blue;
+.main-text {
+  color: #DDF45B;
 }
 
-.savings { color: $vin-green; }
-.loss { color: $vin-red; }
-input.small { width: 46px; }
-td.fuel-savings-label { width: 175px; }
+.sub-text {
+  margin-top: -8px;
+  margin-bottom: 4px;
+  color: #DDF45B;
+}
+
+
+
+.center-v-h {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -65%);
+  transform: translate(-50%, -65%);
+}
+
+.cccc {
+  margin: 24px
+}
+
+
+
+.get-it-done-button {
+  margin: 24px;
+  margin-left: auto;
+}
+
+textarea, select, input, button {
+  outline: none;
+  box-shadow:none; 
+  resize: none;
+}
