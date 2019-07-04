@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import FuelSavingsForm from './FuelSavingsForm';
-import FuelSavingsTextInput from './FuelSavingsTextInput';
-import FuelSavingsResults from './FuelSavingsResults';
+import FuelSavingsForm from '../../src/components/FuelSavingsForm';
+import FuelSavingsTextInput from '../../src/components/FuelSavingsTextInput';
+import FuelSavingsResults from '../../src/components/FuelSavingsResults';
 
 /* Object builder. Could use test data builder pattern too.
    More info: http://blog.codeleak.pl/2014/06/test-data-builders-and-object-mother.html

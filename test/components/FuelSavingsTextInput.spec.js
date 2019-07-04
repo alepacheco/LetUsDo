@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import FuelSavingsTextInput from './FuelSavingsTextInput';
+import FuelSavingsTextInput from '../../src/components/FuelSavingsTextInput';
 
 describe('<FuelSavingsTextInput />', () => {
   it('should be an input element', () => {

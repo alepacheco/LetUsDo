@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import FuelSavingsResults from './FuelSavingsResults';
+import FuelSavingsResults from '../../src/components/FuelSavingsResults';
 
 describe('<FuelSavingsResults />', () => {
   it('should display savings when savings exist', () => {

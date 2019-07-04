@@ -1,10 +1,10 @@
-import * as ActionTypes from '../constants/actionTypes';
+import * as ActionTypes from '../../src/constants/actionTypes';
 
 import MockDate from 'mockdate';
-import configureStore from './configureStore';
+import configureStore from '../../src/store/configureStore';
 
-import {calculateSavings} from '../utils/fuelSavings';
-import {getFormattedDateTime} from '../utils/dates';
+import {calculateSavings} from '../../src/utils/fuelSavings';
+import {getFormattedDateTime} from '../../src/utils/dates';
 
 describe('Store', () => {
   let dateModified;
