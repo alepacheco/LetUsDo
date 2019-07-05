@@ -9699,6 +9699,11 @@ supports-color@^6.1.0:
   dependencies:
     has-flag "^3.0.0"
 
+svg-blob@1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/svg-blob/-/svg-blob-1.2.0.tgz#602c83686793e852facfa7b2a7a00dd9f322f154"
+  integrity sha512-vScYBrujMnFUAtWlyTS7RlltQeBhAWS8fuHBAYQ2+ffl9P8vVLnmfrVuLfmkeCck4z+04sr2/+Q0JgnayB0DXw==
+
 svgo@^1.0.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/svgo/-/svgo-1.1.1.tgz#12384b03335bcecd85cfa5f4e3375fed671cb985"

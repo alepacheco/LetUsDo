@@ -1,28 +1,47 @@
-
 $break-small: 586px;
 $break-large: 1024px;
 
-html {
-  background-color: #141115;
+body {
+  background-color: #003f91;
+  color: #ffffff;
+  font-family: 'Raleway', sans-serif;
+
 }
 
 .home-page {
-
   width: 446px;
-
   @media screen and (max-width: $break-small) {
     width: 75vw;
   }
 }
 
+.home-page-bck {
+  height: 600px;
+  width: 600px;
+  background-color: #5da9e9;
+  margin: 24px;
+  padding: 24px;
+
+  @media screen and (max-width: $break-small) {
+    // width: 85vw;
+  }
+}
+
+
+@font-face {
+  font-family: JelleeRoman;
+  src: url("/static/fonts/Jellee-Roman.ttf");
+}
 .main-text {
-  color: #DDF45B;
+  font-size: 58px;
+  font-family: JelleeRoman;
+  font-weight: normal;
+  font-style: normal;
 }
 
 .sub-text {
   margin-top: -8px;
   margin-bottom: 4px;
-  color: #DDF45B;
 }
 
 .center-v-h {
@@ -35,16 +54,21 @@ html {
 }
 
 .form-wrapper {
-  margin: 24px
+  margin: 24px;
+  background: none;
+  border: none;
 }
 
 .get-it-done-button {
-  margin: 24px;
   margin-left: auto;
 }
 
-textarea, select, input, button, button:focus {
+textarea,
+select,
+input,
+button,
+button:focus {
   outline: none;
   resize: none;
-  box-shadow:none !important;
+  box-shadow: none !important;
 }

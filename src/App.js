@@ -7,6 +7,8 @@ import NotFoundPage from "./pages/NotFoundPage";
 import PropTypes from "prop-types";
 import React from "react";
 import { hot } from "react-hot-loader";
+import Breadcrumb from 'react-bootstrap/Breadcrumb';
+
 
 // This is a class-based component because the current
 // version of hot reloading won't hot reload a stateless
@@ -16,6 +18,11 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        <Breadcrumb>
+          <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
+          <Breadcrumb.Item href="/about">About</Breadcrumb.Item>
+          <Breadcrumb.Item>Data</Breadcrumb.Item>
+        </Breadcrumb>
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route path="/fuel-savings" component={FuelSavingsPage} />
