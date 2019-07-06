@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<HomePage /> renders 1`] = `
+<div>
+  <ConnectFunction />
+  <br />
+  <br />
+  <br />
+  <h2>
+     Some other section
+  </h2>
+</div>
+`;

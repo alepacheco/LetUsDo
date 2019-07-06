@@ -5,11 +5,11 @@ import Button from 'react-bootstrap/Button';
 import CheckoutPopUp from './CheckoutPopUp';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import '../styles/components/TaskModal.scss';
+import '../styles/components/TaskModal.css';
 import * as actions from '../actions/taskModalActions';
 import PropTypes from 'prop-types';
 
-class TaskModal extends React.Component {
+export class TaskModal extends React.Component {
     render() {
         return (
             <div className="center-wrapper">
@@ -64,9 +64,9 @@ export default connect(
 
 TaskModal.propTypes = {
     taskText: PropTypes.string,
-    actions: {
-        setDialog: PropTypes.function,
-        setTaskTest: PropTypes.function
-    },
-    checkoutPopup: PropTypes.boolean
+    actions: PropTypes.shape({
+        setDialog: PropTypes.func,
+        setTaskTest: PropTypes.func
+    }),
+    checkoutPopup: PropTypes.bool
 };

@@ -34,5 +34,5 @@ export default class CheckoutPopUp extends React.Component {
 }
 
 CheckoutPopUp.propTypes = {
-  onHide: PropTypes.function
+  onHide: PropTypes.func
 };
