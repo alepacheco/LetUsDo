@@ -2,6 +2,7 @@ import React from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import PropTypes from 'prop-types';
+import CheckoutFormWrapper from './stripe/CheckoutFormWrapper';
 
 export default class CheckoutPopUp extends React.Component {
   render() {
@@ -19,11 +20,7 @@ export default class CheckoutPopUp extends React.Component {
         </Modal.Header>
         <Modal.Body>
           <h4>Centered Modal</h4>
-          <p>
-            Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-            dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
-            ac consectetur ac, vestibulum at eros.
-            </p>
+          <CheckoutFormWrapper />
         </Modal.Body>
         <Modal.Footer>
           <Button onClick={this.props.onHide}>Close</Button>

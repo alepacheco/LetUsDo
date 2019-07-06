@@ -47,6 +47,11 @@ export default {
         use: ['babel-loader']
       },
       {
+        test: /\.js?$/,
+        exclude: /node_modules/,
+        use: ['babel-loader']
+      },
+      {
         test: /\.eot(\?v=\d+.\d+.\d+)?$/,
         use: ['file-loader']
       },
