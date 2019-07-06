@@ -20,6 +20,7 @@
     "remove-dist": "rimraf ./dist",
     "prebuild": "npm run lint && npm run test && npm run clean-dist",
     "build": "babel-node tools/build.js && npm run open:dist",
+    "buildd": "babel-node tools/build.js",
     "test": "jest",
     "test:CI": "jest",
     "test:cover": "npm run test -- --coverage ",
@@ -40,6 +41,7 @@
     "react-dom": "16.8.6",
     "react-redux": "7.0.3",
     "react-router-dom": "5.0.0",
+    "react-stripe-checkout": "2.6.3",
     "redux": "4.0.1",
     "redux-thunk": "2.3.0",
     "svg-blob": "1.2.0"

@@ -1,0 +1,77 @@
+$break-small: 982px;
+$break-large: 1024px;
+
+
+body {
+  background-color: #003f91;
+}
+
+textarea,
+select,
+input,
+button,
+button:focus {
+  outline: none;
+  resize: none;
+  box-shadow: none !important;
+}
+
+.form-wrapper {
+  background: none;
+  border: none;
+}
+
+.center-wrapper {
+  text-align: center;
+
+}
+
+.center-inner {
+  padding: 16px;
+  display: inline-block;
+}
+
+.left-text {
+  text-align:left;
+}
+
+.blob {
+  margin-top: 36px;
+  width: 50%;
+
+  @media screen and (max-width: $break-small) {
+      width: 85%;
+  }
+}
+
+.wedo-title {
+  font-size: 38pt;
+  font-family: JelleeRoman, Sans-Serif;
+  font-weight: normal;
+  font-style: normal;
+  margin-top: -14px;
+  margin-left: -6px;
+
+  @media screen and (max-width: $break-small) {
+    font-size: 148px;
+}
+}
+
+.task-form-input {
+  @media screen and (max-width: $break-small) {
+    font-size: 52px;
+}
+}
+
+.get-it-done-button {
+  margin-left: auto;
+  @media screen and (max-width: $break-small) {
+    font-size: 52px;
+    border-radius: 14px;
+
+  }
+}
+.get-it-done-button-wrapper {
+  margin: 26px 0 0 0;
+  text-align: right;
+}
