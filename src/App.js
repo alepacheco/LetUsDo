@@ -1,15 +1,12 @@
 /* eslint-disable import/no-named-as-default */
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Link } from "react-router-dom";
 import AboutPage from "./pages/AboutPage";
-import FuelSavingsPage from "./pages/FuelSavingsPage";
 import HomePage from "./pages/HomePage";
 import NotFoundPage from "./pages/NotFoundPage";
 import PropTypes from "prop-types";
 import React from "react";
 import { hot } from "react-hot-loader";
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
-import { Link } from 'react-router-dom';
-
 
 // This is a class-based component because the current
 // version of hot reloading won't hot reload a stateless
@@ -26,7 +23,6 @@ class App extends React.Component {
         </Breadcrumb>
         <Switch>
           <Route exact path="/" component={HomePage} />
-          <Route path="/fuel-savings" component={FuelSavingsPage} />
           <Route path="/about" component={AboutPage} />
           <Route component={NotFoundPage} />
         </Switch>

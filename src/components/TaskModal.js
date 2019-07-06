@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import '../styles/components/TaskModal.scss';
 import * as actions from '../actions/taskModalActions';
+import PropTypes from 'prop-types';
 
 class TaskModal extends React.Component {
     render() {
@@ -59,3 +60,13 @@ export default connect(
     mapStateToProps,
     mapDispatchToProps
 )(TaskModal);
+
+
+TaskModal.propTypes = {
+    taskText: PropTypes.string,
+    actions: {
+        setDialog: PropTypes.function,
+        setTaskTest: PropTypes.function
+    },
+    checkoutPopup: PropTypes.boolean
+};
