@@ -15,16 +15,14 @@ export default class CheckoutPopUp extends React.Component {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            Modal heading
-            </Modal.Title>
+            Confirm order
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <h4>Centered Modal</h4>
+          Details: fkmfkdfkdfkj
           <CheckoutFormWrapper />
         </Modal.Body>
-        <Modal.Footer>
-          <Button onClick={this.props.onHide}>Close</Button>
-        </Modal.Footer>
+
       </Modal>
     );
   }
