@@ -8,6 +8,7 @@ import PropTypes from "prop-types";
 import React from "react";
 import { hot } from "react-hot-loader";
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
+import { Link } from 'react-router-dom';
 
 
 // This is a class-based component because the current
@@ -18,10 +19,10 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Breadcrumb>
-          <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
-          <Breadcrumb.Item href="/about">About</Breadcrumb.Item>
-          <Breadcrumb.Item>Data</Breadcrumb.Item>
+        <Breadcrumb className="nav-header">
+          <Breadcrumb.Item as="div" active ><Link to="/">Home</Link></Breadcrumb.Item>
+          <Breadcrumb.Item as="div" active><Link to="/about">About</Link></Breadcrumb.Item>
+          <Breadcrumb.Item as="div" active><Link to="/none">FAQ</Link></Breadcrumb.Item>
         </Breadcrumb>
         <Switch>
           <Route exact path="/" component={HomePage} />
