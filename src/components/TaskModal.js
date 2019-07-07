@@ -4,18 +4,38 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import CheckoutPopUp from './CheckoutPopUp';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import '../styles/components/TaskModal.css';
 import * as actions from '../actions/taskModalActions';
-import PropTypes from 'prop-types';
 
 export class TaskModal extends React.Component {
+    constructor(props) {
+        super(props);
+        this.onClickGetItDone = this.onClickGetItDone.bind(this);
+        this.onChangeTaskDescription = this.onChangeTaskDescription.bind(this);
+        this.onHideCheckoutPopUp = this.onHideCheckoutPopUp.bind(this);
+    }
+
+    async onClickGetItDone() {
+        this.props.actions.setDialog(true);
+        // TODO add tracking
+    }
+
+    onChangeTaskDescription(event) {
+        this.props.actions.setTaskTest(event.target.value);
+    }
+
+    onHideCheckoutPopUp() {
+        this.props.actions.setDialog(false);
+    }
+
     render() {
         return (
             <div className="center-wrapper">
                 <CheckoutPopUp
                     show={this.props.checkoutPopup}
-                    onHide={() => this.props.actions.setDialog(false)}
+                    onHide={this.onHideCheckoutPopUp}
                 ></CheckoutPopUp>
 
                 <Card className="blob center-inner">
@@ -24,7 +44,7 @@ export class TaskModal extends React.Component {
                         <Form className="form-wrapper">
                             <Form.Group>
                                 <Form.Control
-                                    onChange={(e) => this.props.actions.setTaskTest(e.target.value)}
+                                    onChange={this.onChangeTaskDescription}
                                     value={this.props.taskText}
                                     className="task-form-input"
                                     as="textarea"
@@ -34,7 +54,12 @@ export class TaskModal extends React.Component {
                             </Form.Group>
                         </Form>
                         <div className="get-it-done-button-wrapper">
-                            <Button className="get-it-done-button" onClick={() => this.props.actions.setDialog(true)}>Get it done</Button>
+                            <Button
+                                className="get-it-done-button"
+                                onClick={this.onClickGetItDone}
+                                disabled={this.props.taskText === ''}>
+                                    Get it done
+                            </Button>
                         </div>
                     </Card.Body>
                 </Card>

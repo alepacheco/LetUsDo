@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
+import Badge from 'react-bootstrap/Badge';
 import { CardElement, injectStripe } from 'react-stripe-elements';
 import '../../styles/components/stripe.css';
 
@@ -11,7 +12,12 @@ class CheckoutForm extends React.Component {
   }
 
   async submit() {
-    const { token } = await this.props.stripe.createToken({ name: "Name" });
+    const { token } = await this.props.stripe.createToken({ name: "We Do" });
+    
+    if (!token) {
+      console.log("No card!");
+      return;
+    }
 
     const response = await fetch("/api/createPayment", {
       method: "POST",
@@ -34,7 +40,7 @@ class CheckoutForm extends React.Component {
           <CardElement />
         </div>
         <div className="pay-button-wrapper">
-          <Button className="pay-button" onClick={this.submit}>Pay</Button>
+          <Button className="pay-button" onClick={this.submit}>Pay <Badge pill variant="light"> 20£</Badge></Button>
         </div>
       </div>
     );
