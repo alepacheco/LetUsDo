@@ -34,10 +34,6 @@ button:focus {
 .blob {
   margin-top: 36px;
   width: 50%;
-
-  @media screen and (max-width: 982px) {
-      width: 85%;
-  }
 }
 
 .wedo-title {
@@ -48,24 +44,14 @@ button:focus {
   margin-top: -14px;
   margin-left: -6px;
 
-  @media screen and (max-width: 982px) {
-    font-size: 148px;
-}
 }
 
 .task-form-input {
-  @media screen and (max-width: 982px) {
-    font-size: 52px;
-}
+
 }
 
 .get-it-done-button {
   margin-left: auto;
-  @media screen and (max-width: 982px) {
-    font-size: 52px;
-    border-radius: 14px;
-
-  }
 }
 .get-it-done-button-wrapper {
   margin: 26px 0 0 0;

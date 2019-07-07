@@ -7,15 +7,9 @@ $break-large: 1024px;
 }
 
 .nav-header {
-  @media screen and (max-width: $break-small) {
-    font-size: 52px;
-  }
 }
 
 .card {
-  @media screen and (max-width: $break-small) {
-    border-radius: 14px;
 
-  }
 }
 
