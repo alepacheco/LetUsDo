@@ -1,8 +1,10 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Badge from 'react-bootstrap/Badge';
+import { connect } from 'react-redux';
 import { CardElement, injectStripe } from 'react-stripe-elements';
 import '../../styles/components/stripe.css';
+import PropTypes from 'prop-types';
 
 class CheckoutForm extends React.Component {
   constructor(props) {
@@ -40,11 +42,26 @@ class CheckoutForm extends React.Component {
           <CardElement />
         </div>
         <div className="pay-button-wrapper">
-          <Button className="pay-button" onClick={this.submit}>Pay <Badge pill variant="light"> 20£</Badge></Button>
+          <Button
+            className="pay-button"
+            onClick={this.submit}
+            disabled={!this.props.validateEmail}>
+              Pay <Badge pill variant="light"> 20£</Badge>
+          </Button>
         </div>
       </div>
     );
   }
 }
 
-export default injectStripe(CheckoutForm);
+const mapStateToProps = (state) => ({
+  validateEmail: state.checkoutPopUp.validateEmail
+});
+
+export default connect(
+  mapStateToProps
+)(injectStripe(CheckoutForm));
+
+CheckoutForm.propTypes = {
+  validateEmail: PropTypes.string
+};
