@@ -17,7 +17,7 @@ class CheckoutForm extends React.Component {
     const { token } = await this.props.stripe.createToken({ name: "We Do" });
     
     if (!token) {
-      console.log("No card!");
+      // No card present
       return;
     }
 
@@ -27,10 +27,11 @@ class CheckoutForm extends React.Component {
       body: JSON.stringify(token)
     });
 
-    if (response.ok) console.log("Purchase Complete!")
-    if (!response.ok) console.log("Error!")
-    if (response.ok) this.setState({ complete: true });
-
+    if (response.ok) {
+      this.setState({ complete: true });
+    } else {
+      // TODO handle error
+    }
   }
 
   render() {
@@ -45,7 +46,7 @@ class CheckoutForm extends React.Component {
           <Button
             className="pay-button"
             onClick={this.submit}
-            disabled={!this.props.validateEmail}>
+            disabled={!this.props.validEmail}>
               Pay <Badge pill variant="light"> 20£</Badge>
           </Button>
         </div>
@@ -55,7 +56,7 @@ class CheckoutForm extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  validateEmail: state.checkoutPopUp.validateEmail
+  validEmail: state.checkoutPopUp.validEmail
 });
 
 export default connect(
@@ -63,5 +64,6 @@ export default connect(
 )(injectStripe(CheckoutForm));
 
 CheckoutForm.propTypes = {
-  validateEmail: PropTypes.string
+  validEmail: PropTypes.bool,
+  stripe: PropTypes.object
 };

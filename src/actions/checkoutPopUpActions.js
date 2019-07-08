@@ -1,6 +1,13 @@
-export function setCheckoutEmailValid(validateEmail) {
+export function setCheckoutEmailValid(validEmail) {
   return {
     type: 'SET_CHECKOUT_EMAIL_VALID',
-    validateEmail
+    validEmail
+  };
+}
+
+export function setCheckoutEmail(email) {
+  return {
+    type: 'SET_CHECKOUT_EMAIL',
+    email
   };
 }

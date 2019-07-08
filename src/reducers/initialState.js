@@ -4,6 +4,7 @@ export default {
     taskText: ''
   },
   checkoutPopUp: {
-    validateEmail: false
+    validEmail: false,
+    email: ''
   }
 };

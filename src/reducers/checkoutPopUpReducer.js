@@ -7,7 +7,13 @@ export default function fuelSavingsReducer(state = initialState.checkoutPopUp, a
   switch (action.type) {
     case 'SET_CHECKOUT_EMAIL_VALID':
       newState = objectAssign({}, state);
-      newState.validateEmail = action.validateEmail;
+      newState.validEmail = action.validEmail;
+
+      return newState;
+
+    case 'SET_CHECKOUT_EMAIL':
+      newState = objectAssign({}, state);
+      newState.email = action.email;
 
       return newState;
 

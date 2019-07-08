@@ -23,7 +23,9 @@ class CheckoutPopUp extends React.Component {
 
   onChangeEmail(event) {
     const emailValid = validateEmail(event.target.value);
+
     this.props.actions.setCheckoutEmailValid(emailValid);
+    this.props.actions.setCheckoutEmail(event.target.value);
   }
 
   render() {
@@ -41,12 +43,19 @@ class CheckoutPopUp extends React.Component {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <div>
-            Task description: {this.props.taskText || 'No description specified'}
+          <div className="task-description-title">
+            Task description
+          </div>
+          <div className="task-description-content">
+            {this.props.taskText || 'No description specified'}
           </div>
           <Form>
             <Form.Group controlId="formBasicEmail" className="email-form">
-            <Form.Control type="email" placeholder="Enter email" onChange={this.onChangeEmail}/>
+              <Form.Control
+                type="email"
+                placeholder="Enter email"
+                onChange={this.onChangeEmail}
+                value={this.props.email} />
             </Form.Group>
           </Form>
 
@@ -59,12 +68,13 @@ class CheckoutPopUp extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  taskText: state.taskModal.taskText
+  taskText: state.taskModal.taskText,
+  email: state.checkoutPopUp.email
 });
 
 function mapDispatchToProps(dispatch) {
   return {
-      actions: bindActionCreators(actions, dispatch)
+    actions: bindActionCreators(actions, dispatch)
   };
 }
 
@@ -75,5 +85,11 @@ export default connect(
 
 CheckoutPopUp.propTypes = {
   onHide: PropTypes.func,
-  taskText: PropTypes.string
+  taskText: PropTypes.string,
+  email: PropTypes.string,
+  show: PropTypes.bool,
+  actions: PropTypes.shape({
+    setCheckoutEmailValid: PropTypes.func,
+    setCheckoutEmail: PropTypes.func
+  }),
 };
