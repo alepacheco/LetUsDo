@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { CardElement, injectStripe } from 'react-stripe-elements';
 import '../../styles/components/stripe.css';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 
 class CheckoutForm extends React.Component {
   constructor(props) {
@@ -18,23 +19,24 @@ class CheckoutForm extends React.Component {
     
     if (!token) {
       // No card present
+      console.log('no card');
       return;
     }
 
-    const response = await fetch("/api/createPayment", {
-      method: "POST",
-      headers: { "Content-Type": "text/plain" },
-      body: JSON.stringify(token)
-    });
-
-    if (response.ok) {
+    try {
+      const response = await axios.post('/api/createPayment', {
+        token,
+        email: this.props.email,
+        taskText: this.props.taskText
+      })
       this.setState({ complete: true });
-    } else {
-      // TODO handle error
+    } catch (error) {
+      console.log(error.message);
     }
   }
 
   render() {
+    // TODO improve
     if (this.state.complete) return <h1>Purchase Complete</h1>;
 
     return (
@@ -56,7 +58,9 @@ class CheckoutForm extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  validEmail: state.checkoutPopUp.validEmail
+  validEmail: state.checkoutPopUp.validEmail,
+  email: state.checkoutPopUp.email,
+  taskText: state.taskModal.taskText
 });
 
 export default connect(
@@ -65,5 +69,7 @@ export default connect(
 
 CheckoutForm.propTypes = {
   validEmail: PropTypes.bool,
+  email: PropTypes.string,
+  taskText: PropTypes.string,
   stripe: PropTypes.object
 };
