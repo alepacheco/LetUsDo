@@ -3,10 +3,14 @@ import PropTypes from 'prop-types';
 import { ConnectedRouter } from 'connected-react-router';
 import { Provider } from 'react-redux';
 import App from './App';
+import initGa from './utils/analytics';
 
 export default class Root extends Component {
   render() {
     const { store, history } = this.props;
+
+    initGa(history);
+
     return (
       <Provider store={store}>
         <ConnectedRouter history={history}>
