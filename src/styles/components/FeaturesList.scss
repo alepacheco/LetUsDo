@@ -1,3 +1,21 @@
 .features-list {
+  .container {
+    display: flex;
+    width: 800px;
+    margin-top: 46px;
+  }
 
+  .item {
+    flex: 1;
+    margin: 16px;
+  }
+
+  .list-element-title {
+    font-weight: bold;
+    font-size: 18px;
+  }
+
+  .list-element-body {
+    font-size: 12px;
+  }
 }

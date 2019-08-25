@@ -1,6 +1,8 @@
 import React from 'react';
 import TaskModal from '../components/TaskModal';
 import LandingHeader from '../components/LandingHeader';
+import FeaturesList from '../components/FeaturesList';
+
 
 class HomePage extends React.Component {
 
@@ -8,11 +10,8 @@ class HomePage extends React.Component {
     return (
       <div>
         <LandingHeader/>
+        <FeaturesList/>
         <TaskModal/>
-        <br/>
-        <br/>
-        <br/>
-        <h2> Some other section</h2>
       </div>
     );
   }
