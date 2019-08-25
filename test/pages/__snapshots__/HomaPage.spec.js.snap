@@ -2,12 +2,8 @@
 
 exports[`<HomePage /> renders 1`] = `
 <div>
+  <LandingHeader />
+  <FeaturesList />
   <ConnectFunction />
-  <br />
-  <br />
-  <br />
-  <h2>
-     Some other section
-  </h2>
 </div>
 `;

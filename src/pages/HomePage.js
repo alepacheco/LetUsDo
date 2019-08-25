@@ -2,6 +2,7 @@ import React from 'react';
 import TaskModal from '../components/TaskModal';
 import LandingHeader from '../components/LandingHeader';
 import FeaturesList from '../components/FeaturesList';
+import Footer from '../components/Footer';
 
 
 class HomePage extends React.Component {
@@ -12,6 +13,7 @@ class HomePage extends React.Component {
         <LandingHeader/>
         <FeaturesList/>
         <TaskModal/>
+        <Footer/>
       </div>
     );
   }
