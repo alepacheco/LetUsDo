@@ -1,11 +1,13 @@
 import React from 'react';
 import TaskModal from '../components/TaskModal';
+import LandingHeader from '../components/LandingHeader';
 
 class HomePage extends React.Component {
 
   render() {
     return (
       <div>
+        <LandingHeader/>
         <TaskModal/>
         <br/>
         <br/>

@@ -40,7 +40,7 @@ export class TaskModal extends React.Component {
 
                 <Card className="blob center-inner">
                     <Card.Body>
-                        <Card.Title className="wedo-title left-text">We Do</Card.Title>
+                        <Card.Title className="LetUsDo-title left-text">Let Us Do</Card.Title>
                         <Form className="form-wrapper">
                             <Form.Group>
                                 <Form.Control

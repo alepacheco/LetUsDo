@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Badge from 'react-bootstrap/Badge';
@@ -15,7 +16,7 @@ class CheckoutForm extends React.Component {
   }
 
   async submit() {
-    const { token } = await this.props.stripe.createToken({ name: "We Do" });
+    const { token } = await this.props.stripe.createToken({ name: "Let Us Do" });
     
     if (!token) {
       // No card present
@@ -24,6 +25,7 @@ class CheckoutForm extends React.Component {
     }
 
     try {
+      // eslint-disable-next-line no-unused-vars
       const response = await axios.post('/api/createPayment', {
         token,
         email: this.props.email,

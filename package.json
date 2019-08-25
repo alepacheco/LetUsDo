@@ -22,6 +22,7 @@
     "prebuild": "npm run lint && npm run test && npm run clean-dist",
     "build-run": "babel-node tools/build.js && npm run open:dist",
     "build": "babel-node tools/build.js",
+    "buildd": "babel-node tools/build.js",
     "test": "jest",
     "test:CI": "npm run lint && jest && npm run build",
     "test:cover": "npm run test -- --coverage ",

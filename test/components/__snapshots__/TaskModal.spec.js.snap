@@ -14,9 +14,9 @@ exports[`<TaskModal /> renders 1`] = `
   >
     <CardBody>
       <CardTitle
-        className="wedo-title left-text"
+        className="LetUsDo-title left-text"
       >
-        We Do
+        Let Us Do
       </CardTitle>
       <Form
         className="form-wrapper"
