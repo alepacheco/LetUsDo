@@ -1,8 +1,12 @@
 .features-list {
   .container {
     display: flex;
-    width: 800px;
     margin-top: 46px;
+
+    @media only screen and (max-width: 646px) {
+      flex-flow: column;
+    }
+
   }
 
   .item {
@@ -17,5 +21,9 @@
 
   .list-element-body {
     font-size: 12px;
+  }
+
+  .feature-icon {
+    height: 56px;
   }
 }
