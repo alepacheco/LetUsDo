@@ -1,6 +1,6 @@
 import React from 'react';
 import '../styles/components/LandingHeader.scss';
-import ResponsiveEmbed from 'react-bootstrap/ResponsiveEmbed'
+import Icon from '../static/images/undraw_process.svg';
 
 export class LandingHeader extends React.Component {
     constructor(props) {
@@ -19,9 +19,7 @@ export class LandingHeader extends React.Component {
                     <h4>Get someone to do it for you for a flat fee.</h4>
                 </div>
                 <div className="center-image">
-                    <ResponsiveEmbed aspect="a16by9">
-                        <embed type="image/svg+xml" src="static/images/undraw_process.svg" />
-                    </ResponsiveEmbed>
+                    <Icon width="250" height="250"/>
                 </div>
             </div>
         );
