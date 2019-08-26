@@ -1,2 +1,14 @@
 .full-feature {
+  .wrapper {
+    display: flex;
+  }
+
+  .side-image {
+    display: inline-block;
+  }
+  .feature-text {
+    text-align: justify;
+    margin: auto 28px 36px 28px;
+    display: inline-block;
+  }
 }

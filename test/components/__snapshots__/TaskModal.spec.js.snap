@@ -4,9 +4,7 @@ exports[`<TaskModal /> renders 1`] = `
 <div
   className="task-modal"
 >
-  <div
-    className="center-wrapper container"
-  >
+  <CenteredContent>
     <ConnectFunction
       onHide={[Function]}
       show={false}
@@ -52,6 +50,6 @@ exports[`<TaskModal /> renders 1`] = `
         </div>
       </CardBody>
     </Card>
-  </div>
+  </CenteredContent>
 </div>
 `;

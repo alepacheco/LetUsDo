@@ -5,9 +5,7 @@ import FeaturesList from '../components/FeaturesList';
 import Footer from '../components/Footer';
 import FullFeature from '../components/FullFeature';
 
-
 class HomePage extends React.Component {
-
   render() {
     return (
       <div>
@@ -15,6 +13,8 @@ class HomePage extends React.Component {
 
         <FeaturesList />
         <TaskModal />
+        <FullFeature />
+        <FullFeature imageSide="right" />
         <FullFeature />
 
         <Footer />

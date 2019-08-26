@@ -3,6 +3,7 @@ import '../styles/components/FeaturesList.scss';
 import cafe from '../static/images/cafe.png';
 import london from '../static/images/london-bridge.png';
 import cash from '../static/images/cash.png';
+import CenteredContent from './CenteredContent';
 
 const ListElement = ({ image }) => (
   <div className="item">
@@ -23,11 +24,11 @@ export class FeaturesList extends React.Component {
   render() {
     return (
       <div className="features-list">
-        <div className="container">
+        <CenteredContent>
           <ListElement image={london} />
           <ListElement image={cash} />
           <ListElement image={cafe} />
-        </div>
+        </CenteredContent>
       </div>
     );
   }

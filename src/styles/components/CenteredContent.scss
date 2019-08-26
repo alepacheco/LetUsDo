@@ -1,0 +1,19 @@
+.centered-content {
+  display: flex;
+  margin-top: 46px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 750px;
+
+  &.reverse {
+    flex-direction: row-reverse;
+  }
+
+  @media only screen and (max-width: 646px) {
+    &.reverse {
+      flex-direction: column-reverse;
+    }
+    flex-flow: column;
+    width: auto;
+  }
+}

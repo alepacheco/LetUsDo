@@ -1,16 +1,4 @@
 .features-list {
-  .container {
-    display: flex;
-    margin-top: 46px;
-    margin-left: auto;
-    margin-right: auto;
-    width: 750px;
-    @media only screen and (max-width: 646px) {
-      flex-flow: column;
-      width: auto;
-    }
-  }
-
   .item {
     flex: 1;
     margin: 16px;

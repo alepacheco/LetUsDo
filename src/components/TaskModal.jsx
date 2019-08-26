@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import '../styles/components/TaskModal.scss';
 import * as actions from '../actions/taskModalActions';
+import CenteredContent from './CenteredContent';
 
 export class TaskModal extends React.Component {
   constructor(props) {
@@ -33,11 +34,8 @@ export class TaskModal extends React.Component {
   render() {
     return (
       <div className="task-modal">
-        <div className="center-wrapper container">
-          <CheckoutPopUp
-            show={this.props.checkoutPopup}
-            onHide={this.onHideCheckoutPopUp}
-          ></CheckoutPopUp>
+        <CenteredContent>
+          <CheckoutPopUp show={this.props.checkoutPopup} onHide={this.onHideCheckoutPopUp} />
           <Card className="center-inner">
             <Card.Body>
               <Card.Title className="LetUsDo-title left-text">Let Us Do</Card.Title>
@@ -57,15 +55,15 @@ export class TaskModal extends React.Component {
                 <Button
                   className="get-it-done-button"
                   onClick={this.onClickGetItDone}
-                  disabled={this.props.taskText === ''}>
+                  disabled={this.props.taskText === ''}
+                >
                   Get it done
-                            </Button>
+                </Button>
               </div>
             </Card.Body>
           </Card>
-        </div>
+        </CenteredContent>
       </div>
-
     );
   }
 }
@@ -87,7 +85,6 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(TaskModal);
-
 
 TaskModal.propTypes = {
   taskText: PropTypes.string,
