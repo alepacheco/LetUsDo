@@ -1,7 +1,7 @@
 import { createStore, compose, applyMiddleware } from 'redux';
 import reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
 import thunk from 'redux-thunk';
-import { createBrowserHistory } from "history";
+import { createBrowserHistory } from 'history';
 // 'routerMiddleware': the new way of storing route changes with redux middleware since rrV4.
 import { connectRouter, routerMiddleware } from 'connected-react-router';
 import createRootReducer from '../reducers';
@@ -23,7 +23,7 @@ function configureStoreProd(initialState) {
   return createStore(
     createRootReducer(history), // root reducer with router state
     initialState,
-    compose(applyMiddleware(...middlewares))
+    compose(applyMiddleware(...middlewares)),
   );
 }
 
@@ -45,7 +45,7 @@ function configureStoreDev(initialState) {
   const store = createStore(
     createRootReducer(history), // root reducer with router state
     initialState,
-    composeEnhancers(applyMiddleware(...middlewares))
+    composeEnhancers(applyMiddleware(...middlewares)),
   );
 
   if (module.hot) {

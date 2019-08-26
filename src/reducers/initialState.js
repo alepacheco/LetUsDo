@@ -1,10 +1,10 @@
 export default {
   taskModal: {
     checkoutPopupOpen: false,
-    taskText: ''
+    taskText: '',
   },
   checkoutPopUp: {
     validEmail: false,
-    email: ''
-  }
+    email: '',
+  },
 };

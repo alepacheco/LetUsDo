@@ -3,6 +3,7 @@ import TaskModal from '../components/TaskModal';
 import LandingHeader from '../components/LandingHeader';
 import FeaturesList from '../components/FeaturesList';
 import Footer from '../components/Footer';
+import FullFeature from '../components/FullFeature';
 
 
 class HomePage extends React.Component {
@@ -11,8 +12,11 @@ class HomePage extends React.Component {
     return (
       <div>
         <LandingHeader />
+
         <FeaturesList />
         <TaskModal />
+        <FullFeature />
+
         <Footer />
       </div>
     );

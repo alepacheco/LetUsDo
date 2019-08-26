@@ -2,52 +2,56 @@
 
 exports[`<TaskModal /> renders 1`] = `
 <div
-  className="center-wrapper"
+  className="task-modal"
 >
-  <ConnectFunction
-    onHide={[Function]}
-    show={false}
-  />
-  <Card
-    body={false}
-    className="blob center-inner"
+  <div
+    className="center-wrapper container"
   >
-    <CardBody>
-      <CardTitle
-        className="LetUsDo-title left-text"
-      >
-        Let Us Do
-      </CardTitle>
-      <Form
-        className="form-wrapper"
-        inline={false}
-      >
-        <FormGroup>
-          <FormControl
-            as="textarea"
-            className="task-form-input"
-            onChange={[Function]}
-            placeholder="What task do you need done?"
-            rows="3"
-            value="Sample task"
-          />
-        </FormGroup>
-      </Form>
-      <div
-        className="get-it-done-button-wrapper"
-      >
-        <Button
-          active={false}
-          className="get-it-done-button"
-          disabled={false}
-          onClick={[Function]}
-          type="button"
-          variant="primary"
+    <ConnectFunction
+      onHide={[Function]}
+      show={false}
+    />
+    <Card
+      body={false}
+      className="center-inner"
+    >
+      <CardBody>
+        <CardTitle
+          className="LetUsDo-title left-text"
         >
-          Get it done
-        </Button>
-      </div>
-    </CardBody>
-  </Card>
+          Let Us Do
+        </CardTitle>
+        <Form
+          className="form-wrapper"
+          inline={false}
+        >
+          <FormGroup>
+            <FormControl
+              as="textarea"
+              className="task-form-input"
+              onChange={[Function]}
+              placeholder="What task do you need done?"
+              rows="3"
+              value="Sample task"
+            />
+          </FormGroup>
+        </Form>
+        <div
+          className="get-it-done-button-wrapper"
+        >
+          <Button
+            active={false}
+            className="get-it-done-button"
+            disabled={false}
+            onClick={[Function]}
+            type="button"
+            variant="primary"
+          >
+            Get it done
+          </Button>
+        </div>
+      </CardBody>
+    </Card>
+  </div>
 </div>
 `;

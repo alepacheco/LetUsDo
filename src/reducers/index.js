@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
+import { connectRouter } from 'connected-react-router';
 import taskModal from './taskModalReducer';
 import checkoutPopUp from './checkoutPopUpReducer';
-import { connectRouter } from 'connected-react-router'
 
-const rootReducer = history => combineReducers({
+const rootReducer = (history) => combineReducers({
   router: connectRouter(history),
   taskModal,
-  checkoutPopUp
+  checkoutPopUp,
 });
 
 export default rootReducer;

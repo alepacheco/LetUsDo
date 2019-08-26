@@ -1,16 +1,16 @@
 import ReactGA from 'react-ga';
 
 const debug = false;
-const trackPageView = location => {
+const trackPageView = (location) => {
   ReactGA.set({
-    page: location.pathname
+    page: location.pathname,
   });
   ReactGA.pageview(location.pathname);
 };
 
-const initGa = history => {
+const initGa = (history) => {
   ReactGA.initialize('UA-143596433-1', {
-    debug
+    debug,
   });
   if (debug) {
     ReactGA.ga('set', 'sendHitTask', null);
@@ -21,5 +21,5 @@ const initGa = history => {
 
 export {
   initGa as default,
-  trackPageView
+  trackPageView,
 };

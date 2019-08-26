@@ -3,7 +3,9 @@
 /* eslint-disable no-console */
 import webpack from 'webpack';
 import config from '../webpack.config.prod';
-import { chalkError, chalkSuccess, chalkWarning, chalkProcessing } from './chalkConfig';
+import {
+  chalkError, chalkSuccess, chalkWarning, chalkProcessing,
+} from './chalkConfig';
 
 process.env.NODE_ENV = 'production'; // this assures React is built in prod mode and that the Babel dev config doesn't apply.
 
@@ -18,12 +20,12 @@ webpack(config).run((error, stats) => {
   const jsonStats = stats.toJson();
 
   if (jsonStats.hasErrors) {
-    return jsonStats.errors.map(error => console.log(chalkError(error)));
+    return jsonStats.errors.map((error) => console.log(chalkError(error)));
   }
 
   if (jsonStats.hasWarnings) {
     console.log(chalkWarning('Webpack generated the following warnings: '));
-    jsonStats.warnings.map(warning => console.log(chalkWarning(warning)));
+    jsonStats.warnings.map((warning) => console.log(chalkWarning(warning)));
   }
 
   console.log(`Webpack stats: ${stats}`);
