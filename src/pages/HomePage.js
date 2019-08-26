@@ -10,10 +10,10 @@ class HomePage extends React.Component {
   render() {
     return (
       <div>
-        <LandingHeader/>
-        <FeaturesList/>
-        <TaskModal/>
-        <Footer/>
+        <LandingHeader />
+        <FeaturesList />
+        <TaskModal />
+        <Footer />
       </div>
     );
   }

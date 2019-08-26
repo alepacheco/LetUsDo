@@ -2,15 +2,15 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 
-import {TaskModal} from '../../src/components/TaskModal';
+import { TaskModal } from '../../src/components/TaskModal';
 
 describe('<TaskModal />', () => {
   it('renders', () => {
     const wrapper = shallow(<TaskModal
       taskText="Sample task"
       actions={{
-          setDialog: () => {},
-          setTaskTest: () => {}
+        setDialog: () => { },
+        setTaskTest: () => { }
       }}
       checkoutPopup={false}
     />);

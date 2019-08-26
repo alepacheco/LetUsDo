@@ -4,7 +4,7 @@ import cafe from '../static/images/cafe.png'
 import london from '../static/images/london-bridge.png'
 import cash from '../static/images/cash.png'
 
-const ListElement = ({image}) => {
+const ListElement = ({ image }) => {
   return (<div className="item">
     <img className="feature-icon" src={image}></img>
     <div className="list-element-title">Beautiful themes that are responsive and customizable</div>
@@ -21,9 +21,9 @@ export class FeaturesList extends React.Component {
     return (
       <div className="features-list">
         <div className="container">
-        <ListElement image={london}/>
-        <ListElement image={cash}/>
-        <ListElement image={cafe}/>
+          <ListElement image={london} />
+          <ListElement image={cash} />
+          <ListElement image={cafe} />
         </div>
       </div>
     );

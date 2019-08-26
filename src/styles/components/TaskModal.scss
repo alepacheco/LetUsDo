@@ -1,0 +1,53 @@
+.task-modal {
+  textarea,
+  select,
+  input,
+  button,
+  button:focus {
+    outline: none;
+    resize: none;
+    box-shadow: none !important;
+  }
+
+  .form-wrapper {
+    background: none;
+    border: none;
+  }
+
+  .center-inner {
+    padding: 16px;
+    width: 100%;
+  }
+
+  .left-text {
+    text-align: left;
+  }
+  .container {
+    display: flex;
+    margin-top: 46px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 750px;
+    @media only screen and (max-width: 646px) {
+      flex-flow: column;
+      width: auto;
+    }
+  }
+
+  .LetUsDo-title {
+    font-size: 38pt;
+    font-family: JelleeRoman, Sans-Serif;
+    font-weight: normal;
+    font-style: normal;
+    margin-top: -14px;
+    margin-left: -6px;
+  }
+
+  .get-it-done-button {
+    margin-left: auto;
+  }
+  .get-it-done-button-wrapper {
+    margin: 26px 0 0 0;
+    text-align: right;
+  }
+}

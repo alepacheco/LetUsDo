@@ -42,6 +42,7 @@ However, there are still some styles that the linter cannot pick up. If you are 
 
 ## Code Conventions
 
-- Use semicolons ;
+- Use semicolons ; 
 - 2 spaces for indentation (no tabs). Install the [Editorconfig](http://editorconfig.org) plugin for your editor to enforce this automatically.
 - Prefer ' over "
+

@@ -17,7 +17,7 @@ class CheckoutForm extends React.Component {
 
   async submit() {
     const { token } = await this.props.stripe.createToken({ name: "Let Us Do" });
-    
+
     if (!token) {
       // No card present
       console.log('no card');
@@ -51,7 +51,7 @@ class CheckoutForm extends React.Component {
             className="pay-button"
             onClick={this.submit}
             disabled={!this.props.validEmail}>
-              Pay <Badge pill variant="light"> 20£</Badge>
+            Pay <Badge pill variant="light"> 20£</Badge>
           </Button>
         </div>
       </div>

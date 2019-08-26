@@ -5,7 +5,7 @@ import HomePage from '../../src/pages/HomePage';
 
 describe('<HomePage />', () => {
   it('renders', () => {
-    const wrapper = shallow(<HomePage/>);
+    const wrapper = shallow(<HomePage />);
 
     expect(toJson(wrapper)).toMatchSnapshot();
   });

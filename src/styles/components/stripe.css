@@ -1,10 +1,10 @@
 .card-numer-field {
-    border: 1px solid #ced4da;
-    border-radius: .25rem;
-    padding: 10px;
-    margin: 8px 0;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  padding: 10px;
+  margin: 8px 0;
 }
 
 .pay-button-wrapper {
-    text-align: right;
+  text-align: right;
 }

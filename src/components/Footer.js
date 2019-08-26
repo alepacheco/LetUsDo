@@ -9,7 +9,7 @@ export class Footer extends React.Component {
   render() {
     return (
       <div className="footer">
-        <div className="separator"/>
+        <div className="separator" />
         <div className="wrapper">
           some text here
         </div>
