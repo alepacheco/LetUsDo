@@ -5,7 +5,7 @@ exports[`<HomePage /> renders 1`] = `
   <LandingHeader />
   <FeaturesList />
   <ConnectFunction />
-  <FullFeature />
+  <FullFeatureList />
   <Footer />
 </div>
 `;

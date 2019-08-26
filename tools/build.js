@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 // More info on Webpack's Node API here: https://webpack.js.org/api/node/
 // Allowing console calls below since this is a build file.
 /* eslint-disable no-console */
@@ -20,6 +21,7 @@ webpack(config).run((error, stats) => {
   const jsonStats = stats.toJson();
 
   if (jsonStats.hasErrors) {
+    // eslint-disable-next-line no-shadow
     return jsonStats.errors.map((error) => console.log(chalkError(error)));
   }
 

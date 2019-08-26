@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 // This file configures a web server for testing the production build
 // on your local machine.
 

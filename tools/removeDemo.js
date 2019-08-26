@@ -1,4 +1,5 @@
 // This script removes demo app files
+// eslint-disable-next-line import/no-extraneous-dependencies
 import rimraf from 'rimraf';
 import fs from 'fs';
 import { chalkSuccess } from './chalkConfig';
@@ -58,8 +59,10 @@ function removePackageJsonScriptEntry(scriptName) {
 }
 
 let numPathsRemoved = 0;
+// eslint-disable-next-line array-callback-return
 pathsToRemove.map((path) => {
   removePath(path, () => {
+    // eslint-disable-next-line no-plusplus
     numPathsRemoved++;
     if (numPathsRemoved === pathsToRemove.length) { // All paths have been processed
       // Now we can create files since we're done deleting.
