@@ -10,6 +10,7 @@ export class Footer extends React.Component {
     return (<div className="footer" >
       <div className="separator" />
       <div className="wrapper" >
+        lorem ipsum dolor sit amet, consectetur adip
       </div>
     </div>
     );
