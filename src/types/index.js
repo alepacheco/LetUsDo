@@ -1,7 +1,14 @@
 // Centralized propType definitions
+// eslint-disable-next-line import/no-extraneous-dependencies
 import {
   shape, number, bool, string, oneOfType,
 } from 'prop-types';
+
+export const savings = shape({
+  monthly: oneOfType([number, string]),
+  annual: oneOfType([number, string]),
+  threeYear: oneOfType([number, string]),
+});
 
 export const fuelSavings = shape({
   newMpg: oneOfType([number, string]),
@@ -14,10 +21,4 @@ export const fuelSavings = shape({
   dateModified: string,
   necessaryDataIsProvidedToCalculateSavings: bool,
   savings,
-});
-
-export const savings = shape({
-  monthly: oneOfType([number, string]),
-  annual: oneOfType([number, string]),
-  threeYear: oneOfType([number, string]),
 });

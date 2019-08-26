@@ -23,7 +23,7 @@
     "build-run": "babel-node tools/build.js && npm run open:dist",
     "build": "babel-node tools/build.js",
     "buildd": "babel-node tools/build.js",
-    "test": "eslint . && jest",
+    "test": "eslint ./src && jest",
     "test:CI": "npm run lint && jest && npm run build",
     "test:cover": "npm run test -- --coverage ",
     "test:cover:CI": "npm run test:CI -- --coverage && cat ./coverage/lcov.info | node_modules/coveralls/bin/coveralls.js",

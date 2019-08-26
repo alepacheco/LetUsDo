@@ -1,6 +1,8 @@
 import { createStore, compose, applyMiddleware } from 'redux';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
 import thunk from 'redux-thunk';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { createBrowserHistory } from 'history';
 // 'routerMiddleware': the new way of storing route changes with redux middleware since rrV4.
 import { connectRouter, routerMiddleware } from 'connected-react-router';
@@ -32,7 +34,8 @@ function configureStoreDev(initialState) {
   const middlewares = [
     // Add other middleware on this line...
 
-    // Redux middleware that spits an error on you when you try to mutate your state either inside a dispatch or between dispatches.
+    // Redux middleware that spits an error on you when you try to mutate your state either
+    // inside a dispatch or between dispatches.
     reduxImmutableStateInvariant(),
 
     // thunk middleware can also accept an extra argument to be passed to each thunk action
@@ -41,7 +44,7 @@ function configureStoreDev(initialState) {
     reactRouterMiddleware,
   ];
 
-  const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose; // add support for Redux dev tools
+  const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
   const store = createStore(
     createRootReducer(history), // root reducer with router state
     initialState,
