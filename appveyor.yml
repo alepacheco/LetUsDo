@@ -2,9 +2,9 @@
 environment:
   matrix:
     # node.js
-    - nodejs_version: "11"
-    - nodejs_version: "10"
-    - nodejs_version: "8"
+    - nodejs_version: '11'
+    - nodejs_version: '10'
+    - nodejs_version: '8'
 
 # Install scripts. (runs after repo cloning)
 install:
@@ -32,7 +32,7 @@ notifications:
   - provider: Email
     to:
       - housecor@gmail.com
-    subject: "Build failed: react-slingshot"
+    subject: 'Build failed: react-slingshot'
     message: The continuous integration build failed. See https://ci.appveyor.com/project/CoryHouse/react-slingshot/ for details.
     on_build_success: false
     on_build_failure: true
