@@ -13,16 +13,14 @@ const ListElement = ({ image, title, content }) => (
   </div>
 );
 
-export const FeaturesList = props => {
-  return (
-    <div className="features-list">
-      <CenteredContent>
-        <ListElement image={london} title={'Based in London'} content={'ffff'} />
-        <ListElement image={cash} title={'Fixed price for your task'} content={'ffff'} />
-        <ListElement image={cafe} title={'Worries free service'} content={'ffff'} />
-      </CenteredContent>
-    </div>
-  );
-};
+export const FeaturesList = (props) => (
+  <div className="features-list">
+    <CenteredContent>
+      <ListElement image={london} title="Based in London" content="ffff" />
+      <ListElement image={cash} title="Fixed price for your task" content="ffff" />
+      <ListElement image={cafe} title="Worries free service" content="ffff" />
+    </CenteredContent>
+  </div>
+);
 
 export default FeaturesList;

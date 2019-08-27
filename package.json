@@ -63,10 +63,10 @@
     "acorn": "6.1.1",
     "ajv": "6.10.0",
     "autoprefixer": "9.5.1",
-    "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "10.0.1",
     "babel-jest": "24.8.0",
     "babel-loader": "8.0.6",
+    "babel-plugin-transform-dynamic-import": "2.1.0",
     "babel-plugin-transform-react-remove-prop-types": "0.4.24",
     "browser-sync": "2.26.5",
     "chalk": "2.4.2",
@@ -175,6 +175,7 @@
           "@babel/preset-react"
         ],
         "plugins": [
+          "babel-plugin-transform-dynamic-import",
           "@babel/plugin-syntax-dynamic-import",
           "@babel/plugin-transform-runtime",
           "@babel/plugin-proposal-class-properties"

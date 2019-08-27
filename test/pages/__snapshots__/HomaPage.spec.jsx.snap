@@ -4,8 +4,16 @@ exports[`<HomePage /> renders 1`] = `
 <div>
   <LandingHeader />
   <FeaturesList />
-  <ConnectFunction />
-  <FullFeatureList />
+  <Suspense
+    fallback={[Function]}
+  >
+    <lazy />
+  </Suspense>
+  <Suspense
+    fallback={[Function]}
+  >
+    <lazy />
+  </Suspense>
   <Footer />
 </div>
 `;
