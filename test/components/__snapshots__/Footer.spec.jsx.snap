@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Footer /> renders 1`] = `
+<div
+  className="footer"
+>
+  <div
+    className="separator"
+  />
+  <div
+    className="wrapper"
+  >
+    lorem ipsum dolor sit amet, consectetur adip
+  </div>
+</div>
+`;

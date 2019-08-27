@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<FullFeature /> renders 1`] = `
+<div
+  className="full-feature"
+>
+  <CenteredContent
+    reverse={false}
+  >
+    <div
+      className="side-image"
+    >
+      <Component
+        height="250"
+        width="250"
+      />
+    </div>
+    <div
+      className="feature-text"
+    >
+      lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor sit amet, consectetur adip
+    </div>
+  </CenteredContent>
+</div>
+`;
