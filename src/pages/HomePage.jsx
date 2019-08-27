@@ -1,9 +1,11 @@
-import React from 'react';
-import TaskModal from '../components/TaskModal';
+import React, { Suspense, lazy } from 'react';
+const TaskModal = lazy(() => import('../components/TaskModal'));
+
 import LandingHeader from '../components/LandingHeader';
 import FeaturesList from '../components/FeaturesList';
 import Footer from '../components/Footer';
-import FullFeatureList from '../components/FullFeatureList';
+
+const FullFeatureList = lazy(() => import('../components/FullFeatureList'));
 
 class HomePage extends React.Component {
   render() {
@@ -12,8 +14,13 @@ class HomePage extends React.Component {
         <LandingHeader />
 
         <FeaturesList />
-        <TaskModal />
-        <FullFeatureList />
+
+        <Suspense fallback={<div>Loading...</div>}>
+          <TaskModal />
+        </Suspense>
+        <Suspense fallback={<div>Loading...</div>}>
+          <FullFeatureList />
+        </Suspense>
 
         <Footer />
       </div>

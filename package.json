@@ -22,7 +22,7 @@
     "prebuild": "npm run lint && npm run test && npm run clean-dist",
     "build-run": "babel-node tools/build.js && npm run open:dist",
     "build": "babel-node tools/build.js",
-    "buildd": "babel-node tools/build.js",
+    "buildd": "npm run remove-dist && babel-node tools/build.js",
     "test": "eslint ./src && jest",
     "test:CI": "npm run lint && jest && npm run build",
     "test:cover": "npm run test -- --coverage ",
@@ -54,6 +54,7 @@
     "@babel/core": "7.4.4",
     "@babel/node": "7.2.2",
     "@babel/plugin-proposal-class-properties": "7.4.4",
+    "@babel/plugin-syntax-dynamic-import": "7.2.0",
     "@babel/plugin-transform-react-constant-elements": "7.2.0",
     "@babel/plugin-transform-runtime": "7.5.0",
     "@babel/polyfill": "7.4.4",
@@ -141,6 +142,7 @@
           "@babel/preset-react"
         ],
         "plugins": [
+          "@babel/plugin-syntax-dynamic-import",
           "@babel/plugin-transform-runtime",
           "@babel/plugin-proposal-class-properties",
           "react-hot-loader/babel"
@@ -160,6 +162,7 @@
           "@babel/preset-react"
         ],
         "plugins": [
+          "@babel/plugin-syntax-dynamic-import",
           "@babel/plugin-transform-runtime",
           "@babel/plugin-proposal-class-properties",
           "@babel/plugin-transform-react-constant-elements",
@@ -172,6 +175,7 @@
           "@babel/preset-react"
         ],
         "plugins": [
+          "@babel/plugin-syntax-dynamic-import",
           "@babel/plugin-transform-runtime",
           "@babel/plugin-proposal-class-properties"
         ]
