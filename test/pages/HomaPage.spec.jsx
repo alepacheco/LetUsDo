@@ -4,7 +4,7 @@ import toJson from 'enzyme-to-json';
 import HomePage from '../../src/pages/HomePage';
 
 describe('<HomePage />', () => {
-  it('renders', async () => {
+  it('renders', () => {
     const wrapper = shallow(<HomePage />);
 
     expect(toJson(wrapper)).toMatchSnapshot();
