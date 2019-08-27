@@ -1,4 +1,3 @@
 # LetUsDo 
-
-![CircleCI](https://circleci.com/gh/alepacheco/LetUsDo.svg?style=svg&circle-token=0432ae6dc8c33ececcdae3a3c740f94d3738485d)
-
+[![Build Status](https://travis-ci.org/alepacheco/WeDo.svg?branch=master)](https://travis-ci.org/alepacheco/WeDo)
+[![Coverage Status](https://coveralls.io/repos/github/alepacheco/WeDo/badge.svg?branch=master)](https://coveralls.io/github/alepacheco/WeDo?branch=master)
