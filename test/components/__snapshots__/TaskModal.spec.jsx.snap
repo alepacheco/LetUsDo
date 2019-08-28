@@ -15,9 +15,9 @@ exports[`<TaskModal /> renders 1`] = `
     >
       <CardBody>
         <CardTitle
-          className="LetUsDo-title left-text"
+          className="task-modal-title left-text"
         >
-          Let Us Do
+          What can we do for you today?
         </CardTitle>
         <Form
           className="form-wrapper"

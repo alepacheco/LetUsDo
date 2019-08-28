@@ -21,9 +21,8 @@ export const LandingHeader = () => (
   <div className="landing-header">
     <div className="logo-text">LetUsDo.app</div>
     <div className="main-content">
-      We help you with the
-      <b> tasks </b>
-      that you don&apos;t feel like doing
+    We know there are thing and you don’t want to do.
+Here we are to help you with the tasks you don’t feel like doing
     </div>
     <div className="center-image">
       <Icon width="250" height="250" />

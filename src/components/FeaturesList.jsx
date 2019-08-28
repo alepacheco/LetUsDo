@@ -16,8 +16,8 @@ const ListElement = ({ image, title, content }) => (
 export const FeaturesList = (props) => (
   <div className="features-list">
     <CenteredContent>
-      <ListElement image={london} title="Based in London" content="ffff" />
-      <ListElement image={cash} title="Fixed price for your task" content="ffff" />
+      <ListElement image={london} title="Based in London" content="We are starting in London and have people on the streets ready to take on some work as soon as you send us a request. " />
+      <ListElement image={cash} title="Flat fee" content="To make it even easier there is no pricing guide, you will always pay the same whatever the task at hand is. Just 20£" />
       <ListElement image={cafe} title="Worries free service" content="ffff" />
     </CenteredContent>
   </div>

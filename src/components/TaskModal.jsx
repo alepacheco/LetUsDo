@@ -38,7 +38,7 @@ export class TaskModal extends React.Component {
           <CheckoutPopUp show={this.props.checkoutPopup} onHide={this.onHideCheckoutPopUp} />
           <Card className="center-inner">
             <Card.Body>
-              <Card.Title className="LetUsDo-title left-text">Let Us Do</Card.Title>
+              <Card.Title className="task-modal-title left-text">What can we do for you today?</Card.Title>
               <Form className="form-wrapper">
                 <Form.Group>
                   <Form.Control

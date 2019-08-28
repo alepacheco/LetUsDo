@@ -10,7 +10,9 @@ exports[`<Footer /> renders 1`] = `
   <div
     className="wrapper"
   >
-    lorem ipsum dolor sit amet, consectetur adip
+    We are in beta phase and would love to hear your feedback.
+    <br />
+    Please get in touch with the email: contact@letusdo.app
   </div>
 </div>
 `;

@@ -8,7 +8,7 @@ import Park from '../static/images/undraw_at_the_park.svg';
 export const FullFeatureList = ({}) => {
   return (
     <div className="full-feature-list">
-      <FullFeature Image={Sprint} />
+      <FullFeature Image={Sprint} title={'What can we do?'}/>
       <FullFeature Image={Selection} imageSide="right" />
       <FullFeature Image={Park} />
     </div>

@@ -10,7 +10,9 @@ export class Footer extends React.Component {
     return (<div className="footer" >
       <div className="separator" />
       <div className="wrapper" >
-        lorem ipsum dolor sit amet, consectetur adip
+        We are in beta phase and would love to hear your feedback.
+      <br />
+        Please get in touch with the email: contact@letusdo.app
       </div>
     </div>
     );

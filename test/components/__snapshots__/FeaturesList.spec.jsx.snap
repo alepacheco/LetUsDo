@@ -6,7 +6,7 @@ exports[`<FeaturesList /> renders 1`] = `
 >
   <CenteredContent>
     <ListElement
-      content="ffff"
+      content="We are starting in London and have people on the streets ready to take on some work as soon as you send us a request. "
       image={
         Object {
           "process": [Function],
@@ -15,13 +15,13 @@ exports[`<FeaturesList /> renders 1`] = `
       title="Based in London"
     />
     <ListElement
-      content="ffff"
+      content="To make it even easier there is no pricing guide, you will always pay the same whatever the task at hand is. Just 20£"
       image={
         Object {
           "process": [Function],
         }
       }
-      title="Fixed price for your task"
+      title="Flat fee"
     />
     <ListElement
       content="ffff"
