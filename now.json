@@ -15,6 +15,10 @@
   ],
   "builds": [
     {
+      "src": "package.json",
+      "use": "@now/static-build"
+    },
+    {
       "src": "dist/*/**",
       "use": "@now/static"
     },

@@ -21,7 +21,7 @@ export const LandingHeader = () => (
   <div className="landing-header">
     <div className="logo-text">LetUsDo.app</div>
     <div className="main-content">
-      We help you with the TEST
+      We help you with the TEST-ALL-GOOD
       <b> tasks </b>
       that you don&apos;t feel like doing
     </div>
