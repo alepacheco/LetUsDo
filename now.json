@@ -1,1 +1,26 @@
-
+{
+  "routes": [
+    {
+      "src": "/static/fonts/(?<id>[^/]*)",
+      "dest": "/dist/$id"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/dist/$1"
+    },
+    {
+      "src": "/(?:^|(?<= ))([^\\. ]+)(?:\n|(?= )|$)/g",
+      "dest": "/dist/index.html"
+    }
+  ],
+  "builds": [
+    {
+      "src": "dist/*/**",
+      "use": "@now/static"
+    },
+    {
+      "src": "dist/**",
+      "use": "@now/static"
+    }
+  ]
+}
