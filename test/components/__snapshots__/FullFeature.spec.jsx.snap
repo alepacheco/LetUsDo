@@ -15,14 +15,18 @@ exports[`<FullFeature /> renders 1`] = `
         width="250"
       />
     </div>
-    <div>
-      <div
-        class="feature-title"
-      />
-      <div
-        className="feature-text"
-      >
-        lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor sit amet, consectetur adip
+    <div
+      className="text-bottom"
+    >
+      <div>
+        <div
+          className="feature-title"
+        />
+        <div
+          className="feature-text"
+        >
+          lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor sit amet, consectetur adip
+        </div>
       </div>
     </div>
   </CenteredContent>

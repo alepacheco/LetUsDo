@@ -5,12 +5,20 @@ exports[`<HomePage /> renders 1`] = `
   <LandingHeader />
   <FeaturesList />
   <Suspense
-    fallback={[Function]}
+    fallback={
+      <div>
+        Loading...
+      </div>
+    }
   >
     <lazy />
   </Suspense>
   <Suspense
-    fallback={[Function]}
+    fallback={
+      <div>
+        Loading...
+      </div>
+    }
   >
     <lazy />
   </Suspense>

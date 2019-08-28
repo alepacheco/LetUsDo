@@ -6,7 +6,7 @@ import { Footer } from '../components/Footer';
 
 const TaskModal = lazy(() => import('../components/TaskModal'));
 const FullFeatureList = lazy(() => import('../components/FullFeatureList'));
-const Loading = () => <div>Loading...</div>;
+const Loading = <div>Loading...</div>;
 
 const HomePage = () => (
   <div>

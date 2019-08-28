@@ -1,21 +1,27 @@
 .full-feature {
-  
   .wrapper {
     display: flex;
   }
 
   .side-image {
+    text-align: center;
     margin: 24px;
     display: inline-block;
   }
   .feature-title {
+    font-family: JelleeRoman, Sans-Serif;
     font-size: 24px;
-    font-weight: bold;
     margin: auto 28px 0 28px;
   }
   .feature-text {
+    font-family: Quicksand, Sans-Serif;
+
     text-align: justify;
     margin: auto 28px 36px 28px;
     display: inline-block;
+  }
+
+  .text-bottom {
+    margin-top: auto;
   }
 }

@@ -24,7 +24,7 @@ exports[`<FeaturesList /> renders 1`] = `
       title="Flat fee"
     />
     <ListElement
-      content="ffff"
+      content="lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor sit amet"
       image={
         Object {
           "process": [Function],

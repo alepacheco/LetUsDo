@@ -9,15 +9,17 @@ export const FullFeature = ({ Image, imageSide = 'left', title }) => {
         <div className="side-image">
           <Image width="250" height="250" />
         </div>
-        <div>
-          <div class="feature-title">{title}</div>
-          <div className="feature-text">
-            lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor sit amet, consectetur adip
-            lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor sit amet, consectetur adip
-            lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor sit amet, consectetur adip
+        <div className="text-bottom">
+          <div>
+            <div className="feature-title">{title}</div>
+            <div className="feature-text">
+              lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor sit amet, consectetur
+              adip lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor sit amet,
+              consectetur adip lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor sit
+              amet, consectetur adip
+            </div>
           </div>
         </div>
-
       </CenteredContent>
     </div>
   );
