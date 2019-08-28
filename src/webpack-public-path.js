@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 // Dynamically set the webpack public path at runtime below
 // This magic global is used by webpack to set the public path at runtime.
 // The public path is set dynamically to avoid the following issues:
