@@ -20,7 +20,7 @@ exports[`<CheckoutForm /> renders 1`] = `
     <Button
       active={false}
       className="pay-button"
-      disabled={true}
+      disabled={false}
       onClick={[Function]}
       type="button"
       variant="primary"

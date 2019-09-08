@@ -14,7 +14,7 @@ exports[`<TaskBox /> renders 1`] = `
           className="task-modal-title left-text"
         >
           What can we do for you this 
-          Sunday
+          Tuesday
           ?
         </CardTitle>
         <Form

@@ -10,71 +10,62 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import * as actions from '../../../actions/taskModalActions';
 
-export class CheckoutForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { complete: false };
-    this.submit = this.submit.bind(this);
+const submit = async ({ email, stripe, taskText, setDialog }) => {
+  const { token, error: createTokenError } = await stripe.createToken({
+    name: 'Let Us Do'
+  });
+  if (!token) {
+    console.log(createTokenError);
+    return;
   }
 
-  async submit() {
-    const { token, error: createTokenError } = await this.props.stripe.createToken({
-      name: 'Let Us Do'
+  try {
+    await axios.post('/api/createPayment', {
+      token,
+      email,
+      taskText
     });
-    if (!token) {
-      console.log(createTokenError);
-      return;
-    }
 
-    try {
-      await axios.post('/api/createPayment', {
-        token,
-        email: this.props.email,
-        taskText: this.props.taskText
-      });
-
-      this.setState({ complete: true });
-
-      this.props.actions.setDialog('purchaseCompleted');
-    } catch (error) {
-      console.log(error.message);
-    }
+    setDialog('purchaseCompleted');
+  } catch (error) {
+    console.log(error.message);
   }
+};
 
-  render() {
-    // TODO improve
-    if (this.state.complete) {
-      return <h1>Purchase Complete, we will get in touch with updates to your task</h1>;
-    }
+export const CheckoutForm = ({ email, stripe, taskText, actions: { setDialog }, validEmail }) => {
+  const onClick = () =>
+    submit({
+      email,
+      stripe,
+      taskText,
+      setDialog
+    });
 
-    return (
-      <div className="checkout">
-        <div className="card-numer-field">
-          <CardElement />
-        </div>
-        <div className="pay-button-wrapper">
-          <Button className="pay-button" onClick={this.submit} disabled={!this.props.validEmail}>
-            Pay{' '}
-            <Badge pill variant="light">
-              20£
-            </Badge>
-          </Button>
-        </div>
+  return (
+    <div className="checkout">
+      <div className="card-numer-field">
+        <CardElement />
       </div>
-    );
-  }
-}
+      <div className="pay-button-wrapper">
+        <Button className="pay-button" onClick={onClick} disabled={!validEmail}>
+          Pay{' '}
+          <Badge pill variant="light">
+            20£
+          </Badge>
+        </Button>
+      </div>
+    </div>
+  );
+};
 
 const mapStateToProps = state => ({
   validEmail: state.checkoutPopUp.validEmail,
   email: state.checkoutPopUp.email,
   taskText: state.taskModal.taskText
 });
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(actions, dispatch)
-  };
-}
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators(actions, dispatch)
+});
 
 export default connect(
   mapStateToProps,
@@ -82,10 +73,10 @@ export default connect(
 )(injectStripe(CheckoutForm));
 
 CheckoutForm.propTypes = {
-  validEmail: PropTypes.bool,
-  email: PropTypes.string,
-  taskText: PropTypes.string,
-  stripe: PropTypes.object,
+  validEmail: PropTypes.bool.isRequired,
+  email: PropTypes.string.isRequired,
+  taskText: PropTypes.string.isRequired,
+  stripe: PropTypes.object.isRequired,
   actions: PropTypes.shape({
     setDialog: PropTypes.func
   }).isRequired
