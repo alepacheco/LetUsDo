@@ -4,10 +4,8 @@
       "src": "/(.*)",
       "dest": "/dist/$1"
     },
-    {
-      "src": "/(?:^|(?<= ))([^\\. ]+)(?:\n|(?= )|$)/g",
-      "dest": "/dist/index.html"
-    }
+    { "src": "/.*", "status": 404, "dest": "/dist/index.html" },
+    { "src": "/api/(.*)", "dest": "/api/$1" }
   ],
   "builds": [
     {
@@ -15,15 +13,11 @@
       "use": "@now/static-build"
     },
     {
-      "src": "dist/*/**",
-      "use": "@now/static"
-    },
-    {
       "src": "dist/**",
       "use": "@now/static"
     },
     {
-      "src": "/api/index.ts",
+      "src": "/api/**",
       "use": "@now/node"
     }
   ]
