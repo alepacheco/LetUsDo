@@ -3,7 +3,7 @@ import Stripe from 'stripe';
 import { methodFilter } from '../utils/middleware';
 const stripe = Stripe(process.env.STRIPE_SERVER);
 
-export const executePayment = async ({ token, amount = 1, taskText, email }) => {
+export const executePayment = async ({ token, amount = 50, taskText, email }) => {
   console.log(process.env);
   try {
     const { status, livemode } = await stripe.charges.create({
@@ -11,6 +11,7 @@ export const executePayment = async ({ token, amount = 1, taskText, email }) => 
       currency: 'gbp',
       description: 'Let Us Do Ltd.',
       source: token.id,
+      receipt_email: email,
       metadata: {
         taskText,
         email
