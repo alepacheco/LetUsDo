@@ -13,7 +13,7 @@ const envKeys = Object.keys(env).reduce((prev, next) => ({
 
 const GLOBALS = {
   __DEV__: true,
-  stripeFront: process.env.STRIPE_FRONT,
+  'process.env.STRIPE_FRONT': process.env.STRIPE_FRONT,
   ...envKeys
 };
 
