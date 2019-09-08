@@ -21,6 +21,10 @@
     {
       "src": "dist/**",
       "use": "@now/static"
+    },
+    {
+      "src": "/api/index.ts",
+      "use": "@now/node"
     }
   ]
 }
