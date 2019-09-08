@@ -2,6 +2,12 @@
   .item {
     flex: 1;
     margin: 16px;
+    display: flex;
+    flex-direction: column;
+
+    @media only screen and (max-width: 646px) {
+      text-align: center;
+    }
   }
 
   .list-element-title {
@@ -11,11 +17,16 @@
 
   .list-element-body {
     font-family: Quicksand, Sans-Serif;
-
+    text-align: justify;
     font-size: 12px;
   }
 
   .feature-icon {
     height: 56px;
+    width: 56px;
+
+    @media only screen and (max-width: 646px) {
+      margin: 0 auto;
+    }
   }
 }

@@ -2,10 +2,6 @@
   "name": "we-do",
   "version": "0.1.0",
   "description": "",
-  "engines": {
-    "node": ">=8",
-    "npm": ">=3"
-  },
   "scripts": {
     "preinstall": "node tools/nodeVersionCheck.js",
     "remove-demo": "babel-node tools/removeDemo.js",
@@ -155,7 +151,7 @@
             "@babel/preset-env",
             {
               "targets": {
-                "ie": 9
+                "ie": 10
               },
               "forceAllTransforms": true
             }

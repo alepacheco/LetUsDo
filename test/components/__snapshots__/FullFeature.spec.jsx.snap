@@ -24,9 +24,7 @@ exports[`<FullFeature /> renders 1`] = `
         />
         <div
           className="feature-text"
-        >
-          lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor sit amet, consectetur adip
-        </div>
+        />
       </div>
     </div>
   </CenteredContent>

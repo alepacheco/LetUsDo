@@ -2,13 +2,13 @@ import React from 'react';
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import CheckoutPopUp from './CheckoutPopUp';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
+import CheckoutPopUp from './CheckoutPopUp';
 import '../styles/components/TaskModal.scss';
 import * as actions from '../actions/taskModalActions';
-import CenteredContent from './CenteredContent';
+import { CenteredContent } from './CenteredContent';
 
 export class TaskModal extends React.Component {
   constructor(props) {
@@ -32,18 +32,23 @@ export class TaskModal extends React.Component {
   }
 
   render() {
+    const dayOfWeek = new Date().toLocaleString('en-us', { weekday: 'long' });
+    const { checkoutPopup, taskText } = this.props;
+
     return (
       <div className="task-modal">
         <CenteredContent>
-          <CheckoutPopUp show={this.props.checkoutPopup} onHide={this.onHideCheckoutPopUp} />
+          <CheckoutPopUp show={checkoutPopup} onHide={this.onHideCheckoutPopUp} />
           <Card className="center-inner">
             <Card.Body>
-              <Card.Title className="task-modal-title left-text">What can we do for you today?</Card.Title>
+              <Card.Title className="task-modal-title left-text">
+                What can we do for you this {dayOfWeek}?
+              </Card.Title>
               <Form className="form-wrapper">
                 <Form.Group>
                   <Form.Control
                     onChange={this.onChangeTaskDescription}
-                    value={this.props.taskText}
+                    value={taskText}
                     className="task-form-input"
                     as="textarea"
                     rows="3"
@@ -55,7 +60,7 @@ export class TaskModal extends React.Component {
                 <Button
                   className="get-it-done-button"
                   onClick={this.onClickGetItDone}
-                  disabled={this.props.taskText === ''}
+                  disabled={taskText === ''}
                 >
                   Get it done
                 </Button>
@@ -71,26 +76,26 @@ export class TaskModal extends React.Component {
 function mapStateToProps(state) {
   return {
     checkoutPopup: state.taskModal.checkoutPopupOpen,
-    taskText: state.taskModal.taskText
+    taskText: state.taskModal.taskText,
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(actions, dispatch)
+    actions: bindActionCreators(actions, dispatch),
   };
 }
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(TaskModal);
 
 TaskModal.propTypes = {
-  taskText: PropTypes.string,
+  taskText: PropTypes.string.isRequired,
   actions: PropTypes.shape({
     setDialog: PropTypes.func,
-    setTaskTest: PropTypes.func
-  }),
-  checkoutPopup: PropTypes.bool
+    setTaskTest: PropTypes.func,
+  }).isRequired,
+  checkoutPopup: PropTypes.bool.isRequired,
 };

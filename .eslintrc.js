@@ -1,9 +1,11 @@
+var OFF = 0, WARN = 1, ERROR = 2;
+
 module.exports = {
   "env": {
     "browser": true,
     "es6": true
   },
-  "extends": "airbnb",
+  "extends": ["airbnb", "prettier"],
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"
@@ -18,8 +20,13 @@ module.exports = {
     "sourceType": "module"
   },
   "plugins": [
-    "react"
+    "react",
+    "prettier"
   ],
   "rules": {
+    'react/destructuring-assignment': OFF,
+    'react/jsx-one-expression-per-line': OFF,
+    'import/no-extraneous-dependencies': OFF,
+    'comma-dangle': OFF
   }
 };
