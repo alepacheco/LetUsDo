@@ -8,7 +8,7 @@ import '../../styles/components/stripe.css';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 
-class CheckoutForm extends React.Component {
+export class CheckoutForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = { complete: false };
@@ -16,21 +16,22 @@ class CheckoutForm extends React.Component {
   }
 
   async submit() {
-    const { token } = await this.props.stripe.createToken({ name: "Let Us Do" });
-
+    const { token, error: createTokenError } = await this.props.stripe.createToken({
+      name: 'Let Us Do'
+    });
     if (!token) {
-      // No card present
-      console.log('no card');
+      console.log(createTokenError);
       return;
     }
 
     try {
-      // eslint-disable-next-line no-unused-vars
-      const response = await axios.post('/api/createPayment', {
+      const response = await axios.post('https://wedo-dfudpzs0a.now.sh/api/createPayment', {
         token,
         email: this.props.email,
         taskText: this.props.taskText
-      })
+      });
+
+      console.log({ response });
       this.setState({ complete: true });
     } catch (error) {
       console.log(error.message);
@@ -39,7 +40,9 @@ class CheckoutForm extends React.Component {
 
   render() {
     // TODO improve
-    if (this.state.complete) return <h1>Purchase Complete</h1>;
+    if (this.state.complete) {
+      return <h1>Purchase Complete, we will get in touch with updates to your task</h1>;
+    }
 
     return (
       <div className="checkout">
@@ -47,11 +50,11 @@ class CheckoutForm extends React.Component {
           <CardElement />
         </div>
         <div className="pay-button-wrapper">
-          <Button
-            className="pay-button"
-            onClick={this.submit}
-            disabled={!this.props.validEmail}>
-            Pay <Badge pill variant="light"> 20£</Badge>
+          <Button className="pay-button" onClick={this.submit} disabled={!this.props.validEmail}>
+            Pay{' '}
+            <Badge pill variant="light">
+              20£
+            </Badge>
           </Button>
         </div>
       </div>
@@ -59,15 +62,13 @@ class CheckoutForm extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   validEmail: state.checkoutPopUp.validEmail,
   email: state.checkoutPopUp.email,
   taskText: state.taskModal.taskText
 });
 
-export default connect(
-  mapStateToProps
-)(injectStripe(CheckoutForm));
+export default connect(mapStateToProps)(injectStripe(CheckoutForm));
 
 CheckoutForm.propTypes = {
   validEmail: PropTypes.bool,

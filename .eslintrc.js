@@ -27,6 +27,7 @@ module.exports = {
     'react/destructuring-assignment': OFF,
     'react/jsx-one-expression-per-line': OFF,
     'import/no-extraneous-dependencies': OFF,
-    'comma-dangle': OFF
+    'comma-dangle': OFF,
+    'import/no-named-as-default': OFF,
   }
 };
