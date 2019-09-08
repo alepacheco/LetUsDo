@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
 import { FullFeature } from './FullFeature';
 import Selection from '../static/images/undraw_selection.svg';

@@ -1,10 +1,6 @@
 {
   "routes": [
     {
-      "src": "/static/fonts/(?<id>[^/]*)",
-      "dest": "/dist/$id"
-    },
-    {
       "src": "/(.*)",
       "dest": "/dist/$1"
     },
