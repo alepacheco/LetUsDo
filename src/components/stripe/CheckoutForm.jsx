@@ -25,7 +25,7 @@ export class CheckoutForm extends React.Component {
     }
 
     try {
-      const response = await axios.post('https://wedo-dfudpzs0a.now.sh/api/createPayment', {
+      const response = await axios.post('/api/createPayment', {
         token,
         email: this.props.email,
         taskText: this.props.taskText

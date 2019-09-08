@@ -3,7 +3,7 @@ import Stripe from 'stripe';
 import { methodFilter } from '../utils/middleware';
 const stripe = Stripe(process.env.STRIPE_SERVER);
 
-const executePayment = async ({ id, amount = 100 }) => {
+export const executePayment = async ({ id, amount = 100 }) => {
   try {
     const { status } = await stripe.charges.create({
       amount, // in cents 100cents == 1gbp
@@ -22,7 +22,7 @@ const executePayment = async ({ id, amount = 100 }) => {
   return false;
 };
 
-const handler = async (req: NowRequest, res: NowResponse) => {
+export const handler = async (req: NowRequest, res: NowResponse) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
 
   const { token, email, taskText } = req.body || {};
