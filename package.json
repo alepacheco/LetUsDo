@@ -23,8 +23,7 @@
     "test": "eslint ./src && jest",
     "test:CI": "npm run lint && jest && npm run build && npm run test:send-cover",
     "test:cover": "npm run test -- --coverage ",
-    "test:send-cover": "jest --coverage --coverageReporters=text-lcov --collectCoverageFrom=src/**/** | coveralls",
-    "test:cover:CI": "npm run test:CI -- --coverage && cat ./coverage/lcov.info | node_modules/coveralls/bin/coveralls.js",
+    "test:send-cover": "jest --coverage --coverageReporters=text-lcov | coveralls",
     "test:watch": "jest --watchAll",
     "open:cover": "npm run test:cover && opn ./coverage/lcov-report/index.html",
     "analyze-bundle": "babel-node ./tools/analyzeBundle.js"
@@ -59,6 +58,7 @@
     "@babel/preset-env": "7.4.4",
     "@babel/preset-react": "7.0.0",
     "@now/node": "1.0.0",
+    "@types/jest": "24.0.18",
     "acorn": "6.1.1",
     "ajv": "6.10.0",
     "autoprefixer": "9.5.1",
@@ -85,6 +85,7 @@
     "eslint-plugin-react": "7.14.3",
     "eslint-plugin-react-hooks": "1.7.0",
     "eslint-watch": "5.1.2",
+    "express": "4.17.1",
     "file-loader": "3.0.1",
     "hard-source-webpack-plugin": "0.13.1",
     "history": "4.9.0",
@@ -93,6 +94,7 @@
     "jest": "24.8.0",
     "jest-cli": "24.8.0",
     "json-loader": "0.5.7",
+    "micro": "9.3.4",
     "mini-css-extract-plugin": "0.6.0",
     "mockdate": "2.0.2",
     "node-sass": "4.12.0",
@@ -109,8 +111,12 @@
     "replace": "1.1.0",
     "rimraf": "2.6.3",
     "sass-loader": "7.1.0",
+    "stripe": "7.8.0",
     "style-loader": "0.23.1",
     "svg-react-loader": "0.4.6",
+    "ts-jest": "24.0.2",
+    "ts-node": "8.3.0",
+    "typescript": "3.6.2",
     "url-loader": "1.1.2",
     "webpack": "4.31.0",
     "webpack-bundle-analyzer": "3.3.2",
@@ -131,6 +137,16 @@
     "setupFiles": [
       "raf/polyfill",
       "./tools/enzymeTestAdapterSetup.js"
+    ],
+    "transform": {
+      "^.+\\.ts?$": "ts-jest",
+      "^.+\\.jsx?$": "babel-jest"
+    },
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}",
+      "!<rootDir>/node_modules/",
+      "!<rootDir>/path/to/dir/",
+      "api/**/**"
     ]
   },
   "babel": {

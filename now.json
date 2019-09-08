@@ -20,5 +20,8 @@
       "src": "/api/**",
       "use": "@now/node"
     }
-  ]
+  ],
+  "env": {
+    "IS_NOW": "true"
+  }
 }

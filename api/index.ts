@@ -1,6 +1,7 @@
 import { NowRequest, NowResponse } from '@now/node';
 
-export default function(req: NowRequest, res: NowResponse) {
-  const { name = 'World' } = req.query;
-  res.send(`Hello ${name}!`);
-}
+const handler = (req: NowRequest, res: NowResponse) => {
+  res.send('Api index');
+};
+
+export default handler;

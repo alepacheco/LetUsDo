@@ -1,6 +1,5 @@
 /* eslint-disable import/no-named-as-default */
 import { Route, Switch } from "react-router-dom";
-import AboutPage from "./pages/AboutPage";
 import HomePage from "./pages/HomePage";
 import NotFoundPage from "./pages/NotFoundPage";
 import PropTypes from "prop-types";
@@ -13,7 +12,6 @@ class App extends React.Component {
       <div>
         <Switch>
           <Route exact path="/" component={HomePage} />
-          <Route path="/about" component={AboutPage} />
           <Route component={NotFoundPage} />
         </Switch>
       </div>
