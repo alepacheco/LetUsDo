@@ -7,6 +7,7 @@ jest.mock('stripe', () => ({
         .fn()
         .mockReturnValueOnce({ status: 'succeeded', livemode: true })
         .mockReturnValueOnce({ status: 'error', livemode: true })
+        .mockReturnValueOnce(Promise.reject(new Error('Connection lost')))
     }
   })
 }));
@@ -34,10 +35,17 @@ describe('/createPayment', () => {
     expect(res.json).toHaveBeenLastCalledWith({ status: 'ok' });
   });
 
-  it('returns an error', async () => {
+  it('returns an Unknown error', async () => {
     await handler(<any>req, <any>res);
 
     expect(res.status).toHaveBeenLastCalledWith(500);
-    expect(res.json).toHaveBeenLastCalledWith({ error: 'payment not completed' });
+    expect(res.json).toHaveBeenLastCalledWith({ error: 'Unknown error while executing payment' });
+  });
+
+  it('returns an catched error', async () => {
+    await handler(<any>req, <any>res);
+
+    expect(res.status).toHaveBeenLastCalledWith(500);
+    expect(res.json).toHaveBeenLastCalledWith({ error: 'Connection lost' });
   });
 });

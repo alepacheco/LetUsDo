@@ -18,25 +18,28 @@ export const executePayment = async ({ token, amount = 50, taskText, email }) =>
     });
 
     if (status === 'succeeded' && livemode) {
-      return true;
+      return status;
     }
   } catch (error) {
-    console.log('Error on payment: ', error.message);
+    return error.message;
   }
 
-  return false;
+  return 'Unknown error while executing payment';
 };
 
 export const handler = async (req: NowRequest, res: NowResponse) => {
   const { token, email, taskText } = req.body || {};
   const paymentCompleted = await executePayment({ token, taskText, email });
 
-  if (!paymentCompleted) {
-    res.status(500).json({ error: 'payment not completed' });
+  if (paymentCompleted !== 'succeeded') {
+    res.status(500).json({ error: paymentCompleted });
     return;
   }
 
-  res.status(200).json({ status: 'ok' });
+  if (paymentCompleted === 'succeeded') {
+    res.status(200).json({ status: 'ok' });
+  }
+
   // const savedSuccesfully = saveDataToDB({
   //   email,
   //   taskText,
