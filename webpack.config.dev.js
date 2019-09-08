@@ -6,11 +6,12 @@ import HardSourceWebpackPlugin from 'hard-source-webpack-plugin';
 
 const Dotenv = require('dotenv-webpack');
 
-console.log({ envDev: process.env })
+const { definitions } = new Dotenv({
+  path: path.resolve(__dirname, './.env'),
+});
 
 const GLOBALS = {
   __DEV__: true,
-  'process.env.STRIPE_FRONT': JSON.stringify(process.env.STRIPE_FRONT),
 };
 
 export default {
@@ -37,8 +38,7 @@ export default {
     filename: 'bundle.js',
   },
   plugins: [
-    new webpack.DefinePlugin(GLOBALS),
-    new Dotenv(),
+    new webpack.DefinePlugin({ ...definitions, ...GLOBALS }),
     new HardSourceWebpackPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
