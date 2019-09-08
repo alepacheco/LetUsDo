@@ -1,15 +1,19 @@
 /* eslint-disable no-undef */
-import { setCheckoutEmailValid, setCheckoutEmail } from '../../src/actions/checkoutPopUpActions';
+import { setDialog, setTaskTest } from '../../src/actions/taskModalActions';
 
-describe('checkoutPopUpActions', () => {
-  it('setCheckoutEmailValid', () => {
-    expect(setCheckoutEmailValid('email@example.com')).toEqual({ type: "SET_CHECKOUT_EMAIL_VALID", validEmail: "email@example.com" });
+describe('taskModalActions', () => {
+  it('setDialog', () => {
+    expect(setDialog(true)).toEqual({
+      open: true,
+      type: "SET_CHECKOUT_DIALOG",
+    });
   });
 
-  it('setCheckoutEmail', () => {
-    expect(setCheckoutEmail('email@example.com')).toEqual({
-      email: "email@example.com",
-      type: "SET_CHECKOUT_EMAIL"
+  it('setTaskTest', () => {
+    expect(setTaskTest('This is my task')).toEqual({
+      text: "This is my task",
+      type: "SET_TASK_TEST",
     });
+
   });
 });
