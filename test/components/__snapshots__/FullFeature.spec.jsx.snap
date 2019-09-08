@@ -10,7 +10,7 @@ exports[`<FullFeature /> renders 1`] = `
     <div
       className="side-image"
     >
-      <Component
+      <Image
         height="250"
         width="250"
       />
@@ -21,10 +21,14 @@ exports[`<FullFeature /> renders 1`] = `
       <div>
         <div
           className="feature-title"
-        />
+        >
+          This is the title
+        </div>
         <div
           className="feature-text"
-        />
+        >
+          This is the content inside
+        </div>
       </div>
     </div>
   </CenteredContent>

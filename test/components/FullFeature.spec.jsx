@@ -6,7 +6,11 @@ import { FullFeature } from '../../src/components/FullFeature';
 
 describe('<FullFeature />', () => {
   it('renders', () => {
-    const wrapper = shallow(<FullFeature />);
+    const wrapper = shallow(
+      <FullFeature Image={() => {}} title="This is the title">
+        This is the content inside
+      </FullFeature>
+    );
 
     expect(toJson(wrapper)).toMatchSnapshot();
   });
