@@ -4,7 +4,6 @@ import { methodFilter } from '../utils/middleware';
 const stripe = Stripe(process.env.STRIPE_SERVER);
 
 export const executePayment = async ({ token, amount = 50, taskText, email }) => {
-  console.log(process.env);
   try {
     const { status, livemode } = await stripe.charges.create({
       amount, // in cents 100cents == 1gbp
@@ -22,7 +21,7 @@ export const executePayment = async ({ token, amount = 50, taskText, email }) =>
       return true;
     }
   } catch (error) {
-    console.log('Error on payment: ', token.id, error.message);
+    console.log('Error on payment: ', error.message);
   }
 
   return false;
@@ -33,7 +32,8 @@ export const handler = async (req: NowRequest, res: NowResponse) => {
   const paymentCompleted = await executePayment({ token, taskText, email });
 
   if (!paymentCompleted) {
-    res.status(500).json({ error: 'payment' });
+    res.status(500).json({ error: 'payment not completed' });
+    return;
   }
 
   res.status(200).json({ status: 'ok' });
