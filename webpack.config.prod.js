@@ -10,6 +10,7 @@ import path from 'path';
 const GLOBALS = {
   'process.env.NODE_ENV': JSON.stringify('production'),
   'process.env.STRIPE_FRONT': JSON.stringify(process.env.STRIPE_FRONT),
+  'STRIPE_FRONT': JSON.stringify(process.env.STRIPE_FRONT),
   __DEV__: false,
 };
 
