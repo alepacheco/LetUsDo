@@ -3,20 +3,23 @@ import Stripe from 'stripe';
 import { methodFilter } from '../utils/middleware';
 const stripe = Stripe(process.env.STRIPE_SERVER);
 
-export const executePayment = async ({ id, amount = 100 }) => {
+export const executePayment = async ({ token, amount = 100, taskText }) => {
   try {
     const { status } = await stripe.charges.create({
       amount, // in cents 100cents == 1gbp
       currency: 'gbp',
       description: 'Let Us Do Ltd.',
-      source: id
+      source: token.id,
+      metadata: {
+        taskText
+      }
     });
 
     if (status === 'succeeded') {
       return true;
     }
   } catch (error) {
-    console.log('Error on payment: ', id, error.message);
+    console.log('Error on payment: ', token.id, error.message);
   }
 
   return false;
@@ -28,7 +31,7 @@ export const handler = async (req: NowRequest, res: NowResponse) => {
   const { token, email, taskText } = req.body || {};
   res.send({ token, email, taskText });
 
-  const paymentCompleted = await executePayment(token);
+  const paymentCompleted = await executePayment({ token, taskText });
 
   if (!paymentCompleted) {
     res.status(500).json({ error: 'payment' });
