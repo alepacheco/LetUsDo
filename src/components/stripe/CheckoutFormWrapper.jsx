@@ -3,7 +3,7 @@ import { Elements, StripeProvider } from 'react-stripe-elements';
 import CheckoutForm from './CheckoutForm';
 
 const CheckoutFormWrapper = () => (
-  <StripeProvider apiKey="pk_test_TYooMQauvdEDq54NiTphI7jx">
+  <StripeProvider apiKey={process.env.STRIPE_FRONT}>
     <Elements>
       <CheckoutForm />
     </Elements>
