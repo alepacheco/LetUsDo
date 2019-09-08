@@ -13,7 +13,7 @@ export const executePayment = async ({ token, amount = 50, taskText, email }) =>
       source: token.id,
       receipt_email: email,
       metadata: {
-        taskText,
+        task: taskText.slice(0, 500),
         email
       }
     });
