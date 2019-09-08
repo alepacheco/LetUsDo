@@ -31,13 +31,13 @@ export class CheckoutPopUp extends React.Component {
   }
 
   onHideCheckoutPopUp() {
-    this.props.actions.setDialog(false);
+    this.props.actions.setDialog('closed');
   }
 
   render() {
     return (
       <Modal
-        show={this.props.show}
+        show={this.props.checkoutPopupState !== 'closed'}
         onHide={this.onHideCheckoutPopUp}
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
@@ -73,7 +73,7 @@ const mapStateToProps = state => ({
   taskText: state.taskModal.taskText,
   email: state.checkoutPopUp.email,
   purchaseCompleted: state.checkoutPopUp.purchaseCompleted,
-  show: state.taskModal.checkoutPopupOpen
+  checkoutPopupState: state.taskModal.checkoutPopupState
 });
 
 function mapDispatchToProps(dispatch) {
@@ -96,7 +96,7 @@ export default connect(
 CheckoutPopUp.propTypes = {
   taskText: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
-  show: PropTypes.bool.isRequired,
+  checkoutPopupState: PropTypes.string.isRequired,
   actions: PropTypes.shape({
     setCheckoutEmailValid: PropTypes.func,
     setCheckoutEmail: PropTypes.func,

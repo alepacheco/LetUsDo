@@ -11,7 +11,7 @@ describe('<CheckoutPopUp />', () => {
       <CheckoutPopUp
         taskText="This is my task description"
         email="email@example.com"
-        show
+        checkoutPopupState="open"
         actions={{}}
       />
     );
@@ -24,7 +24,7 @@ describe('<CheckoutPopUp />', () => {
       <CheckoutPopUp
         taskText="This is my task description"
         email="email@example.com"
-        show={false}
+        checkoutPopupState="closed"
         actions={{}}
       />
     );

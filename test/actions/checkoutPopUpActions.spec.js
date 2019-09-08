@@ -3,8 +3,8 @@ import { setDialog, setTaskTest } from '../../src/actions/taskModalActions';
 
 describe('taskModalActions', () => {
   it('setDialog', () => {
-    expect(setDialog(true)).toEqual({
-      open: true,
+    expect(setDialog('open')).toEqual({
+      state: 'open',
       type: "SET_CHECKOUT_DIALOG",
     });
   });

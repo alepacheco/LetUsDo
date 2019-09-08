@@ -7,7 +7,7 @@ export default function fuelSavingsReducer(state = initialState.taskModal, actio
   switch (action.type) {
     case 'SET_CHECKOUT_DIALOG':
       newState = objectAssign({}, state);
-      newState.checkoutPopupOpen = action.open;
+      newState.checkoutPopupState = action.state;
 
       return newState;
 

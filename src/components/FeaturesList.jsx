@@ -15,7 +15,7 @@ const ListElement = ({ image, title, children }) => (
 );
 
 ListElement.propTypes = {
-  image: PropTypes.string.isRequired,
+  image: PropTypes.oneOfType([PropTypes.string, PropTypes.object, PropTypes.func]).isRequired,
   title: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired
 };

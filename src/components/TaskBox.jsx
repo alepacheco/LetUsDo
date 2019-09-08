@@ -17,7 +17,7 @@ export class TaskBox extends React.Component {
   }
 
   async onClickGetItDone() {
-    this.props.actions.setDialog(true);
+    this.props.actions.setDialog('open');
     // TODO add tracking
   }
 
@@ -68,7 +68,6 @@ export class TaskBox extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    checkoutPopup: state.taskModal.checkoutPopupOpen,
     taskText: state.taskModal.taskText
   };
 }
@@ -89,6 +88,5 @@ TaskBox.propTypes = {
   actions: PropTypes.shape({
     setDialog: PropTypes.func,
     setTaskTest: PropTypes.func
-  }).isRequired,
-  checkoutPopup: PropTypes.bool.isRequired
+  }).isRequired
 };

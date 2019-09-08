@@ -1,7 +1,7 @@
-export function setDialog(open) {
+export function setDialog(state) {
   return {
     type: 'SET_CHECKOUT_DIALOG',
-    open,
+    state,
   };
 }
 

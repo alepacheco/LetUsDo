@@ -1,6 +1,6 @@
 export default {
   taskModal: {
-    checkoutPopupOpen: false,
+    checkoutPopupState: 'closed',
     taskText: '',
   },
   checkoutPopUp: {

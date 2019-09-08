@@ -6,7 +6,7 @@ import { CheckoutForm } from '../../../src/components/stripe/CheckoutForm';
 
 describe('<CheckoutForm />', () => {
   it('renders', () => {
-    const wrapper = shallow(<CheckoutForm />);
+    const wrapper = shallow(<CheckoutForm actions={{}} />);
 
     expect(toJson(wrapper)).toMatchSnapshot();
   });

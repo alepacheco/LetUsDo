@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 import React from 'react';
+import { bindActionCreators } from 'redux';
 import Button from 'react-bootstrap/Button';
 import Badge from 'react-bootstrap/Badge';
 import { connect } from 'react-redux';
@@ -7,6 +8,7 @@ import { CardElement, injectStripe } from 'react-stripe-elements';
 import '../../styles/components/stripe.css';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import * as actions from '../../actions/taskModalActions';
 
 export class CheckoutForm extends React.Component {
   constructor(props) {
@@ -31,8 +33,9 @@ export class CheckoutForm extends React.Component {
         taskText: this.props.taskText
       });
 
-      console.log({ response });
       this.setState({ complete: true });
+
+      this.props.actions.setDialog('purchaseCompleted');
     } catch (error) {
       console.log(error.message);
     }
@@ -67,12 +70,23 @@ const mapStateToProps = state => ({
   email: state.checkoutPopUp.email,
   taskText: state.taskModal.taskText
 });
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(actions, dispatch)
+  };
+}
 
-export default connect(mapStateToProps)(injectStripe(CheckoutForm));
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(injectStripe(CheckoutForm));
 
 CheckoutForm.propTypes = {
   validEmail: PropTypes.bool,
   email: PropTypes.string,
   taskText: PropTypes.string,
-  stripe: PropTypes.object
+  stripe: PropTypes.object,
+  actions: PropTypes.shape({
+    setDialog: PropTypes.func
+  }).isRequired
 };
