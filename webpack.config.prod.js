@@ -9,6 +9,8 @@ import path from 'path';
 
 const Dotenv = require('dotenv-webpack');
 
+console.log({ envProd: process.env })
+
 const GLOBALS = {
   'process.env.NODE_ENV': JSON.stringify('production'),
   'process.env.STRIPE_FRONT': JSON.stringify(process.env.STRIPE_FRONT),

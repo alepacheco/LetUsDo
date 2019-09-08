@@ -6,6 +6,8 @@ import HardSourceWebpackPlugin from 'hard-source-webpack-plugin';
 
 const Dotenv = require('dotenv-webpack');
 
+console.log({ envDev: process.env })
+
 const GLOBALS = {
   __DEV__: true,
   'process.env.STRIPE_FRONT': JSON.stringify(process.env.STRIPE_FRONT),
