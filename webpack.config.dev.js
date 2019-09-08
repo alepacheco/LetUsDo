@@ -4,6 +4,11 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import path from 'path';
 import HardSourceWebpackPlugin from 'hard-source-webpack-plugin';
 
+const GLOBALS = {
+  __DEV__: true,
+  stripeFront: process.env.STRIPE_FRONT
+};
+
 export default {
   resolve: {
     extensions: ['*', '.js', '.jsx', '.json'],
@@ -28,6 +33,7 @@ export default {
     filename: 'bundle.js',
   },
   plugins: [
+    new webpack.DefinePlugin(GLOBALS),
     new HardSourceWebpackPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),

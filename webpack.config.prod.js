@@ -10,6 +10,7 @@ import path from 'path';
 const GLOBALS = {
   'process.env.NODE_ENV': JSON.stringify('production'),
   __DEV__: false,
+  stripeFront: process.env.STRIPE_FRONT
 };
 
 export default {

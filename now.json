@@ -22,6 +22,8 @@
     }
   ],
   "env": {
-    "IS_NOW": "true"
+    "IS_NOW": "true",
+    "STRIPE_SERVER": "@stripe-server-live",
+    "STRIPE_FRONT": "@stripe-front-live"
   }
 }

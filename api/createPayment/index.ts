@@ -1,7 +1,7 @@
 import { NowRequest, NowResponse } from '@now/node';
 import Stripe from 'stripe';
 import { methodFilter } from '../utils/middleware';
-const stripe = Stripe('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
+const stripe = Stripe(process.env.STRIPE_SERVER);
 
 const executePayment = async ({ id, amount = 100 }) => {
   try {
