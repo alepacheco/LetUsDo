@@ -21,6 +21,13 @@
       "use": "@now/node"
     }
   ],
+  "version": 2,
+  "build": {
+    "env": {
+      "STRIPE_SERVER": "@stripe-server-live",
+      "STRIPE_FRONT": "@stripe-front-live"
+    }
+  },
   "env": {
     "IS_NOW": "true",
     "STRIPE_SERVER": "@stripe-server-live",

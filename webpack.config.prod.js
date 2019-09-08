@@ -7,14 +7,12 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import path from 'path';
 
-const { parsed: localEnv } = require("dotenv").config();
-
-console.log({ envLocal: process.env, localEnv });
+console.log({ envLocal: process.env });
 
 const GLOBALS = {
   'process.env.NODE_ENV': JSON.stringify('production'),
-  'process.env.STRIPE_FRONT': JSON.stringify(process.env.STRIPE_FRONT),
-  'STRIPE_FRONT': JSON.stringify(process.env.STRIPE_FRONT),
+  'process.env.STRIPE_FRONT': JSON.stringify(process.env.STRIPE_FRONT) || 'Not found',
+  'STRIPE_FRONT': JSON.stringify(process.env.STRIPE_FRONT) || 'Not found',
   __DEV__: false,
 };
 
