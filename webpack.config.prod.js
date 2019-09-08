@@ -16,7 +16,7 @@ const envKeys = Object.keys(env).reduce((prev, next) => ({
 
 const GLOBALS = {
   'process.env.NODE_ENV': JSON.stringify('production'),
-  'process.env.STRIPE_FRONT': process.env.STRIPE_FRONT,
+  'process.env.STRIPE_FRONT': JSON.stringify(process.env.STRIPE_FRONT),
   __DEV__: false,
   ...envKeys
 };

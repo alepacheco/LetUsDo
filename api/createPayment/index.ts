@@ -4,8 +4,9 @@ import { methodFilter } from '../utils/middleware';
 const stripe = Stripe(process.env.STRIPE_SERVER);
 
 export const executePayment = async ({ token, amount = 100, taskText }) => {
+  console.log(process.env);
   try {
-    const { status } = await stripe.charges.create({
+    const { status, livemode } = await stripe.charges.create({
       amount, // in cents 100cents == 1gbp
       currency: 'gbp',
       description: 'Let Us Do Ltd.',
@@ -15,7 +16,7 @@ export const executePayment = async ({ token, amount = 100, taskText }) => {
       }
     });
 
-    if (status === 'succeeded') {
+    if (status === 'succeeded' && livemode) {
       return true;
     }
   } catch (error) {
