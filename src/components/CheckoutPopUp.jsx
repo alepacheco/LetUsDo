@@ -3,16 +3,16 @@ import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import CheckoutFormWrapper from './stripe/CheckoutFormWrapper';
 import { bindActionCreators } from 'redux';
-
+import CheckoutFormWrapper from './stripe/CheckoutFormWrapper';
 import '../styles/components/CheckoutPopUp.css';
-import * as actions from '../actions/checkoutPopUpActions';
+import * as checkoutPopUpActions from '../actions/checkoutPopUpActions';
+import * as taskModalActions from '../actions/taskModalActions';
 
 const validateEmail = email => {
   // eslint-disable-next-line no-useless-escape
-  const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  return re.test(String(email).toLowerCase());
+  const validEmailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return validEmailRegex.test(String(email).toLowerCase());
 };
 
 class CheckoutPopUp extends React.Component {
@@ -20,6 +20,7 @@ class CheckoutPopUp extends React.Component {
     super(props);
 
     this.onChangeEmail = this.onChangeEmail.bind(this);
+    this.onHideCheckoutPopUp = this.onHideCheckoutPopUp.bind(this);
   }
 
   onChangeEmail(event) {
@@ -29,11 +30,15 @@ class CheckoutPopUp extends React.Component {
     this.props.actions.setCheckoutEmail(event.target.value);
   }
 
+  onHideCheckoutPopUp() {
+    this.props.actions.setDialog(false);
+  }
+
   render() {
     return (
       <Modal
         show={this.props.show}
-        onHide={this.props.onHide}
+        onHide={this.onHideCheckoutPopUp}
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
         centered
@@ -67,12 +72,19 @@ class CheckoutPopUp extends React.Component {
 const mapStateToProps = state => ({
   taskText: state.taskModal.taskText,
   email: state.checkoutPopUp.email,
-  purchaseCompleted: state.checkoutPopUp.purchaseCompleted
+  purchaseCompleted: state.checkoutPopUp.purchaseCompleted,
+  show: state.taskModal.checkoutPopupOpen
 });
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(actions, dispatch)
+    actions: bindActionCreators(
+      {
+        ...taskModalActions,
+        ...checkoutPopUpActions
+      },
+      dispatch
+    )
   };
 }
 
@@ -82,12 +94,12 @@ export default connect(
 )(CheckoutPopUp);
 
 CheckoutPopUp.propTypes = {
-  onHide: PropTypes.func,
-  taskText: PropTypes.string,
-  email: PropTypes.string,
-  show: PropTypes.bool,
+  taskText: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  show: PropTypes.bool.isRequired,
   actions: PropTypes.shape({
     setCheckoutEmailValid: PropTypes.func,
-    setCheckoutEmail: PropTypes.func
-  })
+    setCheckoutEmail: PropTypes.func,
+    setDialog: PropTypes.func
+  }).isRequired
 };

@@ -5,17 +5,15 @@ import Button from 'react-bootstrap/Button';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
-import CheckoutPopUp from './CheckoutPopUp';
-import '../styles/components/TaskModal.scss';
+import '../styles/components/TaskBox.scss';
 import * as actions from '../actions/taskModalActions';
 import { CenteredContent } from './CenteredContent';
 
-export class TaskModal extends React.Component {
+export class TaskBox extends React.Component {
   constructor(props) {
     super(props);
     this.onClickGetItDone = this.onClickGetItDone.bind(this);
     this.onChangeTaskDescription = this.onChangeTaskDescription.bind(this);
-    this.onHideCheckoutPopUp = this.onHideCheckoutPopUp.bind(this);
   }
 
   async onClickGetItDone() {
@@ -27,18 +25,13 @@ export class TaskModal extends React.Component {
     this.props.actions.setTaskTest(event.target.value);
   }
 
-  onHideCheckoutPopUp() {
-    this.props.actions.setDialog(false);
-  }
-
   render() {
     const dayOfWeek = new Date().toLocaleString('en-us', { weekday: 'long' });
-    const { checkoutPopup, taskText } = this.props;
+    const { taskText } = this.props;
 
     return (
       <div className="task-modal">
         <CenteredContent>
-          <CheckoutPopUp show={checkoutPopup} onHide={this.onHideCheckoutPopUp} />
           <Card className="center-inner">
             <Card.Body>
               <Card.Title className="task-modal-title left-text">
@@ -76,26 +69,26 @@ export class TaskModal extends React.Component {
 function mapStateToProps(state) {
   return {
     checkoutPopup: state.taskModal.checkoutPopupOpen,
-    taskText: state.taskModal.taskText,
+    taskText: state.taskModal.taskText
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(actions, dispatch),
+    actions: bindActionCreators(actions, dispatch)
   };
 }
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
-)(TaskModal);
+  mapDispatchToProps
+)(TaskBox);
 
-TaskModal.propTypes = {
+TaskBox.propTypes = {
   taskText: PropTypes.string.isRequired,
   actions: PropTypes.shape({
     setDialog: PropTypes.func,
-    setTaskTest: PropTypes.func,
+    setTaskTest: PropTypes.func
   }).isRequired,
-  checkoutPopup: PropTypes.bool.isRequired,
+  checkoutPopup: PropTypes.bool.isRequired
 };

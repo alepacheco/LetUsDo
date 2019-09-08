@@ -11,7 +11,6 @@ import {
 process.env.NODE_ENV = 'production'; // this assures React is built in prod mode and that the Babel dev config doesn't apply.
 
 console.log(chalkProcessing('Generating minified bundle. This will take a moment...'));
-console.log({ currentEnv: process.env })
 
 webpack(config).run((error, stats) => {
   if (error) { // so a fatal error occurred. Stop here.

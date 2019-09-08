@@ -1,14 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<TaskModal /> renders 1`] = `
+exports[`<TaskBox /> renders 1`] = `
 <div
   className="task-modal"
 >
   <CenteredContent>
-    <ConnectFunction
-      onHide={[Function]}
-      show={false}
-    />
     <Card
       body={false}
       className="center-inner"
