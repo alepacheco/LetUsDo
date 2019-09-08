@@ -3,18 +3,12 @@ import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import path from 'path';
 import HardSourceWebpackPlugin from 'hard-source-webpack-plugin';
-import dotenv from 'dotenv';
 
-const env = dotenv.config().parsed || {};
-const envKeys = Object.keys(env).reduce((prev, next) => ({
-  ...prev,
-  [`process.env.${next}`]: JSON.stringify(env[next])
-}), {});
+const Dotenv = require('dotenv-webpack');
 
 const GLOBALS = {
   __DEV__: true,
   'process.env.STRIPE_FRONT': JSON.stringify(process.env.STRIPE_FRONT),
-  ...envKeys
 };
 
 export default {
@@ -42,6 +36,7 @@ export default {
   },
   plugins: [
     new webpack.DefinePlugin(GLOBALS),
+    new Dotenv(),
     new HardSourceWebpackPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),

@@ -6,19 +6,13 @@ import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import path from 'path';
-import dotenv from 'dotenv';
 
-const env = dotenv.config().parsed || {};
-const envKeys = Object.keys(env).reduce((prev, next) => ({
-  ...prev,
-  [`process.env.${next}`]: JSON.stringify(env[next])
-}), {});
+const Dotenv = require('dotenv-webpack');
 
 const GLOBALS = {
   'process.env.NODE_ENV': JSON.stringify('production'),
   'process.env.STRIPE_FRONT': JSON.stringify(process.env.STRIPE_FRONT),
   __DEV__: false,
-  ...envKeys
 };
 
 export default {
@@ -41,7 +35,7 @@ export default {
   plugins: [
     // Tells React to build in prod mode. https://facebook.github.io/react/downloads.html
     new webpack.DefinePlugin(GLOBALS),
-
+    new Dotenv(),
     // Generate an external css file with a hash in the filename
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css',
