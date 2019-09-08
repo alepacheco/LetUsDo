@@ -39,25 +39,6 @@ export const handler = async (req: NowRequest, res: NowResponse) => {
   if (paymentCompleted === 'succeeded') {
     res.status(200).json({ status: 'ok' });
   }
-
-  // const savedSuccesfully = saveDataToDB({
-  //   email,
-  //   taskText,
-  //   cardId: token.card.id,
-  //   cardBrand: token.card.brand,
-  //   cardCountry: token.card.country,
-  //   clientIp: token.client_ip,
-  //   created: token.created,
-  //   livemode: token.livemode
-  // });
-
-  // if (!savedSuccesfully) {
-  //   res.status(500).json({ error: 'database' });
-  // }
-
-  // sendReceiptEmail();
-
-  // sendAlert();
 };
 
 export default methodFilter(handler, 'POST');
