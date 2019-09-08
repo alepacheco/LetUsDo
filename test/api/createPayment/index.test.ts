@@ -1,20 +1,16 @@
 import { handler } from '../../../api/createPayment/index';
 
-jest.mock(
-  'stripe',
-  () =>
-    class Stripe {
-      charges = {
-        create: jest
-          .fn()
-          .mockReturnValueOnce({ status: 'succeeded', livemode: true })
-          .mockReturnValueOnce({ status: 'error', livemode: true })
-          .mockReturnValueOnce(Promise.reject(new Error('Connection lost')))
-      };
-    }
-);
+jest.mock('stripe', () => () => ({
+  charges: {
+    create: jest
+      .fn()
+      .mockReturnValueOnce({ status: 'succeeded', livemode: true })
+      .mockReturnValueOnce({ status: 'error', livemode: true })
+      .mockReturnValueOnce(Promise.reject(new Error('Connection lost')))
+  }
+}));
 
-describe('/createPayment', () => {
+fdescribe('/createPayment', () => {
   const req = {
     method: 'POST',
     body: {
