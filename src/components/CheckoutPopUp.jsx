@@ -15,7 +15,7 @@ const validateEmail = email => {
   return validEmailRegex.test(String(email).toLowerCase());
 };
 
-class CheckoutPopUp extends React.Component {
+export class CheckoutPopUp extends React.Component {
   constructor(props) {
     super(props);
 

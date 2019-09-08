@@ -13,7 +13,6 @@ export class CheckoutForm extends React.Component {
     super(props);
     this.state = { complete: false };
     this.submit = this.submit.bind(this);
-    console.log(process.env.STRIPE_FRONT);
   }
 
   async submit() {

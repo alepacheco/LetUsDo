@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LandingHeader /> renders 1`] = `
+<div
+  className="landing-header"
+>
+  <div
+    className="logo-text"
+  >
+    LetUsDo.app
+  </div>
+  <div
+    className="main-content"
+  >
+    We know there are thing and you don’t want to do. Here we are to help you with the tasks you don’t feel like doing
+  </div>
+  <div
+    className="center-image"
+  >
+    <Component
+      height="250"
+      width="250"
+    />
+  </div>
+</div>
+`;

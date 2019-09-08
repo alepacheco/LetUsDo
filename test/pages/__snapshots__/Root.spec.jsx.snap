@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Root /> renders 1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [MockFunction],
+      "getState": [MockFunction],
+      "subscribe": [MockFunction],
+    }
+  }
+>
+  <ConnectFunction
+    history={
+      Object {
+        "listen": [MockFunction] {
+          "calls": Array [
+            Array [
+              [Function],
+            ],
+          ],
+          "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+          ],
+        },
+        "location": Object {
+          "pathname": "/",
+        },
+      }
+    }
+  >
+    <App />
+  </ConnectFunction>
+</Provider>
+`;

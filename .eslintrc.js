@@ -29,5 +29,6 @@ module.exports = {
     'import/no-extraneous-dependencies': OFF,
     'comma-dangle': OFF,
     'import/no-named-as-default': OFF,
+    'react/forbid-prop-types': OFF,
   }
 };

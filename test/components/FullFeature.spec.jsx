@@ -7,7 +7,7 @@ import { FullFeature } from '../../src/components/FullFeature';
 describe('<FullFeature />', () => {
   it('renders', () => {
     const wrapper = shallow(
-      <FullFeature Image={() => {}} title="This is the title">
+      <FullFeature Image={() => <div> img </div>} title="This is the title">
         This is the content inside
       </FullFeature>
     );

@@ -25,7 +25,7 @@ FullFeature.defaultProps = {
 };
 
 FullFeature.propTypes = {
-  Image: PropTypes.func.isRequired,
+  Image: PropTypes.oneOfType([PropTypes.string, PropTypes.object, PropTypes.func]).isRequired,
   imageSide: PropTypes.string,
   title: PropTypes.string.isRequired,
   children: PropTypes.node

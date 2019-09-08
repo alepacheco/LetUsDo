@@ -10,4 +10,10 @@ describe('<FeaturesList />', () => {
 
     expect(toJson(wrapper)).toMatchSnapshot();
   });
+
+  it('renders reversed', () => {
+    const wrapper = shallow(<CenteredContent reverse>Something</CenteredContent>);
+
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
 });
