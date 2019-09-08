@@ -33,7 +33,6 @@ export default {
   plugins: [
     // Tells React to build in prod mode. https://facebook.github.io/react/downloads.html
     new webpack.DefinePlugin({ ...GLOBALS }),
-    new Dotenv(),
     // Generate an external css file with a hash in the filename
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css',
