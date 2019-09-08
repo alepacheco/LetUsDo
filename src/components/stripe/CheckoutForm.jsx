@@ -14,9 +14,6 @@ export class CheckoutForm extends React.Component {
     this.state = { complete: false };
     this.submit = this.submit.bind(this);
     console.log(process.env.STRIPE_FRONT);
-
-    // eslint-disable-next-line no-undef
-    console.log(STRIPE_FRONT);
   }
 
   async submit() {

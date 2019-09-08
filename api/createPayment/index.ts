@@ -3,7 +3,7 @@ import Stripe from 'stripe';
 import { methodFilter } from '../utils/middleware';
 const stripe = Stripe(process.env.STRIPE_SERVER);
 
-export const executePayment = async ({ token, amount = 100, taskText }) => {
+export const executePayment = async ({ token, amount = 100, taskText, email }) => {
   console.log(process.env);
   try {
     const { status, livemode } = await stripe.charges.create({
@@ -12,7 +12,8 @@ export const executePayment = async ({ token, amount = 100, taskText }) => {
       description: 'Let Us Do Ltd.',
       source: token.id,
       metadata: {
-        taskText
+        taskText,
+        email
       }
     });
 
@@ -27,12 +28,8 @@ export const executePayment = async ({ token, amount = 100, taskText }) => {
 };
 
 export const handler = async (req: NowRequest, res: NowResponse) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-
   const { token, email, taskText } = req.body || {};
-  res.send({ token, email, taskText });
-
-  const paymentCompleted = await executePayment({ token, taskText });
+  const paymentCompleted = await executePayment({ token, taskText, email });
 
   if (!paymentCompleted) {
     res.status(500).json({ error: 'payment' });

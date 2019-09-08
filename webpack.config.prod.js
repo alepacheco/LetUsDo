@@ -7,22 +7,15 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import path from 'path';
 
-console.log({ envLocal: process.env });
-
 const GLOBALS = {
   'process.env.NODE_ENV': JSON.stringify('production'),
   'process.env.STRIPE_FRONT': JSON.stringify(process.env.STRIPE_FRONT) || 'Not found',
-  'STRIPE_FRONT': JSON.stringify(process.env.STRIPE_FRONT) || 'Not found',
   __DEV__: false,
 };
 
 export default {
   resolve: {
     extensions: ['*', '.js', '.jsx', '.json'],
-    // To support react-hot-loader
-    alias: {
-      'react-dom': '@hot-loader/react-dom',
-    },
   },
   devtool: 'source-map', // more info:https://webpack.js.org/guides/production/#source-mapping and https://webpack.js.org/configuration/devtool/
   entry: path.resolve(__dirname, 'src/index'),
@@ -35,7 +28,7 @@ export default {
   },
   plugins: [
     // Tells React to build in prod mode. https://facebook.github.io/react/downloads.html
-    new webpack.DefinePlugin({ ...GLOBALS }),
+    new webpack.DefinePlugin(GLOBALS),
     // Generate an external css file with a hash in the filename
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css',

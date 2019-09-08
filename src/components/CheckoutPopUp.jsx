@@ -13,7 +13,7 @@ const validateEmail = email => {
   // eslint-disable-next-line no-useless-escape
   const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(String(email).toLowerCase());
-}
+};
 
 class CheckoutPopUp extends React.Component {
   constructor(props) {
@@ -39,14 +39,10 @@ class CheckoutPopUp extends React.Component {
         centered
       >
         <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-vcenter">
-            Confirm order
-          </Modal.Title>
+          <Modal.Title id="contained-modal-title-vcenter">Confirm order</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <div className="task-description-title">
-            Task description
-          </div>
+          <div className="task-description-title">Task description</div>
           <div className="task-description-content">
             {this.props.taskText || 'No description specified'}
           </div>
@@ -56,21 +52,22 @@ class CheckoutPopUp extends React.Component {
                 type="email"
                 placeholder="Enter email"
                 onChange={this.onChangeEmail}
-                value={this.props.email} />
+                value={this.props.email}
+              />
             </Form.Group>
           </Form>
 
           <CheckoutFormWrapper />
         </Modal.Body>
-
       </Modal>
     );
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   taskText: state.taskModal.taskText,
-  email: state.checkoutPopUp.email
+  email: state.checkoutPopUp.email,
+  purchaseCompleted: state.checkoutPopUp.purchaseCompleted
 });
 
 function mapDispatchToProps(dispatch) {
@@ -92,5 +89,5 @@ CheckoutPopUp.propTypes = {
   actions: PropTypes.shape({
     setCheckoutEmailValid: PropTypes.func,
     setCheckoutEmail: PropTypes.func
-  }),
+  })
 };
