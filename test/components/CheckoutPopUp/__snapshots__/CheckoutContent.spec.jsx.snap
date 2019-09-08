@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CheckoutContent /> renders 1`] = `
+<Fragment>
+  <ModalHeader
+    closeButton={true}
+    closeLabel="Close"
+  >
+    <ModalTitle
+      id="contained-modal-title-vcenter"
+    >
+      Confirm order
+    </ModalTitle>
+  </ModalHeader>
+  <ModalBody>
+    <div
+      className="task-description-title"
+    >
+      Task description
+    </div>
+    <div
+      className="task-description-content"
+    >
+      This is a task
+    </div>
+    <Form
+      inline={false}
+    >
+      <FormGroup
+        className="email-form"
+        controlId="formBasicEmail"
+      >
+        <FormControl
+          onChange={[Function]}
+          placeholder="Enter email"
+          type="email"
+          value="email@example.com"
+        />
+      </FormGroup>
+    </Form>
+    <CheckoutFormWrapper />
+  </ModalBody>
+</Fragment>
+`;

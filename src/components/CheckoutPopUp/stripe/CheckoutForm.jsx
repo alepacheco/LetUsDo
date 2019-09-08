@@ -5,10 +5,10 @@ import Button from 'react-bootstrap/Button';
 import Badge from 'react-bootstrap/Badge';
 import { connect } from 'react-redux';
 import { CardElement, injectStripe } from 'react-stripe-elements';
-import '../../styles/components/stripe.css';
+import '../../../styles/components/stripe.css';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import * as actions from '../../actions/taskModalActions';
+import * as actions from '../../../actions/taskModalActions';
 
 export class CheckoutForm extends React.Component {
   constructor(props) {
@@ -27,7 +27,7 @@ export class CheckoutForm extends React.Component {
     }
 
     try {
-      const response = await axios.post('/api/createPayment', {
+      await axios.post('/api/createPayment', {
         token,
         email: this.props.email,
         taskText: this.props.taskText

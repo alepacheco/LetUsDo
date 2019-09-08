@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PurchaseCompletedContent /> renders 1`] = `
+<Fragment>
+  <ModalHeader
+    closeButton={true}
+    closeLabel="Close"
+  >
+    <ModalTitle
+      id="contained-modal-title-vcenter"
+    >
+      Purchase confirmed
+    </ModalTitle>
+  </ModalHeader>
+  <ModalBody>
+    <div
+      className="task-description-title"
+    >
+      Task description
+    </div>
+    <div
+      className="task-description-content"
+    >
+      Complete
+    </div>
+  </ModalBody>
+</Fragment>
+`;

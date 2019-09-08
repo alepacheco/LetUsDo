@@ -3,7 +3,7 @@ import React, { Suspense, lazy } from 'react';
 import { LandingHeader } from '../components/LandingHeader';
 import { FeaturesList } from '../components/FeaturesList';
 import { Footer } from '../components/Footer';
-import CheckoutPopUp from '../components/CheckoutPopUp';
+import CheckoutPopUp from '../components/CheckoutPopUp/index';
 
 const TaskBox = lazy(() => import('../components/TaskBox'));
 const FullFeatureList = lazy(() => import('../components/FullFeatureList'));

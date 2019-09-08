@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CheckoutFormWrapper /> renders 1`] = `
+<Provider
+  apiKey="mykey"
+>
+  <Elements>
+    <ConnectFunction />
+  </Elements>
+</Provider>
+`;

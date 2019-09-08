@@ -1,18 +1,24 @@
 import React from 'react';
 import Modal from 'react-bootstrap/Modal';
-import Form from 'react-bootstrap/Form';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
-import CheckoutFormWrapper from './stripe/CheckoutFormWrapper';
-import '../styles/components/CheckoutPopUp.css';
-import * as checkoutPopUpActions from '../actions/checkoutPopUpActions';
-import * as taskModalActions from '../actions/taskModalActions';
+import '../../styles/components/CheckoutPopUp.css';
+import * as checkoutPopUpActions from '../../actions/checkoutPopUpActions';
+import * as taskModalActions from '../../actions/taskModalActions';
+import { CheckoutContent } from './CheckoutContent';
+import { PurchaseCompletedContent } from './PurchaseCompletedContent';
+import { validateEmail } from '../../utils/generic';
 
-const validateEmail = email => {
-  // eslint-disable-next-line no-useless-escape
-  const validEmailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  return validEmailRegex.test(String(email).toLowerCase());
+const GetContentByType = ({ type, taskText, onChangeEmail, email }) => {
+  if (type === 'open') {
+    return <CheckoutContent taskText={taskText} onChangeEmail={onChangeEmail} email={email} />;
+  }
+  if (type === 'purchaseCompleted') {
+    return <PurchaseCompletedContent />;
+  }
+
+  return <div />;
 };
 
 export class CheckoutPopUp extends React.Component {
@@ -43,27 +49,12 @@ export class CheckoutPopUp extends React.Component {
         aria-labelledby="contained-modal-title-vcenter"
         centered
       >
-        <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-vcenter">Confirm order</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <div className="task-description-title">Task description</div>
-          <div className="task-description-content">
-            {this.props.taskText || 'No description specified'}
-          </div>
-          <Form>
-            <Form.Group controlId="formBasicEmail" className="email-form">
-              <Form.Control
-                type="email"
-                placeholder="Enter email"
-                onChange={this.onChangeEmail}
-                value={this.props.email}
-              />
-            </Form.Group>
-          </Form>
-
-          <CheckoutFormWrapper />
-        </Modal.Body>
+        <GetContentByType
+          type={this.props.checkoutPopupState}
+          taskText={this.props.taskText}
+          onChangeEmail={this.onChangeEmail}
+          email={this.props.email}
+        />
       </Modal>
     );
   }

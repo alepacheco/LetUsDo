@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CheckoutPopUp /> renders closed 1`] = `
+<Bootstrap(Modal)
+  aria-labelledby="contained-modal-title-vcenter"
+  centered={true}
+  onHide={[Function]}
+  show={false}
+  size="lg"
+>
+  <GetContentByType
+    email="email@example.com"
+    onChangeEmail={[Function]}
+    taskText="This is my task description"
+    type="closed"
+  />
+</Bootstrap(Modal)>
+`;
+
+exports[`<CheckoutPopUp /> renders open 1`] = `
+<Bootstrap(Modal)
+  aria-labelledby="contained-modal-title-vcenter"
+  centered={true}
+  onHide={[Function]}
+  show={true}
+  size="lg"
+>
+  <GetContentByType
+    email="email@example.com"
+    onChangeEmail={[Function]}
+    taskText="This is my task description"
+    type="open"
+  />
+</Bootstrap(Modal)>
+`;
