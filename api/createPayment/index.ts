@@ -2,19 +2,22 @@ import { NowRequest, NowResponse } from '@now/node';
 import { methodFilter } from '../utils/middleware';
 import * as Stripe from 'stripe';
 
-const stripe: Stripe = require('stripe')(process.env.STRIPE_SERVER);
+// @ts-ignore
+const stripe: Stripe = Stripe(process.env.STRIPE_SERVER);
 
-export const executePayment = async ({ token, amount = 50, taskText, email }) => {
+export const executePayment = async ({ token, amount = 50, taskText, email, remoteAddress }) => {
   try {
     const { status, livemode } = await stripe.charges.create({
       amount, // in cents 100cents == 1gbp
       currency: 'gbp',
-      description: 'Let Us Do Ltd.',
+      description: `Let Us Do task : ${taskText}`,
       source: token.id,
       receipt_email: email,
       metadata: {
-        task: taskText.slice(0, 500),
-        email
+        email,
+        amount,
+        remoteAddress,
+        timeStamp: new Date().toString()
       }
     });
 
@@ -30,7 +33,9 @@ export const executePayment = async ({ token, amount = 50, taskText, email }) =>
 
 export const handler = async (req: NowRequest, res: NowResponse) => {
   const { token, email, taskText } = req.body || {};
-  const paymentCompleted = await executePayment({ token, taskText, email });
+  const { remoteAddress } = req.connection;
+
+  const paymentCompleted = await executePayment({ token, taskText, email, remoteAddress });
 
   if (paymentCompleted !== 'succeeded') {
     res.status(500).json({ error: paymentCompleted });

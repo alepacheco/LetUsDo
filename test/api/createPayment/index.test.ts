@@ -10,13 +10,16 @@ jest.mock('stripe', () => () => ({
   }
 }));
 
-fdescribe('/createPayment', () => {
+describe('/createPayment', () => {
   const req = {
     method: 'POST',
     body: {
       token: { id: 'purchaseIdToken' },
       email: 'email@email.com',
       taskText: 'taskText'
+    },
+    connection: {
+      remoteAddress: '127.0.0.1'
     }
   };
   const res = {
