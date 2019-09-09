@@ -10,7 +10,7 @@ exports[`<Root /> renders 1`] = `
     }
   }
 >
-  <ConnectFunction
+  <Connect(ConnectedRouterWithContext)
     history={
       Object {
         "listen": [MockFunction] {
@@ -33,6 +33,6 @@ exports[`<Root /> renders 1`] = `
     }
   >
     <App />
-  </ConnectFunction>
+  </Connect(ConnectedRouterWithContext)>
 </Provider>
 `;

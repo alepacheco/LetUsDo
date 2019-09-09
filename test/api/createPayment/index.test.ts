@@ -1,9 +1,14 @@
-import { handler } from '../../../api/createPayment/index';
+import { handler, executePayment } from '../../../api/createPayment/index';
+
+const stripe = require('stripe');
 
 jest.mock('stripe', () => () => ({
   charges: {
     create: jest
       .fn()
+      .mockReturnValueOnce({ status: 'succeeded', livemode: true })
+      .mockReturnValueOnce({ status: 'error', livemode: true })
+      .mockReturnValueOnce(Promise.reject(new Error('Connection lost')))
       .mockReturnValueOnce({ status: 'succeeded', livemode: true })
       .mockReturnValueOnce({ status: 'error', livemode: true })
       .mockReturnValueOnce(Promise.reject(new Error('Connection lost')))
@@ -48,5 +53,33 @@ describe('/createPayment', () => {
 
     expect(res.status).toHaveBeenLastCalledWith(500);
     expect(res.json).toHaveBeenLastCalledWith({ error: 'Connection lost' });
+  });
+
+  describe('executePayment', () => {
+    const demoData = {
+      token: { id: 1234 },
+      amount: 100,
+      taskText: 'This is my task',
+      email: 'test@example.com',
+      remoteAddress: '127.0.0.1'
+    };
+
+    it('resturns ok', async () => {
+      const paymentCompleted = await executePayment(demoData);
+
+      expect(paymentCompleted).toEqual('succeeded');
+    });
+
+    it('resturns false', async () => {
+      const paymentCompleted = await executePayment(demoData);
+
+      expect(paymentCompleted).toEqual('Unknown error while executing payment');
+    });
+
+    it('resturns error', async () => {
+      const paymentCompleted = await executePayment(demoData);
+
+      expect(paymentCompleted).toEqual('Connection lost');
+    });
   });
 });

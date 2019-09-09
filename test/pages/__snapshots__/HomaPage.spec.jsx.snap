@@ -12,7 +12,7 @@ exports[`<HomePage /> renders 1`] = `
     }
   >
     <lazy />
-    <ConnectFunction />
+    <Connect(CheckoutPopUp) />
   </Suspense>
   <Suspense
     fallback={
