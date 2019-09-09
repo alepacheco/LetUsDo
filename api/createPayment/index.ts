@@ -18,7 +18,7 @@ export const executePayment = async ({ token, amount = 50, taskText, email, remo
         email,
         amount,
         remoteAddress,
-        timeStamp: new Date().toString()
+        timeStamp: new Date().toISOString()
       }
     });
 

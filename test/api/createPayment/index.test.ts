@@ -4,7 +4,8 @@ process.env.STRIPE_SERVER = 'sk_test_Fe8VrGftldFe2Vy3e38I65Gv00qN5qwLa5';
 const stripe = require('stripe');
 const mockReturnValue = jest.fn();
 
-const constantDate = new Date('2017-06-13T04:41:20');
+const constantDate = new Date('Tue Jun 13 2017 04:41:20');
+constantDate.setUTCHours(0, 0, 0, 0);
 
 // @ts-ignore
 Date = class extends Date {
@@ -56,7 +57,7 @@ describe('/createPayment', () => {
         amount: 50,
         email: 'email@email.com',
         remoteAddress: '127.0.0.1',
-        timeStamp: 'Tue Jun 13 2017 04:41:20 GMT+0100 (British Summer Time)'
+        timeStamp: '2017-06-13T00:00:00.000Z'
       },
       receipt_email: 'email@email.com',
       source: 'tok_fr'
@@ -105,7 +106,7 @@ describe('/createPayment', () => {
           amount: 100,
           email: 'test@example.com',
           remoteAddress: '127.0.0.1',
-          timeStamp: 'Tue Jun 13 2017 04:41:20 GMT+0100 (British Summer Time)'
+          timeStamp: '2017-06-13T00:00:00.000Z'
         },
         receipt_email: 'test@example.com',
         source: 1234
