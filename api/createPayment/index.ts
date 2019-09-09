@@ -2,10 +2,12 @@ import { NowRequest, NowResponse } from '@now/node';
 import { methodFilter } from '../utils/middleware';
 import * as Stripe from 'stripe';
 
-const stripe: Stripe = require('stripe')(process.env.STRIPE_SERVER);
+const StripeFactory: any = require('stripe');
 
 export const executePayment = async ({ token, amount = 50, taskText, email, remoteAddress }) => {
   try {
+    const stripe: Stripe = StripeFactory(process.env.STRIPE_SERVER);
+
     const { status, livemode } = await stripe.charges.create({
       amount, // in cents 100cents == 1gbp
       currency: 'gbp',
@@ -20,8 +22,8 @@ export const executePayment = async ({ token, amount = 50, taskText, email, remo
       }
     });
 
-    if (status === 'succeeded' && livemode) {
-      return status;
+    if (status === 'succeeded') {
+      return livemode ? status : 'succeeded not live';
     }
   } catch (error) {
     return error.message;

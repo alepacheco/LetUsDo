@@ -1,25 +1,32 @@
 import { handler, executePayment } from '../../../api/createPayment/index';
+process.env.STRIPE_SERVER = 'sk_test_Fe8VrGftldFe2Vy3e38I65Gv00qN5qwLa5';
 
 const stripe = require('stripe');
+const mockReturnValue = jest.fn();
+
+const constantDate = new Date('2017-06-13T04:41:20');
+
+// @ts-ignore
+Date = class extends Date {
+  constructor() {
+    super();
+    return constantDate;
+  }
+};
 
 jest.mock('stripe', () => () => ({
   charges: {
-    create: jest
-      .fn()
-      .mockReturnValueOnce({ status: 'succeeded', livemode: true })
-      .mockReturnValueOnce({ status: 'error', livemode: true })
-      .mockReturnValueOnce(Promise.reject(new Error('Connection lost')))
-      .mockReturnValueOnce({ status: 'succeeded', livemode: true })
-      .mockReturnValueOnce({ status: 'error', livemode: true })
-      .mockReturnValueOnce(Promise.reject(new Error('Connection lost')))
+    create: mockReturnValue
   }
 }));
+
+jest.resetModules();
 
 describe('/createPayment', () => {
   const req = {
     method: 'POST',
     body: {
-      token: { id: 'purchaseIdToken' },
+      token: { id: 'tok_fr' },
       email: 'email@email.com',
       taskText: 'taskText'
     },
@@ -35,13 +42,30 @@ describe('/createPayment', () => {
   res.status.mockReturnValue(res);
 
   it('returns ok', async () => {
+    mockReturnValue.mockReturnValueOnce({ status: 'succeeded', livemode: true });
+
     await handler(<any>req, <any>res);
 
-    expect(res.status).toHaveBeenLastCalledWith(200);
     expect(res.json).toHaveBeenLastCalledWith({ status: 'ok' });
+    expect(res.status).toHaveBeenLastCalledWith(200);
+    expect(mockReturnValue).toHaveBeenLastCalledWith({
+      amount: 50,
+      currency: 'gbp',
+      description: 'Let Us Do task : taskText',
+      metadata: {
+        amount: 50,
+        email: 'email@email.com',
+        remoteAddress: '127.0.0.1',
+        timeStamp: 'Tue Jun 13 2017 04:41:20 GMT+0100 (British Summer Time)'
+      },
+      receipt_email: 'email@email.com',
+      source: 'tok_fr'
+    });
   });
 
   it('returns an Unknown error', async () => {
+    mockReturnValue.mockReturnValueOnce({ status: 'error', livemode: true });
+
     await handler(<any>req, <any>res);
 
     expect(res.status).toHaveBeenLastCalledWith(500);
@@ -49,6 +73,8 @@ describe('/createPayment', () => {
   });
 
   it('returns an catched error', async () => {
+    mockReturnValue.mockReturnValueOnce(Promise.reject(new Error('Connection lost')));
+
     await handler(<any>req, <any>res);
 
     expect(res.status).toHaveBeenLastCalledWith(500);
@@ -65,18 +91,38 @@ describe('/createPayment', () => {
     };
 
     it('resturns ok', async () => {
+      mockReturnValue.mockReturnValueOnce({ status: 'succeeded', livemode: true });
+
       const paymentCompleted = await executePayment(demoData);
 
       expect(paymentCompleted).toEqual('succeeded');
+
+      expect(mockReturnValue).toHaveBeenLastCalledWith({
+        amount: 100,
+        currency: 'gbp',
+        description: 'Let Us Do task : This is my task',
+        metadata: {
+          amount: 100,
+          email: 'test@example.com',
+          remoteAddress: '127.0.0.1',
+          timeStamp: 'Tue Jun 13 2017 04:41:20 GMT+0100 (British Summer Time)'
+        },
+        receipt_email: 'test@example.com',
+        source: 1234
+      });
     });
 
     it('resturns false', async () => {
+      mockReturnValue.mockReturnValueOnce({ status: 'error', livemode: true });
+
       const paymentCompleted = await executePayment(demoData);
 
       expect(paymentCompleted).toEqual('Unknown error while executing payment');
     });
 
     it('resturns error', async () => {
+      mockReturnValue.mockReturnValueOnce(Promise.reject(new Error('Connection lost')));
+
       const paymentCompleted = await executePayment(demoData);
 
       expect(paymentCompleted).toEqual('Connection lost');
