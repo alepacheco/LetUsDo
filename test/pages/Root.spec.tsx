@@ -12,7 +12,7 @@ jest.mock('react-ga', () => ({
 
 describe('<Root />', () => {
   it('renders', () => {
-    const history = {
+    const history: any = {
       listen: jest.fn(),
       location: {
         pathname: '/'

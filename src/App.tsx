@@ -4,7 +4,7 @@ import React from 'react';
 import { hot } from 'react-hot-loader';
 import HomePage from './pages/HomePage';
 
-const App = () => (
+const App: React.FC<{}> = () => (
   <div>
     <Switch>
       <Route path="/" component={HomePage} />

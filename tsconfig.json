@@ -8,11 +8,15 @@
         "esModuleInterop": true,
         "lib": ["es2019", "dom"],
         "types": [
-            "jest"
+            "jest",
+            "node"
         ]
     },
     "include": [
         "./src/**/*"
+    ],
+    "exclude": [
+        "./test/**/*"
     ],
     "allowSyntheticDefaultImports": true
 }
