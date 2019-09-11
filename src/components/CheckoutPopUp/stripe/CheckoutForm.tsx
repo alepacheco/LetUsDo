@@ -49,12 +49,17 @@ const tryApplePay = async ({ stripe }: { stripe: ReactStripeElements.StripeProps
 export const CheckoutForm: React.FC<{
   email: string;
   taskText: string;
-  stripe: ReactStripeElements.StripeProps;
+  stripe?: ReactStripeElements.StripeProps;
   validEmail: boolean;
   actions: { setDialog: (state: string) => void };
 }> = ({ email, stripe, taskText, actions: { setDialog }, validEmail }) => {
   const onClick = async () => {
     console.log('Set loading here but keep the element alive.');
+    if (!stripe) {
+      setDialog('purchaseFailed');
+      return;
+    }
+
     const completed = await submitPayment({
       email,
       stripe,
