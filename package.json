@@ -157,7 +157,7 @@
       "^.+\\.jsx?$": "babel-jest"
     },
     "collectCoverageFrom": [
-      "src/**/*.{js,jsx}",
+      "src/**/*.{js,jsx,ts,tsx}",
       "!<rootDir>/node_modules/",
       "api/**/**"
     ]
