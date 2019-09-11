@@ -4,63 +4,131 @@ import * as Stripe from 'stripe';
 
 const StripeFactory: any = require('stripe');
 
-type ExecutePayment = {
-  token: {
-    id: string;
-  };
+type ExecutePaymentMethod = {
+  payment_method_id: string;
   amount?: number;
   taskText: string;
   email: string;
   remoteAddress?: string;
+  stripe: any;
 };
 
-export const executePayment = async ({
-  token,
+export const executePaymentMethod = async ({
+  payment_method_id,
   amount = 50,
   taskText,
   email,
-  remoteAddress = ''
-}: ExecutePayment) => {
+  remoteAddress = '',
+  stripe
+}: ExecutePaymentMethod) => {
   try {
-    const stripe: Stripe = StripeFactory(process.env.STRIPE_SERVER);
-
-    const { status, livemode } = await stripe.charges.create({
-      amount, // in cents 100cents == 1gbp
+    const { status, next_action, client_secret } = await stripe.paymentIntents.create({
+      payment_method: payment_method_id,
+      amount,
       currency: 'gbp',
-      description: `Let Us Do task : ${taskText}`,
-      source: token.id,
-      receipt_email: email,
-      metadata: {
-        email,
-        amount,
-        remoteAddress,
-        timeStamp: new Date().toISOString()
-      }
+      confirmation_method: 'manual',
+      confirm: true
     });
 
+    if (status === 'requires_action' && next_action.type === 'use_stripe_sdk') {
+      return {
+        status: 200,
+        response: {
+          requires_action: true,
+          payment_intent_client_secret: client_secret
+        }
+      };
+    }
     if (status === 'succeeded') {
-      return livemode ? status : 'succeeded not live';
+      return {
+        status: 200,
+        response: {
+          success: true
+        }
+      };
     }
   } catch (error) {
-    return error.message;
+    return {
+      status: 500,
+      response: {
+        error
+      }
+    };
   }
 
-  return 'Unknown error while executing payment';
+  return {
+    status: 500,
+    error: 'Unknown error while executing payment'
+  };
+};
+
+type ExecutePaymentIntent = {
+  payment_intent_id: string;
+  stripe: any;
+};
+
+export const executePaymentIntent = async ({ stripe, payment_intent_id }: ExecutePaymentIntent) => {
+  try {
+    const { status, next_action, client_secret } = await stripe.paymentIntents.confirm(
+      payment_intent_id
+    );
+
+    if (status === 'requires_action' && next_action.type === 'use_stripe_sdk') {
+      return {
+        status: 200,
+        response: {
+          requires_action: true,
+          payment_intent_client_secret: client_secret
+        }
+      };
+    }
+    if (status === 'succeeded') {
+      return {
+        status: 200,
+        response: {
+          success: true
+        }
+      };
+    }
+  } catch (error) {
+    return {
+      status: 500,
+      response: {
+        error
+      }
+    };
+  }
+
+  return {
+    status: 500,
+    error: 'Unknown error while executing payment'
+  };
 };
 
 export const handler = async (req: NowRequest, res: NowResponse) => {
-  const { token, email, taskText } = req.body || {};
+  const { payment_method_id, payment_intent_id, email, taskText } = req.body || {};
   const { remoteAddress } = req.connection;
+  const stripe: Stripe = StripeFactory(process.env.STRIPE_SERVER);
 
-  const paymentCompleted = await executePayment({ token, taskText, email, remoteAddress });
-
-  if (paymentCompleted !== 'succeeded') {
-    res.status(500).json({ error: paymentCompleted });
+  if (payment_intent_id) {
+    const { status, response } = await executePaymentIntent({ stripe, payment_intent_id });
+    if (status) {
+      res.status(status).json(response);
+    }
     return;
-  }
+  } else if (payment_method_id) {
+    const { status, response } = await executePaymentMethod({
+      payment_method_id,
+      taskText,
+      email,
+      remoteAddress,
+      stripe
+    });
 
-  if (paymentCompleted === 'succeeded') {
-    res.status(200).json({ status: 'ok' });
+    if (status) {
+      res.status(status).json(response);
+    }
+    return;
   }
 };
 
