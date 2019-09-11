@@ -7,7 +7,6 @@ import Root from './Root';
 import 'src/styles/styles.scss'; // Yep, that's right. You can import SASS/CSS files too! Webpack will run the associated loader and plug this into the page.
 require('src/favicon.ico'); // Tell webpack to load favicon.ico
 require('src/static/fonts/Jellee-Roman.ttf');
-require('src/static/.well-known/apple-developer-merchantid-domain-association');
 
 const store = configureStore();
 
