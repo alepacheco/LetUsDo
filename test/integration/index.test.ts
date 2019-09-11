@@ -4,7 +4,6 @@ import axios from 'axios';
 describe('Integration tests', () => {
   beforeAll(async () => {
     jest.setTimeout(300000);
-    console.log('Starting server...');
     await setup({
       command: `now dev --listen 9888`,
       launchTimeout: 300000,
@@ -16,9 +15,7 @@ describe('Integration tests', () => {
   });
 
   afterAll(async () => {
-    console.log('Closing server...');
     await teardown();
-    console.log('Server closed');
   });
 
   it('loads /api/', async () => {
@@ -26,5 +23,12 @@ describe('Integration tests', () => {
 
     expect(status).toBe(200);
     expect(data).toBe('Api index');
+  });
+
+  it('loads index.html page', async () => {
+    const { status, data } = await axios.get('http://localhost:9888/');
+
+    expect(status).toBe(200);
+    expect(data.includes('<!doctype html>')).toEqual(true);
   });
 });

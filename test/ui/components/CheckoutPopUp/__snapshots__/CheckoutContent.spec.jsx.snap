@@ -38,7 +38,7 @@ exports[`<CheckoutContent /> renders 1`] = `
         />
       </FormGroup>
     </Form>
-    <CheckoutFormWrapper />
+    <Component />
   </ModalBody>
 </Fragment>
 `;
