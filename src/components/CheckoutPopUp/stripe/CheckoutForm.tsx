@@ -13,7 +13,7 @@ import * as actions from 'src/actions/taskModalActions';
 
 const tryApplePay = async ({ stripe }: { stripe: ReactStripeElements.StripeProps }) => {
   const paymentRequest = stripe.paymentRequest({
-    country: 'UK', // TODO check
+    country: 'GB', // TODO check
     currency: 'gbp',
     total: {
       label: 'Price',
@@ -24,6 +24,7 @@ const tryApplePay = async ({ stripe }: { stripe: ReactStripeElements.StripeProps
   });
 
   const canUsePayBotton = await paymentRequest.canMakePayment();
+  console.log({ canUsePayBotton });
   if (canUsePayBotton) {
     // @ts-ignore
     const elements = stripe.elements();
@@ -53,6 +54,10 @@ export const CheckoutForm: React.FC<{
   validEmail: boolean;
   actions: { setDialog: (state: string) => void };
 }> = ({ email, stripe, taskText, actions: { setDialog }, validEmail }) => {
+  if (stripe) {
+    tryApplePay({ stripe });
+  }
+
   const onClick = async () => {
     console.log('Set loading here but keep the element alive.');
     if (!stripe) {
