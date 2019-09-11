@@ -11,10 +11,10 @@ type ExecutePayment = {
   amount?: number,
   taskText: string,
   email: string,
-  remoteAddress: string
+  remoteAddress?: string
 }
 
-export const executePayment = async ({ token, amount = 50, taskText, email, remoteAddress }: ExecutePayment) => {
+export const executePayment = async ({ token, amount = 50, taskText, email, remoteAddress = '' }: ExecutePayment) => {
   try {
     const stripe: Stripe = StripeFactory(process.env.STRIPE_SERVER);
 

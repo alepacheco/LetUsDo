@@ -2,10 +2,12 @@
     "compilerOptions": {
         "sourceMap": true,
         "noImplicitAny": true,
-        "module": "commonjs",
+        "module": "esnext",
         "target": "es5",
         "jsx": "react",
         "esModuleInterop": true,
+        "strict": true,
+        "moduleResolution": "node",
         "lib": ["es2019", "dom"],
         "types": [
             "jest",

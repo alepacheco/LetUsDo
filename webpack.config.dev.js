@@ -3,12 +3,9 @@ import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import path from 'path';
 import HardSourceWebpackPlugin from 'hard-source-webpack-plugin';
+const WebpackMessages = require('webpack-messages');
 
 const Dotenv = require('dotenv-webpack');
-
-const { definitions } = new Dotenv({
-  path: path.resolve(__dirname, './.env'),
-});
 
 const GLOBALS = {
   __DEV__: true,
@@ -16,7 +13,7 @@ const GLOBALS = {
 
 export default {
   resolve: {
-    extensions: ['*', '.js', '.jsx', '.tsx', '.json'],
+    extensions: ['*', '.js', '.ts', '.jsx', '.tsx', '.json'],
     // To support react-hot-loader
     alias: {
       'react-dom': '@hot-loader/react-dom',
@@ -38,7 +35,12 @@ export default {
     filename: 'bundle.js',
   },
   plugins: [
-    new webpack.DefinePlugin({ ...definitions, ...GLOBALS }),
+    new WebpackMessages({
+      name: 'client',
+      logger: str => console.log(`>> ${str}`)
+    }),
+    new Dotenv(),
+    new webpack.DefinePlugin(GLOBALS),
     new HardSourceWebpackPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
@@ -53,7 +55,11 @@ export default {
   ],
   module: {
     rules: [
-      { test: /\.tsx?$/, loader: 'awesome-typescript-loader' }, // other loader configuration goes in the array
+      {
+        test: /\.tsx?$/,
+        exclude: /node_modules/,
+        use: ['awesome-typescript-loader'],
+      },
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,

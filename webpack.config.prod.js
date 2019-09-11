@@ -6,6 +6,8 @@ import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import path from 'path';
+const WebpackMessages = require('webpack-messages');
+const Dotenv = require('dotenv-webpack');
 
 const GLOBALS = {
   'process.env.NODE_ENV': JSON.stringify('production'),
@@ -15,7 +17,7 @@ const GLOBALS = {
 
 export default {
   resolve: {
-    extensions: ['*', '.js', '.jsx', '.tsx', '.json'],
+    extensions: ['*', '.js', '.ts', '.jsx', '.tsx', '.json'],
   },
   devtool: 'source-map', // more info:https://webpack.js.org/guides/production/#source-mapping and https://webpack.js.org/configuration/devtool/
   entry: path.resolve(__dirname, 'src/index'),
@@ -27,6 +29,11 @@ export default {
     filename: '[name].[contenthash].js',
   },
   plugins: [
+    new WebpackMessages({
+      name: 'client',
+      logger: str => console.log(`>> ${str}`)
+    }),
+    new Dotenv(),
     // Tells React to build in prod mode. https://facebook.github.io/react/downloads.html
     new webpack.DefinePlugin(GLOBALS),
     // Generate an external css file with a hash in the filename
@@ -59,7 +66,11 @@ export default {
   ],
   module: {
     rules: [
-      { test: /\.tsx?$/, loader: 'awesome-typescript-loader' }, // other loader configuration goes in the array
+      {
+        test: /\.tsx?$/,
+        exclude: /node_modules/,
+        use: ['awesome-typescript-loader'],
+      },
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,

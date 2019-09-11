@@ -134,7 +134,8 @@
     "webpack": "4.39.3",
     "webpack-bundle-analyzer": "3.4.1",
     "webpack-dev-middleware": "3.7.1",
-    "webpack-hot-middleware": "2.25.0"
+    "webpack-hot-middleware": "2.25.0",
+    "webpack-messages": "2.0.4"
   },
   "keywords": [],
   "repository": {

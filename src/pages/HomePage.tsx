@@ -6,7 +6,7 @@ import { FeaturesList } from '../components/FeaturesList';
 // @ts-ignore
 import { Footer } from '../components/Footer';
 // @ts-ignore
-import CheckoutPopUp from '../components/CheckoutPopUp/index';
+const CheckoutPopUp = lazy(() => import('../components/CheckoutPopUp/index'));
 // @ts-ignore
 const TaskBox = lazy(() => import('../components/TaskBox'));
 // @ts-ignore
