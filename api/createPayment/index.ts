@@ -110,13 +110,7 @@ export const handler = async (req: NowRequest, res: NowResponse) => {
   const { remoteAddress } = req.connection;
   const stripe: Stripe = StripeFactory(process.env.STRIPE_SERVER);
 
-  if (payment_intent_id) {
-    const { status, response } = await executePaymentIntent({ stripe, payment_intent_id });
-    if (status) {
-      res.status(status).json(response);
-    }
-    return;
-  } else if (payment_method_id) {
+  if (payment_method_id) {
     const { status, response } = await executePaymentMethod({
       payment_method_id,
       taskText,
@@ -125,6 +119,14 @@ export const handler = async (req: NowRequest, res: NowResponse) => {
       stripe
     });
 
+    if (status) {
+      res.status(status).json(response);
+    }
+    return;
+  }
+
+  if (payment_intent_id) {
+    const { status, response } = await executePaymentIntent({ stripe, payment_intent_id });
     if (status) {
       res.status(status).json(response);
     }

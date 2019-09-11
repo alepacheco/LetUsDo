@@ -1,7 +1,6 @@
 import { handler, executePaymentMethod } from '../../../api/createPayment/index';
 process.env.STRIPE_SERVER = 'sk_test_Fe8VrGftldFe2Vy3e38I65Gv00qN5qwLa5';
 
-const stripe = require('stripe');
 const mockPaymentIntentCreate = jest.fn();
 const mockPaymentIntentConfirm = jest.fn();
 
@@ -16,20 +15,27 @@ Date = class extends Date {
   }
 };
 
-jest.mock('stripe', () => () => ({
+const mockStripeModule = {
   paymentIntents: {
     create: mockPaymentIntentCreate,
     confirm: mockPaymentIntentConfirm
   }
-}));
+};
+
+jest.mock('stripe', () => () => mockStripeModule);
 
 jest.resetModules();
 
-xdescribe('/createPayment', () => {
+describe('/createPayment', () => {
+  beforeEach(() => {
+    mockPaymentIntentConfirm.mockReset();
+    mockPaymentIntentCreate.mockReset();
+  });
+
   const req = {
     method: 'POST',
     body: {
-      token: { id: 'tok_fr' },
+      payment_intent_id: 'tok_fr',
       email: 'email@email.com',
       taskText: 'taskText'
     },
@@ -44,44 +50,107 @@ xdescribe('/createPayment', () => {
   };
   res.status.mockReturnValue(res);
 
-  it('returns ok', async () => {
-    mockPaymentIntentCreate.mockReturnValueOnce({ status: 'succeeded', livemode: true });
+  it('returns ok, no 2fa', async () => {
+    mockPaymentIntentConfirm.mockReturnValueOnce({
+      status: 'succeeded',
+      next_action: false,
+      client_secret: null
+    });
 
     await handler(<any>req, <any>res);
+    expect(res.json).toHaveBeenLastCalledWith({ success: true });
+    expect(res.status).toHaveBeenLastCalledWith(200);
+    expect(mockPaymentIntentCreate).not.toHaveBeenCalled();
+    expect(mockPaymentIntentConfirm).toHaveBeenLastCalledWith('tok_fr');
+  });
 
-    expect(res.json).toHaveBeenLastCalledWith({ status: 'ok' });
+  it('returns 2fa', async () => {
+    mockPaymentIntentConfirm.mockReturnValueOnce({
+      status: 'requires_action',
+      next_action: { type: 'use_stripe_sdk' },
+      client_secret: 'clientSecret'
+    });
+
+    await handler(<any>req, <any>res);
+    expect(res.json).toHaveBeenLastCalledWith({
+      payment_intent_client_secret: 'clientSecret',
+      requires_action: true
+    });
+    expect(res.status).toHaveBeenLastCalledWith(200);
+    expect(mockPaymentIntentCreate).not.toHaveBeenCalled();
+    expect(mockPaymentIntentConfirm).toHaveBeenLastCalledWith('tok_fr');
+  });
+
+  it('returns ok for second 2fa', async () => {
+    mockPaymentIntentCreate.mockReturnValueOnce({ status: 'succeeded' });
+
+    const req = {
+      method: 'POST',
+      body: {
+        payment_method_id: 'payment_method_id_tok_fr',
+        email: 'email@email.com',
+        taskText: 'taskText'
+      },
+      connection: {
+        remoteAddress: '127.0.0.1'
+      }
+    };
+
+    await handler(<any>req, <any>res);
+    expect(res.json).toHaveBeenLastCalledWith({ success: true });
     expect(res.status).toHaveBeenLastCalledWith(200);
     expect(mockPaymentIntentCreate).toHaveBeenLastCalledWith({
       amount: 50,
+      confirm: true,
+      confirmation_method: 'manual',
       currency: 'gbp',
-      description: 'Let Us Do task : taskText',
-      metadata: {
-        amount: 50,
-        email: 'email@email.com',
-        remoteAddress: '127.0.0.1',
-        timeStamp: '2017-06-13T00:00:00.000Z'
-      },
-      receipt_email: 'email@email.com',
-      source: 'tok_fr'
+      payment_method: 'payment_method_id_tok_fr'
     });
+    expect(mockPaymentIntentConfirm).not.toHaveBeenCalled();
   });
 
-  it('returns an Unknown error', async () => {
-    mockPaymentIntentCreate.mockReturnValueOnce({ status: 'error', livemode: true });
+  it('returns ok for second 2fa and needs more verification', async () => {
+    mockPaymentIntentCreate.mockReturnValueOnce({
+      status: 'requires_action',
+      next_action: { type: 'use_stripe_sdk' },
+      client_secret: 'clientSecret'
+    });
+
+    const req = {
+      method: 'POST',
+      body: {
+        payment_method_id: 'payment_method_id_tok_fr',
+        email: 'email@email.com',
+        taskText: 'taskText'
+      },
+      connection: {
+        remoteAddress: '127.0.0.1'
+      }
+    };
 
     await handler(<any>req, <any>res);
-
-    expect(res.status).toHaveBeenLastCalledWith(500);
-    expect(res.json).toHaveBeenLastCalledWith({ error: 'Unknown error while executing payment' });
+    expect(res.json).toHaveBeenLastCalledWith({
+      payment_intent_client_secret: 'clientSecret',
+      requires_action: true
+    });
+    expect(res.status).toHaveBeenLastCalledWith(200);
+    expect(mockPaymentIntentCreate).toHaveBeenLastCalledWith({
+      amount: 50,
+      confirm: true,
+      confirmation_method: 'manual',
+      currency: 'gbp',
+      payment_method: 'payment_method_id_tok_fr'
+    });
+    expect(mockPaymentIntentConfirm).not.toHaveBeenCalled();
   });
 
   it('returns an catched error', async () => {
-    mockPaymentIntentCreate.mockReturnValueOnce(Promise.reject(new Error('Connection lost')));
+    mockPaymentIntentConfirm.mockReturnValueOnce(Promise.reject(new Error('Connection lost')));
 
     await handler(<any>req, <any>res);
 
     expect(res.status).toHaveBeenLastCalledWith(500);
-    expect(res.json).toHaveBeenLastCalledWith({ error: 'Connection lost' });
+    expect(res.json).toHaveBeenLastCalledWith({ error: new Error('Connection lost') });
   });
 
   describe('executePaymentMethod', () => {
@@ -91,37 +160,23 @@ xdescribe('/createPayment', () => {
       taskText: 'This is my task',
       email: 'test@example.com',
       remoteAddress: '127.0.0.1',
-      stripe
+      stripe: mockStripeModule
     };
 
     it('resturns ok', async () => {
-      mockPaymentIntentCreate.mockReturnValueOnce({ status: 'succeeded', livemode: true });
+      mockPaymentIntentCreate.mockReturnValueOnce({ status: 'succeeded' });
 
       const paymentCompleted = await executePaymentMethod(demoData);
 
-      expect(paymentCompleted).toEqual('succeeded');
+      expect(paymentCompleted).toEqual({ response: { success: true }, status: 200 });
 
       expect(mockPaymentIntentCreate).toHaveBeenLastCalledWith({
         amount: 100,
+        confirm: true,
+        confirmation_method: 'manual',
         currency: 'gbp',
-        description: 'Let Us Do task : This is my task',
-        metadata: {
-          amount: 100,
-          email: 'test@example.com',
-          remoteAddress: '127.0.0.1',
-          timeStamp: '2017-06-13T00:00:00.000Z'
-        },
-        receipt_email: 'test@example.com',
-        source: '1234'
+        payment_method: '1234'
       });
-    });
-
-    it('resturns false', async () => {
-      mockPaymentIntentCreate.mockReturnValueOnce({ status: 'error', livemode: true });
-
-      const paymentCompleted = await executePaymentMethod(demoData);
-
-      expect(paymentCompleted).toEqual('Unknown error while executing payment');
     });
 
     it('resturns error', async () => {
@@ -129,7 +184,12 @@ xdescribe('/createPayment', () => {
 
       const paymentCompleted = await executePaymentMethod(demoData);
 
-      expect(paymentCompleted).toEqual('Connection lost');
+      expect(paymentCompleted).toEqual({
+        response: {
+          error: new Error('Connection lost')
+        },
+        status: 500
+      });
     });
   });
 });

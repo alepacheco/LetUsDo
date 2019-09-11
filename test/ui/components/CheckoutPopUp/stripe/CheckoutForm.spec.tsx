@@ -6,10 +6,12 @@ import { CheckoutForm } from 'components/CheckoutPopUp/stripe/CheckoutForm';
 
 describe('<CheckoutForm />', () => {
   it('renders', () => {
+    const all: any = {};
+
     const wrapper = shallow(
       <CheckoutForm
-        actions={{}}
-        stripe={{}}
+        actions={all}
+        stripe={all}
         validEmail
         email="email@example.com"
         taskText="this is a test"
