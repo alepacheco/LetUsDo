@@ -18,7 +18,7 @@
     "build": "babel-node tools/build.js",
     "buildd": "npm run remove-dist && babel-node tools/build.js",
     "test": "npm run lint && jest",
-    "test:integration": "jest --runTestsByPath test/integration/index.test.ts",
+    "test:integration": "jest --runTestsByPath test/integration/index.test.ts --detectOpenHandles --forceExit",
     "test:CI": "npm run test && npm run test:integration",
     "test:cover": "npm run test -- --coverage ",
     "test:send-cover": "jest --coverage --coverageReporters=text-lcov | coveralls",

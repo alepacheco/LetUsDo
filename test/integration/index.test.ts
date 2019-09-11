@@ -7,7 +7,7 @@ describe('Integration tests', () => {
     console.log('Starting server...');
     await setup({
       command: `now dev --listen 9888`,
-      launchTimeout: 500000,
+      launchTimeout: 300000,
       port: 9888
     });
     jest.setTimeout(5000);
