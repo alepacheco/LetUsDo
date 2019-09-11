@@ -29,6 +29,6 @@ describe('Integration tests', () => {
     const { status, data } = await axios.get('http://localhost:9888/');
 
     expect(status).toBe(200);
-    expect(data).toMatchSnapshot();
+    expect(data.includes('<!doctype html>')).toEqual(true);
   });
 });
