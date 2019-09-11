@@ -1,8 +1,9 @@
-/* eslint-disable global-require */
+/* eslint-disable global-require, no-console */
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import path from 'path';
 import HardSourceWebpackPlugin from 'hard-source-webpack-plugin';
+
 const WebpackMessages = require('webpack-messages');
 
 const Dotenv = require('dotenv-webpack');
