@@ -1,12 +1,14 @@
-const { setup: setupDevServer, teardown: teardownDevServer } = require('jest-dev-server');
+import { setup, teardown } from 'jest-dev-server';
+import axios from 'axios';
 
 describe('Integration tests', () => {
   beforeAll(async () => {
     jest.setTimeout(300000);
-    await setupDevServer({
-      command: `now dev`,
+    console.log('Starting server...');
+    await setup({
+      command: `now dev --listen 9888`,
       launchTimeout: 500000,
-      port: 3000
+      port: 9888
     });
     jest.setTimeout(5000);
 
@@ -14,10 +16,15 @@ describe('Integration tests', () => {
   });
 
   afterAll(async () => {
-    await teardownDevServer();
+    console.log('Closing server...');
+    await teardown();
+    console.log('Server closed');
   });
 
-  it('starts', () => {
-    expect(true).toBe(true);
+  it('loads /api/', async () => {
+    const { status, data } = await axios.get('http://localhost:9888/api/');
+
+    expect(status).toBe(200);
+    expect(data).toBe('Api index');
   });
 });
