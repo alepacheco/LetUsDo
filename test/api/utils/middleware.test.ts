@@ -8,7 +8,7 @@ describe('middleware', () => {
         status: jest.fn()
       };
 
-      const handler = ({}, res) => {
+      const handler = ({}, res:any) => {
         res.send('OK');
       };
 
@@ -27,7 +27,7 @@ describe('middleware', () => {
 
       res.status.mockReturnValue(res);
 
-      const handler = ({}, res) => {
+      const handler = ({}, res:any) => {
         res.send('OK');
       };
 

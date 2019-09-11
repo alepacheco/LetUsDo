@@ -84,7 +84,7 @@ describe('/createPayment', () => {
 
   describe('executePayment', () => {
     const demoData = {
-      token: { id: 1234 },
+      token: { id: '1234' },
       amount: 100,
       taskText: 'This is my task',
       email: 'test@example.com',
@@ -109,7 +109,7 @@ describe('/createPayment', () => {
           timeStamp: '2017-06-13T00:00:00.000Z'
         },
         receipt_email: 'test@example.com',
-        source: 1234
+        source: '1234'
       });
     });
 

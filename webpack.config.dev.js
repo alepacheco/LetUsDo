@@ -16,7 +16,7 @@ const GLOBALS = {
 
 export default {
   resolve: {
-    extensions: ['*', '.js', '.jsx', '.json'],
+    extensions: ['*', '.js', '.jsx', '.tsx', '.json'],
     // To support react-hot-loader
     alias: {
       'react-dom': '@hot-loader/react-dom',
@@ -53,6 +53,7 @@ export default {
   ],
   module: {
     rules: [
+      { test: /\.tsx?$/, loader: 'awesome-typescript-loader' }, // other loader configuration goes in the array
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
