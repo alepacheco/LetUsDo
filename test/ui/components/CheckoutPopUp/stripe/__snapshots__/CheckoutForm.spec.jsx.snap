@@ -5,35 +5,42 @@ exports[`<CheckoutForm /> renders 1`] = `
   className="checkout"
 >
   <div
-    className="card-numer-field"
-  >
-    <CardElement
-      onBlur={[Function]}
-      onChange={[Function]}
-      onFocus={[Function]}
-      onReady={[Function]}
-    />
-  </div>
+    id="checkout-bottom"
+  />
   <div
-    className="pay-button-wrapper"
+    id="checkout-form"
   >
-    <Button
-      active={false}
-      className="pay-button"
-      disabled={false}
-      onClick={[Function]}
-      type="button"
-      variant="primary"
+    <div
+      className="card-numer-field"
     >
-      Pay
-       
-      <Badge
-        pill={true}
-        variant="light"
+      <CardElement
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        onReady={[Function]}
+      />
+    </div>
+    <div
+      className="pay-button-wrapper"
+    >
+      <Button
+        active={false}
+        className="pay-button"
+        disabled={false}
+        onClick={[Function]}
+        type="button"
+        variant="primary"
       >
-        20£
-      </Badge>
-    </Button>
+        Pay
+         
+        <Badge
+          pill={true}
+          variant="light"
+        >
+          20£
+        </Badge>
+      </Button>
+    </div>
   </div>
 </div>
 `;
