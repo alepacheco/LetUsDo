@@ -6,8 +6,7 @@ import { Provider } from 'react-redux';
 import App from 'src/App';
 import initGa from 'src/utils/analytics';
 
-
-export const Root: React.FC<{store: any, history: History}> = ({ store, history }) => {
+export const Root: React.FC<{ store: any; history: History }> = ({ store, history }) => {
   initGa(history);
 
   return (
@@ -17,11 +16,10 @@ export const Root: React.FC<{store: any, history: History}> = ({ store, history 
       </ConnectedRouter>
     </Provider>
   );
-}
-
+};
 
 Root.propTypes = {
-  store: PropTypes.object.isRequired,
+  store: PropTypes.object.isRequired
 };
 
 export default Root;

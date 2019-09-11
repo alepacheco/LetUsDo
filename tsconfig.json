@@ -1,38 +1,23 @@
 {
-    "compilerOptions": {
-        "sourceMap": true,
-        "noImplicitAny": true,
-        "module": "esnext",
-        "target": "es6",
-        "jsx": "react",
-        "esModuleInterop": true,
-        "strict": true,
-        "moduleResolution": "node",
-        "lib": [
-            "es2018",
-            "dom"
-        ],
-        "baseUrl": ".",
-        "paths": {
-            "src/*": [
-                "./src/*"
-            ],
-            "components/*": [
-                "./src/components/*"
-            ],
-            "pages/*": [
-                "src/pages/*"
-            ],
-            "utils/*": [
-                "src/utils/*"
-            ]
-        }
-    },
-    "include": [
-        "./src/**/*"
-    ],
-    "exclude": [
-        "./test/**/*"
-    ],
-    "allowSyntheticDefaultImports": true
+  "compilerOptions": {
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "module": "esnext",
+    "target": "es6",
+    "jsx": "react",
+    "esModuleInterop": true,
+    "strict": true,
+    "moduleResolution": "node",
+    "lib": ["es2018", "dom"],
+    "baseUrl": ".",
+    "paths": {
+      "src/*": ["./src/*"],
+      "components/*": ["./src/components/*"],
+      "pages/*": ["src/pages/*"],
+      "utils/*": ["src/utils/*"]
+    }
+  },
+  "include": ["./src/**/*"],
+  "exclude": ["./test/**/*"],
+  "allowSyntheticDefaultImports": true
 }

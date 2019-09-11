@@ -57,7 +57,7 @@ This starter kit implements best practices like testing, minification, bundling,
 Unfortunately, scripts in package.json can't be commented inline because the JSON spec doesn't support comments, so I'm providing info on what each script in package.json does here.
 
 | **Script**        | **Description**                                                                                                                                            |
-| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | remove-demo       | Removes the demo application so you can begin development.                                                                                                 |
 | prestart          | Runs automatically before start to display a message.                                                                                                      |
 | start             | Runs tests, lints, starts dev webserver, and opens the app in your default browser.                                                                        |
@@ -116,7 +116,7 @@ Unfortunately, scripts in package.json can't be commented inline because the JSO
 ## What are the dependencies in package.json used for?
 
 | **Dependency**                                 | **Use**                                                                                                                                                                                                                                                                                        |
-| ---------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | autoprefixer                                   | Automatically adds vendor prefixes, using data from Can I Use.                                                                                                                                                                                                                                 |
 | object-assign                                  | Polyfill for Object.assign                                                                                                                                                                                                                                                                     |
 | babel-cli                                      | Babel Command line interface                                                                                                                                                                                                                                                                   |

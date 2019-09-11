@@ -18,7 +18,8 @@
     "build": "babel-node tools/build.js",
     "buildd": "npm run remove-dist && babel-node tools/build.js",
     "test": "npm run lint && jest",
-    "test:CI": "npm run test && npm run test:send-cover",
+    "test:integration": "jest --runTestsByPath test/integration/index.test.ts",
+    "test:CI": "npm run test && npm run test:integration && npm run test:send-cover",
     "test:cover": "npm run test -- --coverage ",
     "test:send-cover": "jest --coverage --coverageReporters=text-lcov | coveralls",
     "test:watch": "jest --watchAll",
@@ -141,6 +142,9 @@
     "url": ""
   },
   "jest": {
+    "modulePathIgnorePatterns": [
+      "<rootDir>/test/integration"
+    ],
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/tools/assetsTransformer.js",
       "\\.(css)$": "<rootDir>/tools/assetsTransformer.js",

@@ -4,14 +4,14 @@ import { History, Location } from 'history';
 const debug = false;
 const trackPageView = (location: Location) => {
   ReactGA.set({
-    page: location.pathname,
+    page: location.pathname
   });
   ReactGA.pageview(location.pathname);
 };
 
 const initGa = (history: History) => {
   ReactGA.initialize('UA-143596433-1', {
-    debug,
+    debug
   });
   if (debug) {
     ReactGA.ga('set', 'sendHitTask', null);
@@ -20,7 +20,4 @@ const initGa = (history: History) => {
   history.listen(trackPageView);
 };
 
-export {
-  initGa as default,
-  trackPageView,
-};
+export { initGa as default, trackPageView };
