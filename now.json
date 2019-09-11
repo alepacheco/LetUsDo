@@ -1,4 +1,6 @@
 {
+  "name": "WeDo",
+  "version": 2,
   "routes": [
     { "src": "/api/(.*)", "dest": "/api/$1" },
     {
@@ -21,7 +23,6 @@
       "use": "@now/node"
     }
   ],
-  "version": 2,
   "build": {
     "env": {
       "STRIPE_SERVER": "@stripe-server-live",

@@ -3,7 +3,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import { TaskBox } from '../../src/components/TaskBox';
+import { TaskBox } from 'components/TaskBox';
 
 const constantDate = new Date('2017-06-13T04:41:20');
 

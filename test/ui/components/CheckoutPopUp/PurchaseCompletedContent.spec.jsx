@@ -2,7 +2,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import { PurchaseCompletedContent } from '../../../src/components/CheckoutPopUp/PurchaseCompletedContent';
+import { PurchaseCompletedContent } from 'components/CheckoutPopUp/PurchaseCompletedContent';
 
 describe('<PurchaseCompletedContent />', () => {
   it('renders', () => {

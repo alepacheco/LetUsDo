@@ -2,7 +2,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import { CheckoutFormWrapper } from '../../../../src/components/CheckoutPopUp/stripe/CheckoutFormWrapper';
+import { CheckoutFormWrapper } from 'components/CheckoutPopUp/stripe/CheckoutFormWrapper';
 
 process.env.STRIPE_FRONT = 'mykey';
 

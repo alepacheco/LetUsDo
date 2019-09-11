@@ -1,11 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import { FullFeatureList } from '../../src/components/FullFeatureList';
+import App from 'src/App';
 
-describe('<FullFeatureList />', () => {
+describe('<App />', () => {
   it('renders', () => {
-    const wrapper = shallow(<FullFeatureList />);
+    const wrapper = shallow(<App />);
 
     expect(toJson(wrapper)).toMatchSnapshot();
   });

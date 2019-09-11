@@ -15,8 +15,11 @@ const GLOBALS = {
 export default {
   resolve: {
     extensions: ['*', '.js', '.ts', '.jsx', '.tsx', '.json'],
-    // To support react-hot-loader
     alias: {
+      src: path.resolve(__dirname, 'src/'),
+      pages: path.resolve(__dirname, 'src/pages'),
+      components: path.resolve(__dirname, 'src/components'),
+      utils: path.resolve(__dirname, 'src/utils'),
       'react-dom': '@hot-loader/react-dom',
     },
   },

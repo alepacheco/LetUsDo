@@ -1,8 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
-
-import { CenteredContent } from '../../src/components/CenteredContent';
+import { CenteredContent } from 'components/CenteredContent';
 
 describe('<FeaturesList />', () => {
   it('renders', () => {

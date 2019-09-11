@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import { setCheckoutEmailValid, setCheckoutEmail } from '../../src/actions/checkoutPopUpActions';
+import { setCheckoutEmailValid, setCheckoutEmail } from 'src/actions/checkoutPopUpActions';
 
 describe('checkoutPopUpActions', () => {
   it('setCheckoutEmailValid', () => {

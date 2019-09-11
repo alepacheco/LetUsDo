@@ -2,7 +2,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import Root from '../../src/Root';
+import Root from 'src/Root';
 
 jest.mock('react-ga', () => ({
   initialize: jest.fn(),

@@ -1,16 +1,16 @@
 import React, { Suspense, lazy } from 'react';
 // @ts-ignore
-import { LandingHeader } from '../components/LandingHeader';
+import { LandingHeader } from 'components/LandingHeader';
 // @ts-ignore
-import { FeaturesList } from '../components/FeaturesList';
+import { FeaturesList } from 'components/FeaturesList';
 // @ts-ignore
-import { Footer } from '../components/Footer';
+import { Footer } from 'components/Footer';
 // @ts-ignore
-const CheckoutPopUp = lazy(() => import('../components/CheckoutPopUp/index'));
+const CheckoutPopUp = lazy(() => import('components/CheckoutPopUp/index'));
 // @ts-ignore
-const TaskBox = lazy(() => import('../components/TaskBox'));
+const TaskBox = lazy(() => import('components/TaskBox'));
 // @ts-ignore
-const FullFeatureList = lazy(() => import('../components/FullFeatureList'));
+const FullFeatureList = lazy(() => import('components/FullFeatureList'));
 const Loading = <div>Loading...</div>;
 
 const HomePage = () => (

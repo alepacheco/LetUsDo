@@ -1,6 +1,6 @@
 import React from 'react';
-import '../styles/components/LandingHeader.scss';
-import Icon from '../static/images/undraw_process.svg';
+import 'src/styles/components/LandingHeader.scss';
+import Icon from 'src/static/images/undraw_process.svg';
 
 export const LandingHeader = () => (
   <div className="landing-header">

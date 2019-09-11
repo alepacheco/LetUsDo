@@ -2,7 +2,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import { CheckoutPopUp } from '../../../src/components/CheckoutPopUp/index';
+import { CheckoutPopUp } from 'components/CheckoutPopUp/index';
 
 jest.mock('react-ga', () => ({ initialize: jest.fn() }));
 

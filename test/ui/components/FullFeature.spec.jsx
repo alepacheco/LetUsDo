@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 
-import { FullFeature } from '../../src/components/FullFeature';
+import { FullFeature } from 'components/FullFeature';
 
 describe('<FullFeature />', () => {
   it('renders', () => {

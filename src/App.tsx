@@ -2,7 +2,7 @@
 import { Route, Switch } from 'react-router-dom';
 import React from 'react';
 import { hot } from 'react-hot-loader';
-import HomePage from './pages/HomePage';
+import HomePage from 'pages/HomePage';
 
 const App: React.FC<{}> = () => (
   <div>

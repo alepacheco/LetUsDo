@@ -1,12 +1,9 @@
 {
-  "name": "we-do",
-  "version": "0.1.0",
-  "description": "",
+  "name": "let-us-do",
+  "version": "1.0.0",
+  "description": "Outsourcing platform ",
   "scripts": {
     "preinstall": "node tools/nodeVersionCheck.js",
-    "remove-demo": "babel-node tools/removeDemo.js",
-    "start-message": "babel-node tools/startMessage.js",
-    "prestart": "npm run start-message",
     "start": "concurrently -k -r -s first \"npm run test:watch\" \"npm run open:src\" \"npm run lint:watch\"",
     "dev": "npm run start",
     "open:src": "babel-node tools/srcServer.js",
@@ -107,6 +104,7 @@
     "identity-obj-proxy": "3.0.0",
     "jest": "24.9.0",
     "jest-cli": "24.9.0",
+    "jest-dev-server": "4.3.0",
     "json-loader": "0.5.7",
     "mini-css-extract-plugin": "0.8.0",
     "mockdate": "2.0.5",
@@ -146,7 +144,10 @@
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/tools/assetsTransformer.js",
       "\\.(css)$": "<rootDir>/tools/assetsTransformer.js",
-      "\\.(scss)$": "<rootDir>/tools/assetsTransformer.js"
+      "\\.(scss)$": "<rootDir>/tools/assetsTransformer.js",
+      "^src(.*)$": "<rootDir>/src$1",
+      "^components(.*)$": "<rootDir>/src/components$1",
+      "^pages(.*)$": "<rootDir>/src/pages$1"
     },
     "setupFiles": [
       "raf/polyfill",

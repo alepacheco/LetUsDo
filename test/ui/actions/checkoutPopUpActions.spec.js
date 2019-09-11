@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import { setDialog, setTaskTest } from '../../src/actions/taskModalActions';
+import { setDialog, setTaskTest } from 'src/actions/taskModalActions';
 
 describe('taskModalActions', () => {
   it('setDialog', () => {
