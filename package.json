@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Outsourcing platform ",
   "scripts": {
-    "preinstall": "ts-node tools/nodeVersionCheck.ts",
     "start": "concurrently -k -r -s first \"npm run test:watch\" \"npm run open:src\" \"npm run lint:watch\"",
     "dev": "npm run start",
     "open:src": "ts-node tools/srcServer.ts",
