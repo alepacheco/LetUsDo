@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 import Badge from 'react-bootstrap/Badge';
 import { connect } from 'react-redux';
 import { CardElement, injectStripe, ReactStripeElements } from 'react-stripe-elements';
-
+import { trackEvent } from 'src/utils/analytics';
 import 'src/styles/components/stripe.css';
 import { submitPayment } from 'src/utils/stripe';
 // @ts-ignore
@@ -55,13 +55,23 @@ export const CheckoutForm: React.FC<{
   actions: { setDialog: (state: string) => void };
 }> = ({ email, stripe, taskText, actions: { setDialog }, validEmail }) => {
   if (stripe) {
-    tryApplePay({ stripe });
+    // tryApplePay({ stripe });
   }
 
   const onClick = async () => {
     console.log('Set loading here but keep the element alive.');
+    trackEvent({
+      category: 'click',
+      action: 'pay button clicked'
+    });
+    trackEvent({
+      category: 'purchase',
+      action: 'purchase initiated'
+    });
+
     if (!stripe) {
       setDialog('purchaseFailed');
+
       return;
     }
 
@@ -72,8 +82,16 @@ export const CheckoutForm: React.FC<{
     });
     if (completed) {
       setDialog('purchaseCompleted');
+      trackEvent({
+        category: 'purchase',
+        action: 'purchase completed'
+      });
     } else {
       setDialog('purchaseFailed');
+      trackEvent({
+        category: 'purchase',
+        action: 'purchase failed'
+      });
     }
   };
 

@@ -37,7 +37,13 @@ describe('executePaymentMethod', () => {
             confirm: true,
             confirmation_method: 'manual',
             currency: 'gbp',
-            payment_method: '1234'
+            description: 'Task details: This is my task',
+            metadata: {
+                email: 'test@example.com',
+                remoteAddress: '127.0.0.1',
+            },
+            payment_method: '1234',
+            receipt_email: 'test@example.com'
         });
     });
 

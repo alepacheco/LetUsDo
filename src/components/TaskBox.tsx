@@ -7,6 +7,7 @@ import { bindActionCreators } from 'redux';
 import '../styles/components/TaskBox.scss';
 import * as actions from '../actions/taskModalActions';
 import { CenteredContent } from './CenteredContent';
+import { trackEvent } from 'src/utils/analytics';
 
 type TaskBoxProps = {
   actions: {
@@ -19,11 +20,20 @@ type TaskBoxProps = {
 export const TaskBox: React.FC<TaskBoxProps> = ({ actions, taskText }) => {
   const onClickGetItDone = () => {
     actions.setDialog('open');
-    // TODO add tracking
+    trackEvent({
+      category: 'click',
+      action: 'get it done button clicked',
+      label: `containing task: ${taskText}`
+    });
   }
 
   const onChangeTaskDescription = (event: any) => {
     actions.setTaskText(event.target.value);
+    trackEvent({
+      category: 'formChange',
+      action: 'TaskBox text input change',
+      label: event.target.value
+    });
   }
 
   const dayOfWeek = new Date().toLocaleString('en-us', { weekday: 'long' });
@@ -52,7 +62,6 @@ export const TaskBox: React.FC<TaskBoxProps> = ({ actions, taskText }) => {
               <Button
                 className="get-it-done-button"
                 onClick={onClickGetItDone}
-                disabled={taskText === ''}
               >
                 Get it done
                 </Button>

@@ -9,9 +9,24 @@ const trackPageView = (location: Location) => {
   ReactGA.pageview(location.pathname);
 };
 
+const trackModalView = (location: string) => {
+  ReactGA.modalview(location);
+};
+
+const trackEvent = ({category, action, label}: {category: string, action: string, label?: string}) => {
+  ReactGA.event({
+    category,
+    action,
+    label
+  });
+};
+
 const initGa = (history: History) => {
   ReactGA.initialize('UA-143596433-1', {
-    debug
+    debug,
+    gaOptions: {
+      siteSpeedSampleRate: 20
+    }
   });
   if (debug) {
     ReactGA.ga('set', 'sendHitTask', null);
@@ -20,4 +35,4 @@ const initGa = (history: History) => {
   history.listen(trackPageView);
 };
 
-export { initGa as default, trackPageView };
+export { initGa as default, trackPageView, trackEvent, trackModalView };

@@ -104,7 +104,13 @@ describe('/createPayment', () => {
       confirm: true,
       confirmation_method: 'manual',
       currency: 'gbp',
-      payment_method: 'payment_method_id_tok_fr'
+      description: 'Task details: taskText',
+      metadata: {
+        email: 'email@email.com',
+        remoteAddress: '127.0.0.1',
+      },
+      payment_method: 'payment_method_id_tok_fr',
+      receipt_email: 'email@email.com'
     });
     expect(mockPaymentIntentConfirm).not.toHaveBeenCalled();
   });
@@ -139,7 +145,13 @@ describe('/createPayment', () => {
       confirm: true,
       confirmation_method: 'manual',
       currency: 'gbp',
-      payment_method: 'payment_method_id_tok_fr'
+      description: 'Task details: taskText',
+      metadata: {
+        email: 'email@email.com',
+        remoteAddress: '127.0.0.1',
+      },
+      payment_method: 'payment_method_id_tok_fr',
+      receipt_email: 'email@email.com'
     });
     expect(mockPaymentIntentConfirm).not.toHaveBeenCalled();
   });

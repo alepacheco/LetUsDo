@@ -53,7 +53,7 @@ describe('stripe utils', () => {
       const result = await submitPayment(props);
       expect(result).toEqual(false);
 
-      expect(mockCreatePaymentMethod).toHaveBeenLastCalledWith("card", { "billing_details": {} });
+      expect(mockCreatePaymentMethod).toHaveBeenLastCalledWith("card");
     });
 
     it('returns true if completed simply', async () => {
@@ -63,7 +63,7 @@ describe('stripe utils', () => {
 
       const result = await submitPayment(props);
       expect(result).toEqual(true);
-      expect(mockCreatePaymentMethod).toHaveBeenLastCalledWith("card", { "billing_details": {} });
+      expect(mockCreatePaymentMethod).toHaveBeenLastCalledWith("card");
     });
 
     it('returns true if completed with 2fa', async () => {
@@ -76,7 +76,7 @@ describe('stripe utils', () => {
       const result = await submitPayment(props);
       expect(mockHandleCardAction).toHaveBeenLastCalledWith(344324)
       expect(result).toEqual(true);
-      expect(mockCreatePaymentMethod).toHaveBeenLastCalledWith("card", { "billing_details": {} });
+      expect(mockCreatePaymentMethod).toHaveBeenLastCalledWith('card');
     });
   });
 
