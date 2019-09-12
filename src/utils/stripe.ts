@@ -57,9 +57,7 @@ type SubmitProps = {
 };
 export const submitPayment = async ({ email, stripe, taskText }: SubmitProps): Promise<boolean> => {
   try {
-    const { paymentMethod, error } = await stripe.createPaymentMethod('card', {
-      billing_details: {}
-    });
+    const { paymentMethod, error } = await stripe.createPaymentMethod('card');
 
     if (error || !paymentMethod || !paymentMethod.id) {
       throw error;

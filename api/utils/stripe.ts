@@ -61,9 +61,15 @@ export const executePaymentMethod = async ({
 }: ExecutePaymentMethod) => handleError(() => stripe.paymentIntents.create({
     payment_method: payment_method_id,
     amount,
+    description: `Task details: ${taskText}`,
     currency: 'gbp',
+    receipt_email: email,
     confirmation_method: 'manual',
-    confirm: true
+    confirm: true,
+    metadata: {
+        email,
+        remoteAddress
+    }
 }));
 
 
