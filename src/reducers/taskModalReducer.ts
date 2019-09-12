@@ -3,7 +3,7 @@ import initialState from '../store/initialState';
 
 export default function taskBoxReducer(
   state = initialState.taskModal,
-  action: { type: string; text: string; state: string; applePayAvailable: boolean }
+  action: { type: string; text: string; state: string; applePayAvailable: boolean | null }
 ) {
   let newState;
 

@@ -1,23 +1,21 @@
 /* eslint-disable no-console */
 import React, { useState } from 'react';
-import {
-  injectStripe,
-  ReactStripeElements,
-  PaymentRequestButtonElement
-} from 'react-stripe-elements';
 import 'src/styles/components/stripe.css';
 import CheckoutForm from './CheckoutForm';
 import CheckoutApplePay from './CheckoutApplePay';
+import { connect } from 'react-redux';
 
-export const CheckoutFormSelector: React.FC<{ stripe?: ReactStripeElements.StripeProps }> = ({
-  stripe
+export const CheckoutFormSelector: React.FC<{ applePayAvailable: boolean }> = ({
+  applePayAvailable
 }) => {
-  return (
-    <>
-      <CheckoutForm />
-      <CheckoutApplePay />
-    </>
-  );
+  if (applePayAvailable || applePayAvailable === null) {
+    return <CheckoutApplePay />;
+  }
+  return <CheckoutForm />;
 };
 
-export default injectStripe(CheckoutFormSelector);
+const mapStateToProps = (state: any) => ({
+  applePayAvailable: state.taskModal.applePayAvailable
+});
+
+export default connect(mapStateToProps)(CheckoutFormSelector);

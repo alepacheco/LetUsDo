@@ -23,21 +23,6 @@ exports[`<CheckoutContent /> renders 1`] = `
     >
       This is a task
     </div>
-    <Form
-      inline={false}
-    >
-      <FormGroup
-        className="email-form"
-        controlId="formBasicEmail"
-      >
-        <FormControl
-          onChange={[Function]}
-          placeholder="Enter email"
-          type="email"
-          value="email@example.com"
-        />
-      </FormGroup>
-    </Form>
     <Component />
   </ModalBody>
 </Fragment>
