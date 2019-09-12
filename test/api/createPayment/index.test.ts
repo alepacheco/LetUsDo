@@ -1,4 +1,4 @@
-import { handler, executePaymentMethod } from '../../../api/createPayment/index';
+import { handler } from '../../../api/createPayment/index';
 process.env.STRIPE_SERVER = 'sk_test_Fe8VrGftldFe2Vy3e38I65Gv00qN5qwLa5';
 
 const mockPaymentIntentCreate = jest.fn();
@@ -104,7 +104,13 @@ describe('/createPayment', () => {
       confirm: true,
       confirmation_method: 'manual',
       currency: 'gbp',
-      payment_method: 'payment_method_id_tok_fr'
+      description: 'Task details: taskText',
+      metadata: {
+        email: 'email@email.com',
+        remoteAddress: '127.0.0.1',
+      },
+      payment_method: 'payment_method_id_tok_fr',
+      receipt_email: 'email@email.com'
     });
     expect(mockPaymentIntentConfirm).not.toHaveBeenCalled();
   });
@@ -139,7 +145,13 @@ describe('/createPayment', () => {
       confirm: true,
       confirmation_method: 'manual',
       currency: 'gbp',
-      payment_method: 'payment_method_id_tok_fr'
+      description: 'Task details: taskText',
+      metadata: {
+        email: 'email@email.com',
+        remoteAddress: '127.0.0.1',
+      },
+      payment_method: 'payment_method_id_tok_fr',
+      receipt_email: 'email@email.com'
     });
     expect(mockPaymentIntentConfirm).not.toHaveBeenCalled();
   });
@@ -151,45 +163,5 @@ describe('/createPayment', () => {
 
     expect(res.status).toHaveBeenLastCalledWith(500);
     expect(res.json).toHaveBeenLastCalledWith({ error: new Error('Connection lost') });
-  });
-
-  describe('executePaymentMethod', () => {
-    const demoData = {
-      payment_method_id: '1234',
-      amount: 100,
-      taskText: 'This is my task',
-      email: 'test@example.com',
-      remoteAddress: '127.0.0.1',
-      stripe: mockStripeModule
-    };
-
-    it('resturns ok', async () => {
-      mockPaymentIntentCreate.mockReturnValueOnce({ status: 'succeeded' });
-
-      const paymentCompleted = await executePaymentMethod(demoData);
-
-      expect(paymentCompleted).toEqual({ response: { success: true }, status: 200 });
-
-      expect(mockPaymentIntentCreate).toHaveBeenLastCalledWith({
-        amount: 100,
-        confirm: true,
-        confirmation_method: 'manual',
-        currency: 'gbp',
-        payment_method: '1234'
-      });
-    });
-
-    it('resturns error', async () => {
-      mockPaymentIntentCreate.mockReturnValueOnce(Promise.reject(new Error('Connection lost')));
-
-      const paymentCompleted = await executePaymentMethod(demoData);
-
-      expect(paymentCompleted).toEqual({
-        response: {
-          error: new Error('Connection lost')
-        },
-        status: 500
-      });
-    });
   });
 });

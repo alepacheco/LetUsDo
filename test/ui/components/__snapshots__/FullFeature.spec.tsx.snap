@@ -4,7 +4,7 @@ exports[`<FullFeature /> renders 1`] = `
 <div
   className="full-feature"
 >
-  <CenteredContent
+  <Component
     reverse={false}
   >
     <div
@@ -31,6 +31,6 @@ exports[`<FullFeature /> renders 1`] = `
         </div>
       </div>
     </div>
-  </CenteredContent>
+  </Component>
 </div>
 `;

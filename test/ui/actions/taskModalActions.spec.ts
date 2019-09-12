@@ -3,7 +3,7 @@ import { setCheckoutEmailValid, setCheckoutEmail } from 'src/actions/checkoutPop
 
 describe('checkoutPopUpActions', () => {
   it('setCheckoutEmailValid', () => {
-    expect(setCheckoutEmailValid('email@example.com')).toEqual({ type: "SET_CHECKOUT_EMAIL_VALID", validEmail: "email@example.com" });
+    expect(setCheckoutEmailValid(true)).toEqual({ type: "SET_CHECKOUT_EMAIL_VALID", validEmail: true });
   });
 
   it('setCheckoutEmail', () => {

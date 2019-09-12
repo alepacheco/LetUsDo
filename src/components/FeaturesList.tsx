@@ -1,12 +1,20 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import '../styles/components/FeaturesList.scss';
-import cafe from '../static/images/cafe.png';
-import london from '../static/images/london-bridge.png';
-import cash from '../static/images/cash.png';
+import 'src/styles/components/FeaturesList.scss';
+// @ts-ignore
+import cafe from 'src/static/images/cafe.png';
+// @ts-ignore
+import london from 'src/static/images/london-bridge.png';
+// @ts-ignore
+import cash from 'src/static/images/cash.png';
 import CenteredContent from './CenteredContent';
 
-const ListElement = ({ image, title, children }) => (
+type ListElementProps = {
+  image?: string;
+  title: string;
+};
+
+
+const ListElement: React.FC<ListElementProps> = ({ image, title, children }) => (
   <div className="item">
     <img alt="" className="feature-icon" src={image} />
     <div className="list-element-title">{title}</div>
@@ -14,11 +22,6 @@ const ListElement = ({ image, title, children }) => (
   </div>
 );
 
-ListElement.propTypes = {
-  image: PropTypes.oneOfType([PropTypes.string, PropTypes.object, PropTypes.func]).isRequired,
-  title: PropTypes.string.isRequired,
-  children: PropTypes.node.isRequired
-};
 
 export const FeaturesList = () => (
   <div className="features-list">

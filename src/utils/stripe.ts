@@ -9,7 +9,7 @@ type TryPayment = {
   stripe: ReactStripeElements.StripeProps;
 };
 
-const tryPayment = async ({
+export const tryPayment = async ({
   taskText,
   email,
   payment_method_id,
@@ -57,9 +57,7 @@ type SubmitProps = {
 };
 export const submitPayment = async ({ email, stripe, taskText }: SubmitProps): Promise<boolean> => {
   try {
-    const { paymentMethod, error } = await stripe.createPaymentMethod('card', {
-      billing_details: {}
-    });
+    const { paymentMethod, error } = await stripe.createPaymentMethod('card');
 
     if (error || !paymentMethod || !paymentMethod.id) {
       throw error;

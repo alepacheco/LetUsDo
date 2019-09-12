@@ -2,8 +2,8 @@
 
 exports[`<HomePage /> renders 1`] = `
 <div>
-  <LandingHeader />
-  <FeaturesList />
+  <Component />
+  <Component />
   <Suspense
     fallback={
       <div>
@@ -23,6 +23,6 @@ exports[`<HomePage /> renders 1`] = `
   >
     <lazy />
   </Suspense>
-  <Footer />
+  <Component />
 </div>
 `;

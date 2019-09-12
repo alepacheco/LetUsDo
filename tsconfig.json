@@ -7,6 +7,7 @@
     "jsx": "react",
     "esModuleInterop": true,
     "strict": true,
+    "allowSyntheticDefaultImports": true,
     "moduleResolution": "node",
     "lib": ["es2018", "dom"],
     "baseUrl": ".",
@@ -19,5 +20,6 @@
   },
   "include": ["./src/**/*"],
   "exclude": ["./test/**/*"],
+  "esModuleInterop": true,
   "allowSyntheticDefaultImports": true
 }

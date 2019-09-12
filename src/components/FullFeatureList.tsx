@@ -1,7 +1,10 @@
 import React from 'react';
 import { FullFeature } from './FullFeature';
+// @ts-ignore
 import Selection from '../static/images/undraw_selection.svg';
+// @ts-ignore
 import Sprint from '../static/images/undraw_design_sprint.svg';
+// @ts-ignore
 import Park from '../static/images/undraw_at_the_park.svg';
 
 export const FullFeatureList = () => (

@@ -12,7 +12,7 @@ import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 import config from '../webpack.config.dev';
 
-const bundler = webpack(config);
+const bundler = webpack(<any>config);
 
 // Run Browsersync and use middleware for Hot Module Replacement
 browserSync({

@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 import Badge from 'react-bootstrap/Badge';
 import { connect } from 'react-redux';
 import { CardElement, injectStripe, ReactStripeElements } from 'react-stripe-elements';
-
+import { trackEvent } from 'src/utils/analytics';
 import 'src/styles/components/stripe.css';
 import { submitPayment } from 'src/utils/stripe';
 // @ts-ignore
@@ -24,8 +24,21 @@ const tryApplePay = async ({ stripe }: { stripe: ReactStripeElements.StripeProps
   });
 
   const canUsePayBotton = await paymentRequest.canMakePayment();
-  console.log({ canUsePayBotton });
-  if (!canUsePayBotton) {
+  if (canUsePayBotton) {
+    // @ts-ignore
+    const elements = stripe.elements();
+
+    const prButton = elements.create('paymentRequestButton', {
+      paymentRequest
+    });
+
+    prButton.mount('#checkout-bottom');
+
+    const element = document.getElementById('checkout-form');
+    if (element) {
+      element.style.display = 'none';
+    }
+  } else {
     const element = document.getElementById('checkout-bottom');
     if (element) {
       element.style.display = 'none';
@@ -88,13 +101,23 @@ export const CheckoutForm: React.FC<{
   actions: { setDialog: (state: string) => void };
 }> = ({ email, stripe, taskText, actions: { setDialog }, validEmail }) => {
   if (stripe) {
-    tryApplePay({ stripe });
+    // tryApplePay({ stripe });
   }
 
   const onClick = async () => {
     console.log('Set loading here but keep the element alive.');
+    trackEvent({
+      category: 'click',
+      action: 'pay button clicked'
+    });
+    trackEvent({
+      category: 'purchase',
+      action: 'purchase initiated'
+    });
+
     if (!stripe) {
       setDialog('purchaseFailed');
+
       return;
     }
 
@@ -105,8 +128,16 @@ export const CheckoutForm: React.FC<{
     });
     if (completed) {
       setDialog('purchaseCompleted');
+      trackEvent({
+        category: 'purchase',
+        action: 'purchase completed'
+      });
     } else {
       setDialog('purchaseFailed');
+      trackEvent({
+        category: 'purchase',
+        action: 'purchase failed'
+      });
     }
   };
 

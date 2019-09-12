@@ -1,7 +1,7 @@
 import objectAssign from 'object-assign';
-import initialState from './initialState';
+import initialState from '../store/initialState';
 
-export default function fuelSavingsReducer(state = initialState.taskModal, action) {
+export default function taskBoxReducer(state = initialState.taskModal, action: {type: string, text: string, state: string}) {
   let newState;
 
   switch (action.type) {

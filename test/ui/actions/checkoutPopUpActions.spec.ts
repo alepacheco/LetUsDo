@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import { setDialog, setTaskTest } from 'src/actions/taskModalActions';
+import { setDialog, setTaskText } from 'src/actions/taskModalActions';
 
 describe('taskModalActions', () => {
   it('setDialog', () => {
@@ -9,8 +9,8 @@ describe('taskModalActions', () => {
     });
   });
 
-  it('setTaskTest', () => {
-    expect(setTaskTest('This is my task')).toEqual({
+  it('setTaskText', () => {
+    expect(setTaskText('This is my task')).toEqual({
       text: "This is my task",
       type: "SET_TASK_TEST",
     });

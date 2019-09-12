@@ -4,7 +4,7 @@ exports[`<TaskBox /> renders 1`] = `
 <div
   className="task-modal"
 >
-  <CenteredContent>
+  <Component>
     <Card
       body={false}
       className="center-inner"
@@ -48,6 +48,6 @@ exports[`<TaskBox /> renders 1`] = `
         </div>
       </CardBody>
     </Card>
-  </CenteredContent>
+  </Component>
 </div>
 `;

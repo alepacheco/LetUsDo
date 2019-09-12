@@ -10,21 +10,21 @@ import {
 
 process.env.NODE_ENV = 'production'; // this assures React is built in prod mode and that the Babel dev config doesn't apply.
 
-webpack(config).run((error, stats) => {
+webpack(<any>config).run((error, stats) => {
   if (error) { // so a fatal error occurred. Stop here.
-    console.log(chalkError(error));
+    console.log(chalkError(<any>error));
     return 1;
   }
 
   const jsonStats = stats.toJson();
 
-  if (jsonStats.hasErrors) {
+  if (stats.hasErrors && jsonStats.errors.length > 0) {
     // eslint-disable-next-line no-shadow
     jsonStats.errors.map((error) => console.log(chalkError(error)));
     throw new Error('Webpack failled');
   }
 
-  if (jsonStats.hasWarnings) {
+  if (stats.hasWarnings && jsonStats.warnings.length > 0) {
     console.log(chalkWarning('Webpack generated the following warnings: '));
     jsonStats.warnings.map((warning) => console.log(chalkWarning(warning)));
   }
