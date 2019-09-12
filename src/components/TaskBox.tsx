@@ -13,7 +13,7 @@ type TaskBoxProps = {
   actions: {
     setTaskText: (text: string) => void;
     setDialog: (state: string) => void;
-  }
+  };
   taskText: string;
 };
 
@@ -25,7 +25,7 @@ export const TaskBox: React.FC<TaskBoxProps> = ({ actions, taskText }) => {
       action: 'get it done button clicked',
       label: `containing task: ${taskText}`
     });
-  }
+  };
 
   const onChangeTaskDescription = (event: any) => {
     actions.setTaskText(event.target.value);
@@ -34,7 +34,7 @@ export const TaskBox: React.FC<TaskBoxProps> = ({ actions, taskText }) => {
       action: 'TaskBox text input change',
       label: event.target.value
     });
-  }
+  };
 
   const dayOfWeek = new Date().toLocaleString('en-us', { weekday: 'long' });
 
@@ -45,7 +45,7 @@ export const TaskBox: React.FC<TaskBoxProps> = ({ actions, taskText }) => {
           <Card.Body>
             <Card.Title className="task-modal-title left-text">
               What can we do for you this {dayOfWeek}?
-              </Card.Title>
+            </Card.Title>
             <Form className="form-wrapper">
               <Form.Group>
                 <Form.Control
@@ -59,19 +59,16 @@ export const TaskBox: React.FC<TaskBoxProps> = ({ actions, taskText }) => {
               </Form.Group>
             </Form>
             <div className="get-it-done-button-wrapper">
-              <Button
-                className="get-it-done-button"
-                onClick={onClickGetItDone}
-              >
+              <Button className="get-it-done-button" onClick={onClickGetItDone}>
                 Get it done
-                </Button>
+              </Button>
             </div>
           </Card.Body>
         </Card>
       </CenteredContent>
     </div>
   );
-}
+};
 
 function mapStateToProps(state: any) {
   return {

@@ -5,9 +5,9 @@ import toJson from 'enzyme-to-json';
 import { CheckoutForm } from 'components/CheckoutPopUp/stripe/CheckoutForm';
 
 describe('<CheckoutForm />', () => {
-
   const stripeMock: any = {
     paymentRequest: () => ({
+      on: () => {},
       canMakePayment: () => true
     }),
     elements: () => ({

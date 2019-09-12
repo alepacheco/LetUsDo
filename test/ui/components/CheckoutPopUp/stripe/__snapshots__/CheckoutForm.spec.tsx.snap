@@ -5,9 +5,6 @@ exports[`<CheckoutForm /> renders 1`] = `
   className="checkout"
 >
   <div
-    id="checkout-bottom"
-  />
-  <div
     id="checkout-form"
   >
     <div

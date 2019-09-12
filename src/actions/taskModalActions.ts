@@ -1,13 +1,20 @@
 export function setDialog(state: string) {
   return {
     type: 'SET_CHECKOUT_DIALOG',
-    state,
+    state
+  };
+}
+
+export function setApplePayAvailable(applePayAvailable: boolean) {
+  return {
+    type: 'SET_APPLE_PAY_AVAILABLE',
+    applePayAvailable
   };
 }
 
 export function setTaskText(text: string) {
   return {
     type: 'SET_TASK_TEST',
-    text,
+    text
   };
 }

@@ -1,12 +1,12 @@
 import React from 'react';
 import { Elements, StripeProvider } from 'react-stripe-elements';
-import CheckoutForm from './CheckoutForm';
+import CheckoutFormSelector from './CheckoutFormSelector';
 
 export const CheckoutFormWrapper = () => (
   // @ts-ignore
   <StripeProvider apiKey={process.env.STRIPE_FRONT}>
     <Elements>
-      <CheckoutForm />
+      <CheckoutFormSelector />
     </Elements>
   </StripeProvider>
 );

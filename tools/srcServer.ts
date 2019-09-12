@@ -15,10 +15,11 @@ import config from '../webpack.config.dev';
 const bundler = webpack(<any>config);
 
 // Run Browsersync and use middleware for Hot Module Replacement
+// @ts-ignore
 browserSync({
   port: 3000,
   ui: {
-    port: 3001,
+    port: 3001
   },
   server: {
     baseDir: 'src',
@@ -31,8 +32,6 @@ browserSync({
         publicPath: config.output.publicPath,
 
         // These settings suppress noisy webpack output so only errors are displayed to the console.
-        noInfo: true,
-        quiet: false,
         stats: {
           assets: false,
           colors: true,
@@ -40,21 +39,19 @@ browserSync({
           hash: false,
           timings: false,
           chunks: false,
-          chunkModules: false,
-        },
+          chunkModules: false
+        }
 
         // for other settings see
         // https://webpack.js.org/guides/development/#using-webpack-dev-middleware
       }),
 
       // bundler should be the same as above
-      webpackHotMiddleware(bundler),
-    ],
+      webpackHotMiddleware(bundler)
+    ]
   },
 
   // no need to watch '*.js' here, webpack will take care of it for us,
   // including full page reloads if HMR won't work
-  files: [
-    'src/*.html',
-  ],
+  files: ['src/*.html']
 });
