@@ -25,26 +25,54 @@ const tryApplePay = async ({ stripe }: { stripe: ReactStripeElements.StripeProps
 
   const canUsePayBotton = await paymentRequest.canMakePayment();
 
-  if (canUsePayBotton) {
-    // @ts-ignore
-    const elements = stripe.elements();
-
-    const prButton = elements.create('paymentRequestButton', {
-      paymentRequest
-    });
-
-    prButton.mount('#checkout-bottom');
-
-    const element = document.getElementById('checkout-form');
-    if (element) {
-      element.style.display = 'none';
-    }
-  } else {
+  if (!canUsePayBotton) {
     const element = document.getElementById('checkout-bottom');
     if (element) {
       element.style.display = 'none';
     }
+    return;
   }
+
+  // @ts-ignore
+  const elements = stripe.elements();
+
+  const prButton = elements.create('paymentRequestButton', {
+    paymentRequest
+  });
+
+  prButton.mount('#checkout-bottom');
+
+  const element = document.getElementById('checkout-form');
+  if (element) {
+    element.style.display = 'none';
+  }
+
+  paymentRequest.on('paymentmethod', async ev => {
+    // @ts-ignore
+    const { error: confirmError, paymentIntent } = await stripe.confirmPaymentIntent(
+      process.env.STRIPE_FRONT,
+      {
+        payment_method: ev.paymentMethod.id
+      }
+    );
+
+    if (confirmError || !process.env.STRIPE_FRONT) {
+      // re-show the payment interface, or show an error message and close
+      console.log('apple pay failed');
+      ev.complete('fail');
+    } else {
+      console.log('apple pay completed (not payed)');
+      ev.complete('success');
+      // Let Stripe.js handle the rest of the payment flow.
+      const { error } = await stripe.handleCardPayment(process.env.STRIPE_FRONT);
+      if (error) {
+        console.log('apple pay failed');
+        // The payment failed -- ask your customer for a new payment method.
+      } else {
+        console.log('apple pay payed');
+      }
+    }
+  });
 };
 
 export const CheckoutForm: React.FC<{
@@ -55,7 +83,7 @@ export const CheckoutForm: React.FC<{
   actions: { setDialog: (state: string) => void };
 }> = ({ email, stripe, taskText, actions: { setDialog }, validEmail }) => {
   if (stripe) {
-    // tryApplePay({ stripe });
+    tryApplePay({ stripe });
   }
 
   const onClick = async () => {
