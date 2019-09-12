@@ -5,7 +5,7 @@ export function setDialog(state: string) {
   };
 }
 
-export function setTaskTest(text: string) {
+export function setTaskText(text: string) {
   return {
     type: 'SET_TASK_TEST',
     text,

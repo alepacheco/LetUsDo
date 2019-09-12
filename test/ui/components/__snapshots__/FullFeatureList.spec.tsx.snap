@@ -4,13 +4,12 @@ exports[`<FullFeatureList /> renders 1`] = `
 <div
   className="full-feature-list"
 >
-  <FullFeature
+  <Component
     Image={
       Object {
         "process": [Function],
       }
     }
-    imageSide="left"
     title="What can we do?"
   >
     We can do both 
@@ -26,8 +25,8 @@ exports[`<FullFeatureList /> renders 1`] = `
      is a good task for us.
     <br />
     We will try to do whatever you need, if we can’t make it you’ll receive a full refund
-  </FullFeature>
-  <FullFeature
+  </Component>
+  <Component
     Image={
       Object {
         "process": [Function],
@@ -58,14 +57,13 @@ exports[`<FullFeatureList /> renders 1`] = `
     <b>
       full refund.
     </b>
-  </FullFeature>
-  <FullFeature
+  </Component>
+  <Component
     Image={
       Object {
         "process": [Function],
       }
     }
-    imageSide="left"
     title="Need help?"
   >
     If you have any issue with your order contact us by email at:
@@ -75,6 +73,6 @@ exports[`<FullFeatureList /> renders 1`] = `
     >
       support@letusdo.app
     </a>
-  </FullFeature>
+  </Component>
 </div>
 `;

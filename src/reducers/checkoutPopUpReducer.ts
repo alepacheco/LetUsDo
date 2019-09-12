@@ -1,5 +1,5 @@
 import objectAssign from 'object-assign';
-import initialState from './initialState';
+import initialState from '../store/initialState';
 
 export default function checkoutPopUpReducer(state = initialState.checkoutPopUp, action: {type: string, validEmail: boolean, email: string}) {
   let newState;
