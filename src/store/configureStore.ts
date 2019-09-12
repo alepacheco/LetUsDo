@@ -11,7 +11,7 @@ import createRootReducer from '../reducers';
 export const history = createBrowserHistory();
 const connectRouterHistory = connectRouter(history);
 
-function configureStoreProd(initialState) {
+function configureStoreProd(initialState: any) {
   const reactRouterMiddleware = routerMiddleware(history);
   const middlewares = [
     // Add other middleware on this line...
@@ -29,7 +29,7 @@ function configureStoreProd(initialState) {
   );
 }
 
-function configureStoreDev(initialState) {
+function configureStoreDev(initialState: any) {
   const reactRouterMiddleware = routerMiddleware(history);
   const middlewares = [
     // Add other middleware on this line...
@@ -44,6 +44,7 @@ function configureStoreDev(initialState) {
     reactRouterMiddleware,
   ];
 
+  // @ts-ignore
   const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
   const store = createStore(
     createRootReducer(history), // root reducer with router state
@@ -51,10 +52,14 @@ function configureStoreDev(initialState) {
     composeEnhancers(applyMiddleware(...middlewares)),
   );
 
+  // @ts-ignore
   if (module.hot) {
-    // Enable Webpack hot module replacement for reducers
+    // Enable Webpack hot module replacement for reducers  
+    // @ts-ignore
     module.hot.accept('../reducers', () => {
       const nextRootReducer = require('../reducers').default; // eslint-disable-line global-require
+      
+      // @ts-ignore
       store.replaceReducer(connectRouterHistory(nextRootReducer));
     });
   }

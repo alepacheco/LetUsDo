@@ -24,7 +24,7 @@ const tryApplePay = async ({ stripe }: { stripe: ReactStripeElements.StripeProps
   });
 
   const canUsePayBotton = await paymentRequest.canMakePayment();
-  console.log({ canUsePayBotton });
+
   if (canUsePayBotton) {
     // @ts-ignore
     const elements = stripe.elements();

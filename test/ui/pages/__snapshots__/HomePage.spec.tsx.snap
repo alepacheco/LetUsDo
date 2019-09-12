@@ -3,7 +3,7 @@
 exports[`<HomePage /> renders 1`] = `
 <div>
   <LandingHeader />
-  <FeaturesList />
+  <Component />
   <Suspense
     fallback={
       <div>

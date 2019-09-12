@@ -3,7 +3,12 @@ import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import CheckoutFormWrapper from './stripe/CheckoutFormWrapper';
 
-export const CheckoutContent = ({ taskText, onChangeEmail, email }) => (
+type CheckoutContentProps = {
+  taskText: string;
+  onChangeEmail: (value: any) => void;
+  email: string;
+}
+export const CheckoutContent = ({ taskText, onChangeEmail, email }: CheckoutContentProps) => (
   <>
     <Modal.Header closeButton>
       <Modal.Title id="contained-modal-title-vcenter">Confirm order</Modal.Title>

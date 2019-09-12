@@ -1,19 +1,19 @@
 import objectAssign from 'object-assign';
 import initialState from './initialState';
 
-export default function fuelSavingsReducer(state = initialState.checkoutPopUp, action) {
+export default function taskBoxReducer(state = initialState.taskModal, action: {type: string, text: string, state: string}) {
   let newState;
 
   switch (action.type) {
-    case 'SET_CHECKOUT_EMAIL_VALID':
+    case 'SET_CHECKOUT_DIALOG':
       newState = objectAssign({}, state);
-      newState.validEmail = action.validEmail;
+      newState.checkoutPopupState = action.state;
 
       return newState;
 
-    case 'SET_CHECKOUT_EMAIL':
+    case 'SET_TASK_TEST':
       newState = objectAssign({}, state);
-      newState.email = action.email;
+      newState.taskText = action.text;
 
       return newState;
 

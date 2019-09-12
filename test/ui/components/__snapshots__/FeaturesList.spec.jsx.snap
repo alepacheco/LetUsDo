@@ -4,7 +4,7 @@ exports[`<FeaturesList /> renders 1`] = `
 <div
   className="features-list"
 >
-  <CenteredContent>
+  <Component>
     <ListElement
       image={
         Object {
@@ -38,6 +38,6 @@ exports[`<FeaturesList /> renders 1`] = `
     >
       lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor sit amet, consectetur adip lorem ipsum dolor sit amet
     </ListElement>
-  </CenteredContent>
+  </Component>
 </div>
 `;

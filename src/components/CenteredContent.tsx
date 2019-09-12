@@ -1,7 +1,11 @@
 import React from 'react';
 import 'src/styles/components/CenteredContent.scss';
 
-export const CenteredContent = ({ children, reverse }) => {
+type CenteredContentProps = {
+  reverse?: boolean;
+};
+
+export const CenteredContent: React.FC<CenteredContentProps> = ({ children, reverse }) => {
   return <div className={`centered-content ${reverse ? 'reverse' : ''}`}>{children}</div>;
 };
 
