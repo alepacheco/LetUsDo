@@ -9,7 +9,7 @@ type TryPayment = {
   stripe: ReactStripeElements.StripeProps;
 };
 
-const tryPayment = async ({
+export const tryPayment = async ({
   taskText,
   email,
   payment_method_id,
