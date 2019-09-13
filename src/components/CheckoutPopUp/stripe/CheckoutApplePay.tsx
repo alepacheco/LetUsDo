@@ -9,7 +9,7 @@ import { ReactStripeElements } from 'react-stripe-elements';
 
 type CheckoutApplePayProps = {
   actions: any;
-  stripe: ReactStripeElements.StripeProps;
+  stripe?: ReactStripeElements.StripeProps;
   taskText: string;
 
 };
@@ -21,7 +21,7 @@ class CheckoutApplePay extends React.Component<CheckoutApplePayProps, CheckoutAp
   constructor(props: CheckoutApplePayProps) {
     super(props);
 
-    const paymentRequest = props.stripe.paymentRequest({
+    const paymentRequest = props.stripe!.paymentRequest({
       country: 'GB',
       currency: 'gbp',
       total: {
@@ -36,7 +36,7 @@ class CheckoutApplePay extends React.Component<CheckoutApplePayProps, CheckoutAp
     paymentRequest.on('paymentmethod', async (event) => {
       const purchaseCompleted = await tryPayment({
         payment_method_id: event.paymentMethod.id,
-        stripe: this.props.stripe,
+        stripe: this.props.stripe!,
         taskText: this.props.taskText,
         email: event.payerEmail,
         name: event.payerName,

@@ -24,7 +24,8 @@ export const CheckoutForm: React.FC<{
       return;
     }
 
-    console.log('Set loading here but keep the element alive.');
+    // TODO Set loading here but keep the element alive.
+    
     trackEvent({
       category: 'click',
       action: 'pay button clicked'
@@ -39,6 +40,7 @@ export const CheckoutForm: React.FC<{
       stripe,
       taskText
     });
+
     if (completed) {
       setDialog('purchaseCompleted');
       trackEvent({
