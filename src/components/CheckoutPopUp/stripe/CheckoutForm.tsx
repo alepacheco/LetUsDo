@@ -44,13 +44,15 @@ export const CheckoutForm: React.FC<{
       setDialog('purchaseCompleted');
       trackEvent({
         category: 'purchase',
-        action: 'purchase completed'
+        action: 'purchase completed',
+        label: 'credit card'
       });
     } else {
       setDialog('purchaseFailed');
       trackEvent({
         category: 'purchase',
-        action: 'purchase failed'
+        action: 'purchase failed',
+        label: 'credit card'
       });
     }
   };

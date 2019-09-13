@@ -4,6 +4,10 @@ import { ReactStripeElements } from 'react-stripe-elements';
 type TryPayment = {
   taskText: string;
   email: string;
+  name?: string;
+  phone?: string;
+  ipAddress?: string;
+  adress?: object;
   payment_method_id?: string;
   payment_intent_id?: string;
   stripe: ReactStripeElements.StripeProps;

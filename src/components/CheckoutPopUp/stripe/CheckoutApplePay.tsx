@@ -3,6 +3,8 @@ import { injectStripe, PaymentRequestButtonElement } from 'react-stripe-elements
 import * as actions from 'src/actions/taskModalActions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { tryPayment } from 'src/utils/stripe';
+import { trackEvent } from 'src/utils/analytics';
 
 class CheckoutApplePay extends React.Component<any, any> {
   constructor(props: any) {
@@ -20,17 +22,47 @@ class CheckoutApplePay extends React.Component<any, any> {
       requestPayerPhone: true
     });
 
-    paymentRequest.on('token', ({ complete, token, ...data }: any) => {
-      console.log('Received Stripe token: ', token);
-      console.log('Received customer information: ', data);
-      complete('success');
+    paymentRequest.on('paymentmethod', async (event: any) => {
+      console.log({event})
+      console.log('Received Stripe token: ', event.token);
+      console.log('Received customer information: ', event.data);
+      
+      // TODO check if we need token or paymentmethod
+      tryPayment({
+        payment_method_id: event.paymentMethod.id,
+        stripe: this.props.stripe,
+        taskText: this.props.taskText,
+        email: event.payerEmail,
+        name: event.payerName,
+        phone: event.payerPhone,
+        // ipAddress?: string,
+        // adress?: object
+      }).then((purchaseCompleted) => {
+        if (purchaseCompleted) {
+          event.complete('success');
+          
+          this.props.actions.setDialog('purchaseCompleted');
+          trackEvent({
+            category: 'purchase',
+            action: 'purchase completed',
+            label: 'apple pay'
+          });
+        } else {
+          event.complete('fail');
+
+          this.props.actions.setDialog('purchaseFailed');
+          trackEvent({
+            category: 'purchase',
+            action: 'purchase failed',
+            label: 'apple pay'
+          });
+        }
+      });
     });
 
     paymentRequest.canMakePayment().then((result: any) => {
       this.setState({ canMakePayment: !!result });
       this.props.actions.setApplePayAvailable(!!result);
-
-      console.log({ canMakePayment: !!result });
     });
 
     this.state = {
@@ -49,11 +81,16 @@ class CheckoutApplePay extends React.Component<any, any> {
   }
 }
 
+const mapStateToProps = (state: any) => ({
+  email: state.checkoutPopUp.email,
+  taskText: state.taskModal.taskText
+});
+
 const mapDispatchToProps = (dispatch: any) => ({
   actions: bindActionCreators(actions, dispatch)
 });
 
 export default connect(
-  () => ({}),
+  mapStateToProps,
   mapDispatchToProps
 )(injectStripe(CheckoutApplePay));
