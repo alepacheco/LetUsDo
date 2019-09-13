@@ -20,8 +20,10 @@ describe('executePaymentMethod', () => {
         payment_method_id: '1234',
         amount: 100,
         taskText: 'This is my task',
-        email: 'test@example.com',
-        remoteAddress: '127.0.0.1',
+        metadata: {
+            email: 'test@example.com',
+            remoteAddress: '127.0.0.1'
+        },
         stripe: mockStripeModule
     };
 

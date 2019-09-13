@@ -6,8 +6,6 @@ type TryPayment = {
   email: string;
   name?: string;
   phone?: string;
-  ipAddress?: string;
-  adress?: object;
   payment_method_id?: string;
   payment_intent_id?: string;
   stripe: ReactStripeElements.StripeProps;
@@ -16,6 +14,8 @@ type TryPayment = {
 export const tryPayment = async ({
   taskText,
   email,
+  name,
+  phone,
   payment_method_id,
   payment_intent_id,
   stripe
@@ -26,7 +26,11 @@ export const tryPayment = async ({
     payment_method_id,
     payment_intent_id,
     taskText,
-    email
+    metadata: {
+      email,
+      name,
+      phone,
+    }
   });
 
   if (error) {
@@ -46,9 +50,11 @@ export const tryPayment = async ({
     }
 
     return tryPayment({
+      payment_intent_id: paymentIntent.id,
       taskText,
       email,
-      payment_intent_id: paymentIntent.id,
+      name,
+      phone,
       stripe
     });
   }

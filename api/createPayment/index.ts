@@ -6,7 +6,7 @@ import * as Stripe from 'stripe';
 const StripeFactory: any = require('stripe');
 
 export const handler = async (req: NowRequest, res: NowResponse) => {
-  const { payment_method_id, payment_intent_id, email, taskText } = req.body || {};
+  const { payment_method_id, payment_intent_id, taskText, metadata } = req.body || {};
   const { remoteAddress } = req.connection;
   const stripe: Stripe = StripeFactory(process.env.STRIPE_SERVER);
 
@@ -14,8 +14,10 @@ export const handler = async (req: NowRequest, res: NowResponse) => {
     const { status, response } = await executePaymentMethod({
       payment_method_id,
       taskText,
-      email,
-      remoteAddress,
+      metadata: {
+        ...metadata,
+        remoteAddress
+      },
       stripe
     });
 

@@ -42,34 +42,34 @@ export const handleError = async (func: () => Promise<HandleErrorArgs>) => {
     };
 };
 
-
 type ExecutePaymentMethod = {
     payment_method_id: string;
     amount?: number;
     taskText: string;
-    email: string;
-    remoteAddress?: string;
+    metadata: {
+        email: string;
+        remoteAddress?: string;
+        name?: string;
+        phone?: string;
+    };
+
     stripe: any;
 };
 export const executePaymentMethod = async ({
     payment_method_id,
     amount = 50,
     taskText,
-    email,
-    remoteAddress = '',
+    metadata,
     stripe
 }: ExecutePaymentMethod) => handleError(() => stripe.paymentIntents.create({
     payment_method: payment_method_id,
     amount,
     description: `Task details: ${taskText}`,
     currency: 'gbp',
-    receipt_email: email,
+    receipt_email: metadata.email,
     confirmation_method: 'manual',
     confirm: true,
-    metadata: {
-        email,
-        remoteAddress
-    }
+    metadata
 }));
 
 

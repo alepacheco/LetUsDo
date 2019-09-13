@@ -88,8 +88,10 @@ describe('/createPayment', () => {
       method: 'POST',
       body: {
         payment_method_id: 'payment_method_id_tok_fr',
-        email: 'email@email.com',
-        taskText: 'taskText'
+        taskText: 'taskText',        
+        metadata: {
+          email: 'email@email.com',
+        }
       },
       connection: {
         remoteAddress: '127.0.0.1'
@@ -126,7 +128,7 @@ describe('/createPayment', () => {
       method: 'POST',
       body: {
         payment_method_id: 'payment_method_id_tok_fr',
-        email: 'email@email.com',
+        metadata: { email: 'email@email.com' },
         taskText: 'taskText'
       },
       connection: {

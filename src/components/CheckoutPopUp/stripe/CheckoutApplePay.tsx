@@ -23,10 +23,6 @@ class CheckoutApplePay extends React.Component<any, any> {
     });
 
     paymentRequest.on('paymentmethod', async (event: any) => {
-      console.log({event})
-      console.log('Received Stripe token: ', event.token);
-      console.log('Received customer information: ', event.data);
-      
       // TODO check if we need token or paymentmethod
       tryPayment({
         payment_method_id: event.paymentMethod.id,
@@ -35,8 +31,6 @@ class CheckoutApplePay extends React.Component<any, any> {
         email: event.payerEmail,
         name: event.payerName,
         phone: event.payerPhone,
-        // ipAddress?: string,
-        // adress?: object
       }).then((purchaseCompleted) => {
         if (purchaseCompleted) {
           event.complete('success');
