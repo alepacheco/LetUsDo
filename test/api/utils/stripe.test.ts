@@ -4,7 +4,7 @@ process.env.STRIPE_SERVER = 'sk_test_Fe8VrGftldFe2Vy3e38I65Gv00qN5qwLa5';
 const mockPaymentIntentCreate = jest.fn();
 const mockPaymentIntentConfirm = jest.fn();
 
-const mockStripeModule = {
+const mockStripeModule: any = {
     paymentIntents: {
         create: mockPaymentIntentCreate,
         confirm: mockPaymentIntentConfirm
@@ -22,7 +22,9 @@ describe('executePaymentMethod', () => {
         taskText: 'This is my task',
         metadata: {
             email: 'test@example.com',
-            remoteAddress: '127.0.0.1'
+            remoteAddress: '127.0.0.1',
+            name: 'Bob',
+            phone: '+44065485943433'
         },
         stripe: mockStripeModule
     };
@@ -43,6 +45,8 @@ describe('executePaymentMethod', () => {
             metadata: {
                 email: 'test@example.com',
                 remoteAddress: '127.0.0.1',
+                name: 'Bob',
+                phone: '+44065485943433'
             },
             payment_method: '1234',
             receipt_email: 'test@example.com'

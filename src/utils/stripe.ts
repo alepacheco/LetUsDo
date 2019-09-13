@@ -3,7 +3,7 @@ import { ReactStripeElements } from 'react-stripe-elements';
 
 type TryPayment = {
   taskText: string;
-  email: string;
+  email?: string;
   name?: string;
   phone?: string;
   payment_method_id?: string;

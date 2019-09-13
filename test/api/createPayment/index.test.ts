@@ -8,6 +8,9 @@ const constantDate = new Date('Tue Jun 13 2017 04:41:20');
 constantDate.setUTCHours(0, 0, 0, 0);
 
 // @ts-ignore
+global.console = { log: jest.fn() }
+
+// @ts-ignore
 Date = class extends Date {
   constructor() {
     super();
@@ -88,7 +91,7 @@ describe('/createPayment', () => {
       method: 'POST',
       body: {
         payment_method_id: 'payment_method_id_tok_fr',
-        taskText: 'taskText',        
+        taskText: 'taskText',
         metadata: {
           email: 'email@email.com',
         }

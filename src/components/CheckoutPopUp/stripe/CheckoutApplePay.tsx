@@ -5,9 +5,20 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { tryPayment } from 'src/utils/stripe';
 import { trackEvent } from 'src/utils/analytics';
+import { ReactStripeElements } from 'react-stripe-elements';
 
-class CheckoutApplePay extends React.Component<any, any> {
-  constructor(props: any) {
+type CheckoutApplePayProps = {
+  actions: any;
+  stripe: ReactStripeElements.StripeProps;
+  taskText: string;
+
+};
+type CheckoutApplePayState = {
+  canMakePayment: boolean;
+  paymentRequest: any;
+};
+class CheckoutApplePay extends React.Component<CheckoutApplePayProps, CheckoutApplePayState> {
+  constructor(props: CheckoutApplePayProps) {
     super(props);
 
     const paymentRequest = props.stripe.paymentRequest({
@@ -15,43 +26,42 @@ class CheckoutApplePay extends React.Component<any, any> {
       currency: 'gbp',
       total: {
         label: 'Task fixed price',
-        amount: 99
+        amount: 50
       },
       requestPayerName: true,
       requestPayerEmail: true,
       requestPayerPhone: true
     });
 
-    paymentRequest.on('paymentmethod', async (event: any) => {
-      // TODO check if we need token or paymentmethod
-      tryPayment({
+    paymentRequest.on('paymentmethod', async (event) => {
+      const purchaseCompleted = await tryPayment({
         payment_method_id: event.paymentMethod.id,
         stripe: this.props.stripe,
         taskText: this.props.taskText,
         email: event.payerEmail,
         name: event.payerName,
         phone: event.payerPhone,
-      }).then((purchaseCompleted) => {
-        if (purchaseCompleted) {
-          event.complete('success');
-          
-          this.props.actions.setDialog('purchaseCompleted');
-          trackEvent({
-            category: 'purchase',
-            action: 'purchase completed',
-            label: 'apple pay'
-          });
-        } else {
-          event.complete('fail');
+      })
 
-          this.props.actions.setDialog('purchaseFailed');
-          trackEvent({
-            category: 'purchase',
-            action: 'purchase failed',
-            label: 'apple pay'
-          });
-        }
-      });
+      if (purchaseCompleted) {
+        event.complete('success');
+
+        this.props.actions.setDialog('purchaseCompleted');
+        trackEvent({
+          category: 'purchase',
+          action: 'purchase completed',
+          label: 'apple pay'
+        });
+      } else {
+        event.complete('fail');
+
+        this.props.actions.setDialog('purchaseFailed');
+        trackEvent({
+          category: 'purchase',
+          action: 'purchase failed',
+          label: 'apple pay'
+        });
+      }
     });
 
     paymentRequest.canMakePayment().then((result: any) => {

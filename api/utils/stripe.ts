@@ -1,3 +1,5 @@
+import * as Stripe from 'stripe';
+
 type HandleErrorArgs = {
     status?: string,
     next_action?: {
@@ -48,12 +50,12 @@ type ExecutePaymentMethod = {
     taskText: string;
     metadata: {
         email: string;
-        remoteAddress?: string;
-        name?: string;
-        phone?: string;
+        remoteAddress: string;
+        name: string;
+        phone: string;
     };
 
-    stripe: any;
+    stripe: Stripe;
 };
 export const executePaymentMethod = async ({
     payment_method_id,
@@ -75,7 +77,7 @@ export const executePaymentMethod = async ({
 
 type ExecutePaymentIntent = {
     payment_intent_id: string;
-    stripe: any;
+    stripe: Stripe;
 };
 export const executePaymentIntent = async ({ stripe, payment_intent_id }: ExecutePaymentIntent) =>
     handleError(() => stripe.paymentIntents.confirm(

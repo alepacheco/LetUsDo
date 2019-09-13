@@ -19,6 +19,11 @@ export const CheckoutForm: React.FC<{
   actions: { setDialog: (state: string) => void };
 }> = ({ email, stripe, taskText, actions: { setDialog }, validEmail }) => {
   const onClick = async () => {
+    if (!stripe) {
+      setDialog('purchaseFailed');
+      return;
+    }
+
     console.log('Set loading here but keep the element alive.');
     trackEvent({
       category: 'click',
@@ -28,12 +33,6 @@ export const CheckoutForm: React.FC<{
       category: 'purchase',
       action: 'purchase initiated'
     });
-
-    if (!stripe) {
-      setDialog('purchaseFailed');
-
-      return;
-    }
 
     const completed = await submitPayment({
       email,
