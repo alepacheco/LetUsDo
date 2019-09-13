@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CheckoutApplePay /> not renders if disabled 1`] = `""`;
+
+exports[`<CheckoutApplePay /> renders 1`] = `
+<PaymentRequestButtonElement
+  className="PaymentRequestButton"
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onReady={[Function]}
+  paymentRequest={
+    Object {
+      "canMakePayment": [Function],
+      "on": [Function],
+      "show": [Function],
+    }
+  }
+/>
+`;

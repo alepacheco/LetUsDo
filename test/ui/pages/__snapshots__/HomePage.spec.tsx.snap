@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<HomePage /> renders 1`] = `
-<div>
+<Fragment>
   <Component />
   <Component />
   <Suspense
@@ -11,7 +11,6 @@ exports[`<HomePage /> renders 1`] = `
       </div>
     }
   >
-    <lazy />
     <lazy />
   </Suspense>
   <Suspense
@@ -23,6 +22,15 @@ exports[`<HomePage /> renders 1`] = `
   >
     <lazy />
   </Suspense>
+  <Suspense
+    fallback={
+      <div>
+        Loading...
+      </div>
+    }
+  >
+    <lazy />
+  </Suspense>
   <Component />
-</div>
+</Fragment>
 `;

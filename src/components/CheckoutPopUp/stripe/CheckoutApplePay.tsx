@@ -17,7 +17,7 @@ type CheckoutApplePayState = {
   canMakePayment: boolean;
   paymentRequest: any;
 };
-class CheckoutApplePay extends React.Component<CheckoutApplePayProps, CheckoutApplePayState> {
+export class CheckoutApplePay extends React.Component<CheckoutApplePayProps, CheckoutApplePayState> {
   constructor(props: CheckoutApplePayProps) {
     super(props);
 
