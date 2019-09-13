@@ -1,7 +1,6 @@
 import React from 'react';
 import Modal from 'react-bootstrap/Modal';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import '../../styles/components/CheckoutPopUp.css';
 import * as checkoutPopUpActions from '../../actions/checkoutPopUpActions';
@@ -10,9 +9,8 @@ import { CheckoutContent } from './CheckoutContent';
 import { PurchaseCompletedContent } from './PurchaseCompletedContent';
 import { validateEmail } from '../../utils/generic';
 
-
 type GetContentByTypeProps = {
-  type: string;
+  type: 'open' | 'purchaseCompleted' | 'closed';
   taskText: string;
   onChangeEmail: (email: string) => void;
   email: string;
@@ -28,14 +26,13 @@ const GetContentByType = ({ type, taskText, onChangeEmail, email }: GetContentBy
   return <div />;
 };
 
-
 type CheckoutPopUpProps = {
   actions: {
     setCheckoutEmailValid: (valid: boolean) => void;
     setCheckoutEmail: (email: string) => void;
     setDialog: (state: string) => void;
   }
-  checkoutPopupState: string;
+  checkoutPopupState: 'open' | 'closed' | 'purchaseCompleted';
   taskText: string;
   email: string;
 };

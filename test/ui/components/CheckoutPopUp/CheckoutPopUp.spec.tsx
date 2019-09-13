@@ -2,7 +2,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import { CheckoutPopUp } from 'src/components/CheckoutPopUp/index';
+import { CheckoutPopUp } from 'src/components/CheckoutPopUp/CheckoutPopUp';
 
 jest.mock('react-ga', () => ({ initialize: jest.fn() }));
 
@@ -14,9 +14,9 @@ describe('<CheckoutPopUp />', () => {
         email="email@example.com"
         checkoutPopupState="open"
         actions={{
-          setCheckoutEmailValid: () => {},
-          setCheckoutEmail: () => {},
-          setDialog: () => {}
+          setCheckoutEmailValid: () => { },
+          setCheckoutEmail: () => { },
+          setDialog: () => { }
         }}
       />
     );
@@ -31,9 +31,26 @@ describe('<CheckoutPopUp />', () => {
         email="email@example.com"
         checkoutPopupState="closed"
         actions={{
-          setCheckoutEmailValid: () => {},
-          setCheckoutEmail: () => {},
-          setDialog: () => {}
+          setCheckoutEmailValid: () => { },
+          setCheckoutEmail: () => { },
+          setDialog: () => { }
+        }}
+      />
+    );
+
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it('renders purchaseCompleted', () => {
+    const wrapper = shallow(
+      <CheckoutPopUp
+        taskText="This is my task description"
+        email="email@example.com"
+        checkoutPopupState="purchaseCompleted"
+        actions={{
+          setCheckoutEmailValid: () => { },
+          setCheckoutEmail: () => { },
+          setDialog: () => { }
         }}
       />
     );
