@@ -25,8 +25,8 @@ class CheckoutApplePay extends React.Component<CheckoutApplePayProps, CheckoutAp
       country: 'GB',
       currency: 'gbp',
       total: {
-        label: 'Task fixed price',
-        amount: 50
+        label: 'Task',
+        amount: 2000 // Upper bound comfirmed by user, charged amount defined by server
       },
       requestPayerName: true,
       requestPayerEmail: true,

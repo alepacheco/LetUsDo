@@ -46,7 +46,7 @@ export const handleError = async (func: () => Promise<HandleErrorArgs>) => {
 
 type ExecutePaymentMethod = {
     payment_method_id: string;
-    amount?: number;
+    amount: number;
     taskText: string;
     metadata: {
         email: string;
@@ -59,7 +59,7 @@ type ExecutePaymentMethod = {
 };
 export const executePaymentMethod = async ({
     payment_method_id,
-    amount = 50,
+    amount,
     taskText,
     metadata,
     stripe
