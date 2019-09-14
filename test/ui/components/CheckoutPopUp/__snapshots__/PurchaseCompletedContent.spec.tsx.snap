@@ -16,12 +16,17 @@ exports[`<PurchaseCompletedContent /> renders 1`] = `
     <div
       className="task-description-title"
     >
-      Task description
+      We have received your task and the paymnent has been confirmed.
     </div>
     <div
       className="task-description-content"
     >
-      Complete
+      You will receive an update when it's completed. If you have any inquiries in the meantime contact us at: 
+      <a
+        href="mailto:support@letusdo.app"
+      >
+        support@letusdo.app
+      </a>
     </div>
   </ModalBody>
 </Fragment>

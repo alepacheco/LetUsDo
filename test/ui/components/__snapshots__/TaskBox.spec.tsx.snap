@@ -13,7 +13,7 @@ exports[`<TaskBox /> on form type  1`] = `
         <CardTitle
           className="task-modal-title left-text"
         >
-          What can we do for you this 
+          What can we do this 
           Tuesday
           ?
         </CardTitle>
@@ -65,7 +65,7 @@ exports[`<TaskBox /> onClick 1`] = `
         <CardTitle
           className="task-modal-title left-text"
         >
-          What can we do for you this 
+          What can we do this 
           Tuesday
           ?
         </CardTitle>
@@ -117,7 +117,7 @@ exports[`<TaskBox /> renders 1`] = `
         <CardTitle
           className="task-modal-title left-text"
         >
-          What can we do for you this 
+          What can we do this 
           Tuesday
           ?
         </CardTitle>

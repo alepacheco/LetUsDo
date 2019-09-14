@@ -5,13 +5,14 @@ import CheckoutForm from './CheckoutForm';
 import CheckoutApplePay from './CheckoutApplePay';
 import { connect } from 'react-redux';
 
-export const CheckoutFormSelector: React.FC<{ applePayAvailable: boolean }> = ({
-  applePayAvailable
+export const CheckoutFormSelector: React.FC<{ applePayAvailable: boolean; loading: boolean }> = ({
+  applePayAvailable,
+  loading
 }) => {
   if (applePayAvailable || applePayAvailable === null) {
     return <CheckoutApplePay />;
   }
-  return <CheckoutForm />;
+  return <CheckoutForm loading={loading} />;
 };
 
 const mapStateToProps = (state: any) => ({

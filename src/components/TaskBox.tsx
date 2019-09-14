@@ -12,7 +12,9 @@ import { trackEvent } from 'src/utils/analytics';
 type TaskBoxProps = {
   actions: {
     setTaskText: (text: string) => void;
-    setDialog: (state: string) => void;
+    setDialog: (
+      state: 'open' | 'purchaseCompleted' | 'closed' | 'purchaseError' | 'purchaseLoading'
+    ) => void;
   };
   taskText: string;
 };
@@ -44,7 +46,7 @@ export const TaskBox: React.FC<TaskBoxProps> = ({ actions, taskText }) => {
         <Card className="center-inner">
           <Card.Body>
             <Card.Title className="task-modal-title left-text">
-              What can we do for you this {dayOfWeek}?
+              What can we do this {dayOfWeek}?
             </Card.Title>
             <Form className="form-wrapper">
               <Form.Group>

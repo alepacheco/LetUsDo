@@ -2,7 +2,7 @@ import React, { Suspense, lazy } from 'react';
 import { LandingHeader } from 'components/LandingHeader';
 import { FeaturesList } from 'components/FeaturesList';
 import { Footer } from 'components/Footer';
-const CheckoutPopUp = lazy(() => import('src/components/CheckoutPopUp/CheckoutPopUp'));
+const CheckoutPopUpByType = lazy(() => import('src/components/CheckoutPopUp/CheckoutPopUpByType'));
 const TaskBox = lazy(() => import('components/TaskBox'));
 const FullFeatureList = lazy(() => import('components/FullFeatureList'));
 const Loading = <div>Loading...</div>;
@@ -13,7 +13,7 @@ const HomePage = () => (
     <FeaturesList />
 
     <Suspense fallback={Loading}>
-      <CheckoutPopUp />
+      <CheckoutPopUpByType />
     </Suspense>
 
     <Suspense fallback={Loading}>

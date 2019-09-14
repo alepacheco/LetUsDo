@@ -16,16 +16,21 @@ export const CheckoutForm: React.FC<{
   taskText: string;
   stripe?: ReactStripeElements.StripeProps;
   validEmail: boolean;
-  actions: { setDialog: (state: string) => void };
-}> = ({ email, stripe, taskText, actions: { setDialog }, validEmail }) => {
+  loading?: boolean;
+  actions: {
+    setDialog: (
+      state: 'open' | 'purchaseCompleted' | 'closed' | 'purchaseError' | 'purchaseLoading'
+    ) => void;
+  };
+}> = ({ email, stripe, taskText, actions: { setDialog }, validEmail, loading }) => {
   const onClick = async () => {
     if (!stripe) {
-      setDialog('purchaseFailed');
+      setDialog('purchaseError');
       return;
     }
 
-    // TODO Set loading here but keep the element alive.
-    
+    setDialog('purchaseLoading');
+
     trackEvent({
       category: 'click',
       action: 'pay button clicked'
@@ -49,7 +54,7 @@ export const CheckoutForm: React.FC<{
         label: 'credit card'
       });
     } else {
-      setDialog('purchaseFailed');
+      setDialog('purchaseError');
       trackEvent({
         category: 'purchase',
         action: 'purchase failed',
@@ -65,7 +70,7 @@ export const CheckoutForm: React.FC<{
           <CardElement />
         </div>
         <div className="pay-button-wrapper">
-          <Button className="pay-button" onClick={onClick} disabled={!validEmail}>
+          <Button className="pay-button" onClick={onClick} disabled={!validEmail || loading}>
             Pay{' '}
             <Badge pill variant="light">
               20£

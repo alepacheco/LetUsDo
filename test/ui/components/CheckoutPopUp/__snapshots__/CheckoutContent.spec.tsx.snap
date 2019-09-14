@@ -23,7 +23,13 @@ exports[`<CheckoutContent /> renders 1`] = `
     >
       This is a task
     </div>
-    <Component />
+    <EmailForm
+      email="email@example.com"
+      onChangeEmail={[Function]}
+    />
+    <Component
+      loading={false}
+    />
   </ModalBody>
 </Fragment>
 `;

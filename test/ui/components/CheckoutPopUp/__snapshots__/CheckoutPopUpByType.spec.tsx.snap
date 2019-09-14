@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CheckoutPopUpByType /> renders closed 1`] = `<div />`;
+
+exports[`<CheckoutPopUpByType /> renders open 1`] = `
+<Fragment>
+  <ModalHeader
+    closeButton={true}
+    closeLabel="Close"
+  >
+    <ModalTitle
+      id="contained-modal-title-vcenter"
+    >
+      Confirm order
+    </ModalTitle>
+  </ModalHeader>
+  <ModalBody>
+    <div
+      className="task-description-title"
+    >
+      Task description
+    </div>
+    <div
+      className="task-description-content"
+    >
+      This is my task description
+    </div>
+    <EmailForm
+      email="email@example.com"
+      onChangeEmail={[Function]}
+    />
+    <Component
+      loading={false}
+    />
+  </ModalBody>
+</Fragment>
+`;
+
+exports[`<CheckoutPopUpByType /> renders purchaseCompleted 1`] = `
+<Fragment>
+  <ModalHeader
+    closeButton={true}
+    closeLabel="Close"
+  >
+    <ModalTitle
+      id="contained-modal-title-vcenter"
+    >
+      Purchase confirmed
+    </ModalTitle>
+  </ModalHeader>
+  <ModalBody>
+    <div
+      className="task-description-title"
+    >
+      We have received your task and the paymnent has been confirmed.
+    </div>
+    <div
+      className="task-description-content"
+    >
+      You will receive an update when it's completed. If you have any inquiries in the meantime contact us at: 
+      <a
+        href="mailto:support@letusdo.app"
+      >
+        support@letusdo.app
+      </a>
+    </div>
+  </ModalBody>
+</Fragment>
+`;

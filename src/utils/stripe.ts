@@ -29,7 +29,7 @@ export const tryPayment = async ({
     metadata: {
       email,
       name,
-      phone,
+      phone
     }
   });
 

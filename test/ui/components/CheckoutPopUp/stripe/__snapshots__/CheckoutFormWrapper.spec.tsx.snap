@@ -5,7 +5,9 @@ exports[`<CheckoutFormWrapper /> renders 1`] = `
   apiKey="mykey"
 >
   <Elements>
-    <Connect(Component) />
+    <Connect(Component)
+      loading={false}
+    />
   </Elements>
 </Provider>
 `;

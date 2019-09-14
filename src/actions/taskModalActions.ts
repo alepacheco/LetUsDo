@@ -1,4 +1,6 @@
-export function setDialog(state: string) {
+export function setDialog(
+  state: 'open' | 'purchaseCompleted' | 'closed' | 'purchaseError' | 'purchaseLoading'
+) {
   return {
     type: 'SET_CHECKOUT_DIALOG',
     state
