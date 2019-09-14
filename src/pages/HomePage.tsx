@@ -11,13 +11,13 @@ const HomePage = () => (
   <>
     <LandingHeader />
     <FeaturesList />
-    
+
     <Suspense fallback={Loading}>
       <CheckoutPopUp />
     </Suspense>
 
     <Suspense fallback={Loading}>
-      <CheckoutPopUp />
+      <TaskBox />
     </Suspense>
 
     <Suspense fallback={Loading}>
