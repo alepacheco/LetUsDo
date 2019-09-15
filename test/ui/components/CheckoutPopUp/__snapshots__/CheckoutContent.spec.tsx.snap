@@ -23,10 +23,19 @@ exports[`<CheckoutContent /> renders 1`] = `
     >
       This is a task
     </div>
-    <EmailForm
-      email="email@example.com"
-      onChangeEmail={[Function]}
-    />
+    <div
+      id="email-form"
+    >
+      <EmailForm
+        email="email@example.com"
+        onChangeEmail={[Function]}
+        style={
+          Object {
+            "display": "none",
+          }
+        }
+      />
+    </div>
     <Component
       loading={false}
     />

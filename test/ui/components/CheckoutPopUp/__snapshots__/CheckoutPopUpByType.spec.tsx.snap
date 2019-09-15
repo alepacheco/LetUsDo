@@ -1,6 +1,37 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<CheckoutPopUpByType /> renders closed 1`] = `<div />`;
+exports[`<CheckoutPopUpByType /> renders closed 1`] = `
+<Fragment>
+  <ModalHeader
+    closeButton={true}
+    closeLabel="Close"
+  >
+    <ModalTitle
+      id="contained-modal-title-vcenter"
+    >
+      An error has occurred
+    </ModalTitle>
+  </ModalHeader>
+  <ModalBody>
+    <div
+      className="task-description-title"
+    >
+      Something went wrong and your payment has not been executed.
+    </div>
+    <div
+      className="task-description-content"
+    >
+      Please try again, if you still have issues send us an email at:
+       
+      <a
+        href="mailto:support@letusdo.app"
+      >
+        support@letusdo.app
+      </a>
+    </div>
+  </ModalBody>
+</Fragment>
+`;
 
 exports[`<CheckoutPopUpByType /> renders open 1`] = `
 <Fragment>
@@ -25,10 +56,19 @@ exports[`<CheckoutPopUpByType /> renders open 1`] = `
     >
       This is my task description
     </div>
-    <EmailForm
-      email="email@example.com"
-      onChangeEmail={[Function]}
-    />
+    <div
+      id="email-form"
+    >
+      <EmailForm
+        email="email@example.com"
+        onChangeEmail={[Function]}
+        style={
+          Object {
+            "display": "none",
+          }
+        }
+      />
+    </div>
     <Component
       loading={false}
     />

@@ -45,7 +45,14 @@ describe('<CheckoutPopUpByType />', () => {
       />
     );
 
-    expect(toJson(wrapper.find('GetContentByType').dive())).toMatchSnapshot();
+    expect(
+      toJson(
+        wrapper
+          .find('GetContentByType')
+          .dive()
+          .dive()
+      )
+    ).toMatchSnapshot();
   });
 
   it('renders purchaseCompleted', () => {

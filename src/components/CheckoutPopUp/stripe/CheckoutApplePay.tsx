@@ -11,13 +11,15 @@ type CheckoutApplePayProps = {
   actions: any;
   stripe?: ReactStripeElements.StripeProps;
   taskText: string;
-
 };
 type CheckoutApplePayState = {
   canMakePayment: boolean;
   paymentRequest: any;
 };
-export class CheckoutApplePay extends React.Component<CheckoutApplePayProps, CheckoutApplePayState> {
+export class CheckoutApplePay extends React.Component<
+  CheckoutApplePayProps,
+  CheckoutApplePayState
+> {
   constructor(props: CheckoutApplePayProps) {
     super(props);
 
@@ -33,15 +35,15 @@ export class CheckoutApplePay extends React.Component<CheckoutApplePayProps, Che
       requestPayerPhone: true
     });
 
-    paymentRequest.on('paymentmethod', async (event) => {
+    paymentRequest.on('paymentmethod', async event => {
       const purchaseCompleted = await tryPayment({
         payment_method_id: event.paymentMethod.id,
         stripe: this.props.stripe!,
         taskText: this.props.taskText,
         email: event.payerEmail,
         name: event.payerName,
-        phone: event.payerPhone,
-      })
+        phone: event.payerPhone
+      });
 
       if (purchaseCompleted) {
         event.complete('success');
@@ -67,6 +69,11 @@ export class CheckoutApplePay extends React.Component<CheckoutApplePayProps, Che
     paymentRequest.canMakePayment().then((result: any) => {
       this.setState({ canMakePayment: !!result });
       this.props.actions.setApplePayAvailable(!!result);
+
+      const emailFormElement = document.getElementById('email-form');
+      if (emailFormElement) {
+        emailFormElement.style.display = result ? 'none' : 'block';
+      }
     });
 
     this.state = {

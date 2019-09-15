@@ -14,15 +14,16 @@ describe('<CheckoutApplePay />', () => {
     })
   };
   const props = {
+    setApplePayAvailable: true,
     actions: {
       setApplePayAvailable: jest.fn()
     },
     stripe: stripeMock,
     taskText: 'Task description'
-  }
+  };
 
   it('renders', async () => {
-    const wrapper = shallow(<CheckoutApplePay {...props}/>);
+    const wrapper = shallow(<CheckoutApplePay {...props} />);
     await flushPromises();
 
     expect(toJson(wrapper)).toMatchSnapshot();
@@ -38,14 +39,15 @@ describe('<CheckoutApplePay />', () => {
       })
     };
     const props = {
+      setApplePayAvailable: false,
       actions: {
         setApplePayAvailable: jest.fn()
       },
       stripe: stripeMock,
       taskText: 'Task description'
-    }
-    
-    const wrapper = shallow(<CheckoutApplePay {...props}/>);
+    };
+
+    const wrapper = shallow(<CheckoutApplePay {...props} />);
     await flushPromises();
 
     expect(toJson(wrapper)).toMatchSnapshot();

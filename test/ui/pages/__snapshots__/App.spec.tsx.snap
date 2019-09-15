@@ -7,6 +7,10 @@ exports[`<App /> renders 1`] = `
       component={[Function]}
       path="/"
     />
+    <Route
+      component={[Function]}
+      path="/api-documentation"
+    />
   </Switch>
 </div>
 `;

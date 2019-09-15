@@ -39,7 +39,9 @@ export const CheckoutContent = ({
       <div className="task-description-content">
         {loading ? '' : taskText || 'No description specified'}
       </div>
-      {!applePayAvailable && <EmailForm onChangeEmail={onChangeEmail} email={email} />}
+      <div id="email-form">
+        <EmailForm style={{ display: 'none' }} onChangeEmail={onChangeEmail} email={email} />
+      </div>
       <CheckoutFormWrapper loading={loading || false} />
     </Modal.Body>
   </>

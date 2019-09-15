@@ -16,7 +16,12 @@
       "components/*": ["./src/components/*"],
       "pages/*": ["src/pages/*"],
       "utils/*": ["src/utils/*"]
-    }
+    },
+    "allowJs": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "resolveJsonModule": true
   },
   "include": ["./src/**/*"],
   "exclude": ["./test/**/*"],

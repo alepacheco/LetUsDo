@@ -18,8 +18,6 @@ type GetContentByTypeProps = {
   email: string;
 };
 const GetContentByType = ({ type, taskText, onChangeEmail, email }: GetContentByTypeProps) => {
-  //return <PurchaseCompletedContent />;
-
   if (type === 'open') {
     return <CheckoutContent taskText={taskText} onChangeEmail={onChangeEmail} email={email} />;
   }
@@ -35,7 +33,7 @@ const GetContentByType = ({ type, taskText, onChangeEmail, email }: GetContentBy
     );
   }
 
-  return <div />;
+  return <PurchaseErrorContent />;
 };
 
 type CheckoutPopUpByTypeProps = {
