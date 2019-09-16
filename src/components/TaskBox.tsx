@@ -43,7 +43,7 @@ export const TaskBox: React.FC<TaskBoxProps> = ({ actions, taskText }) => {
   return (
     <div className="task-modal">
       <CenteredContent>
-        <Card className="center-inner">
+        <Card className="center-inner task-modal-wrapper">
           <Card.Body>
             <Card.Title className="task-modal-title left-text">
               What can we do this {dayOfWeek}?

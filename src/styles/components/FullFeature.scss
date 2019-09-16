@@ -8,6 +8,15 @@
     margin: 24px;
     display: inline-block;
   }
+
+  .hide-image {
+    @media only screen and (max-width: 646px) {
+      display: none;
+    }
+  }
+  .extra-top-margin {
+    margin-top: 48px !important;
+  }
   .feature-title {
     font-family: JelleeRoman, Sans-Serif;
     font-size: 24px;

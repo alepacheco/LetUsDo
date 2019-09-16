@@ -7,7 +7,7 @@ exports[`<TaskBox /> on form type  1`] = `
   <Component>
     <Card
       body={false}
-      className="center-inner"
+      className="center-inner task-modal-wrapper"
     >
       <CardBody>
         <CardTitle
@@ -59,7 +59,7 @@ exports[`<TaskBox /> onClick 1`] = `
   <Component>
     <Card
       body={false}
-      className="center-inner"
+      className="center-inner task-modal-wrapper"
     >
       <CardBody>
         <CardTitle
@@ -111,7 +111,7 @@ exports[`<TaskBox /> renders 1`] = `
   <Component>
     <Card
       body={false}
-      className="center-inner"
+      className="center-inner task-modal-wrapper"
     >
       <CardBody>
         <CardTitle
