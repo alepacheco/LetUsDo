@@ -8,9 +8,13 @@ exports[`<HomePage /> renders 1`] = `
   >
     <lazy />
   </Suspense>
-  <Component />
-  <Component />
-  <Component />
+  <Suspense
+    fallback={<div />}
+  >
+    <lazy />
+    <lazy />
+    <lazy />
+  </Suspense>
   <Component />
   <Suspense
     fallback={<div />}
