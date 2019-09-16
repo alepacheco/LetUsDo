@@ -25,15 +25,15 @@ exports[`<CheckoutContent /> renders 1`] = `
     </div>
     <div
       id="email-form"
+      style={
+        Object {
+          "display": "none",
+        }
+      }
     >
       <EmailForm
         email="email@example.com"
         onChangeEmail={[Function]}
-        style={
-          Object {
-            "display": "none",
-          }
-        }
       />
     </div>
     <Component
