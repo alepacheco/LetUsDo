@@ -4,23 +4,16 @@ exports[`<HomePage /> renders 1`] = `
 <Fragment>
   <Component />
   <Suspense
-    fallback={
-      <div>
-        Loading...
-      </div>
-    }
+    fallback={<div />}
   >
     <lazy />
   </Suspense>
   <Component />
   <Component />
   <Component />
+  <Component />
   <Suspense
-    fallback={
-      <div>
-        Loading...
-      </div>
-    }
+    fallback={<div />}
   >
     <lazy />
   </Suspense>

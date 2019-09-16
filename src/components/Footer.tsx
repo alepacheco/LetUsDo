@@ -7,7 +7,8 @@ export const Footer = () => (
     <div className="wrapper">
       We are in beta phase and would love to hear your feedback.
       <br />
-      Please get in touch with the email: contact@letusdo.app
+      Please get in touch with the email:{' '}
+      <a href="mailto:support@letusdo.app">support@letusdo.app</a>
     </div>
   </div>
 );

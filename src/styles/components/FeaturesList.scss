@@ -1,4 +1,7 @@
 .features-list {
+  @media only screen and (max-width: 646px) {
+    display: none;
+  }
   .item {
     flex: 1;
     margin: 16px;
@@ -12,7 +15,7 @@
 
   .list-element-title {
     font-family: JelleeRoman, Sans-Serif;
-    font-size: 18px;
+    font-size: 20px;
   }
 
   .list-element-body {
