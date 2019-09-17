@@ -5,6 +5,7 @@ import toJson from 'enzyme-to-json';
 import { CheckoutForm } from 'components/CheckoutPopUp/stripe/CheckoutForm';
 import { submitPayment } from 'src/utils/stripe';
 import { trackEvent } from 'src/utils/analytics';
+
 const flushPromises = () => new Promise(setImmediate);
 
 jest.mock('src/utils/stripe', () => ({

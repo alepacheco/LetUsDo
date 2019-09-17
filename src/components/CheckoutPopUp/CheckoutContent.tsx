@@ -1,8 +1,8 @@
 import React from 'react';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
-import CheckoutFormWrapper from './stripe/CheckoutFormWrapper';
 import { connect } from 'react-redux';
+import CheckoutFormWrapper from './stripe/CheckoutFormWrapper';
 
 const EmailForm = ({ onChangeEmail, email }: any) => (
   <Form>

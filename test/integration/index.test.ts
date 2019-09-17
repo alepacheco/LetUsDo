@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { setup, teardown } from 'jest-dev-server';
 import axios from 'axios';
 
@@ -11,7 +12,7 @@ describe('Integration tests', () => {
     });
     jest.setTimeout(5000);
 
-    return;
+    
   });
 
   afterAll(async () => {

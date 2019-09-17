@@ -3,6 +3,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import { CheckoutApplePay } from 'components/CheckoutPopUp/stripe/CheckoutApplePay';
+
 const flushPromises = () => new Promise(setImmediate);
 
 describe('<CheckoutApplePay />', () => {

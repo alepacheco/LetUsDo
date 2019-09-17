@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { submitPayment } from 'src/utils/stripe';
 
 jest.mock('axios', () => ({
