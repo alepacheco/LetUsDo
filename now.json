@@ -5,26 +5,17 @@
     { "src": "/api/(.*)", "dest": "/api/$1" },
     {
       "src": "/.well-known/(.*)",
-      "dest": "/src/static/.well-known/$1"
+      "dest": "/static/.well-known/$1"
     },
     {
-      "src": "/(.*)",
-      "dest": "/dist/$1"
-    },
-    { "src": "/.*", "status": 404, "dest": "/dist/index.html" }
+      "src": "/favicon.ico",
+      "dest": "/static/favicon.ico"
+    }
   ],
   "builds": [
     {
       "src": "package.json",
-      "use": "@now/static-build"
-    },
-    {
-      "src": "dist/**",
-      "use": "@now/static"
-    },
-    {
-      "src": "src/static/.well-known/**",
-      "use": "@now/static"
+      "use": "@now/next"
     },
     {
       "src": "/api/**",
