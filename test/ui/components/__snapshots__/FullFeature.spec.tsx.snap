@@ -10,8 +10,9 @@ exports[`<FullFeature /> renders 1`] = `
     <div
       className="side-image "
     >
-      <Image
+      <img
         height="250"
+        src={[Function]}
         width="250"
       />
     </div>

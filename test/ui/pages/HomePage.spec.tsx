@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import HomePage from 'src/pages/HomePage';
+import HomePage from 'src/../pages/index';
 
 describe('<HomePage />', () => {
   it('renders', () => {

@@ -67,6 +67,8 @@
     "@types/webpack": "4.39.1",
     "@types/webpack-dev-middleware": "2.0.3",
     "@types/webpack-hot-middleware": "2.16.5",
+    "@typescript-eslint/eslint-plugin": "2.3.0",
+    "@typescript-eslint/parser": "2.3.0",
     "acorn": "7.0.0",
     "ajv": "6.10.2",
     "autoprefixer": "9.6.1",
@@ -218,13 +220,15 @@
   "eslintConfig": {
     "root": true,
     "extends": [
+      "plugin:@typescript-eslint/recommended",
       "eslint:recommended",
       "plugin:import/errors",
       "plugin:import/warnings",
       "plugin:react/recommended"
     ],
     "plugins": [
-      "react"
+      "react",
+      "@typescript-eslint"
     ],
     "parser": "babel-eslint",
     "parserOptions": {
@@ -235,11 +239,6 @@
         "experimentalObjectRestSpread": true
       }
     },
-    "standard": {
-      "env": [
-        "mocha"
-      ]
-    },
     "env": {
       "es6": true,
       "browser": true,
@@ -248,7 +247,6 @@
       "jest": true,
       "mocha": true,
       "jest/globals": true
-    },
-    "globals": {}
+    }
   }
 }

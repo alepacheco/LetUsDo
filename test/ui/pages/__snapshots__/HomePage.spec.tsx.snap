@@ -3,23 +3,11 @@
 exports[`<HomePage /> renders 1`] = `
 <Fragment>
   <Component />
-  <Suspense
-    fallback={<div />}
-  >
-    <lazy />
-  </Suspense>
-  <Suspense
-    fallback={<div />}
-  >
-    <lazy />
-    <lazy />
-    <lazy />
-  </Suspense>
+  <Connect(Component) />
   <Component />
-  <Suspense
-    fallback={<div />}
-  >
-    <lazy />
-  </Suspense>
+  <Component />
+  <Component />
+  <Component />
+  <Connect(Component) />
 </Fragment>
 `;
