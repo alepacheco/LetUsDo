@@ -6,9 +6,10 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "lint": "esw webpack.config.* src tools --color",
-    "fix": "esw webpack.config.* src tools --color --fix",
+    "lint": "eslint . --ext .js,.ts,.jsx,.tsx --color",
+    "fix": "eslint . --ext .js,.ts,.jsx,.tsx --fix",
     "lint:watch": "npm run lint -- --watch",
+    "jest": "jest",
     "test": "npm run lint && jest",
     "test:integration": "jest --runTestsByPath test/integration/index.test.ts --detectOpenHandles --forceExit",
     "test:CI": "npm run test && npm run test:integration",
@@ -145,7 +146,6 @@
     "url": ""
   },
   "jest": {
-    "bail": true,
     "clearMocks": true,
     "coverageReporters": [
       "json",
@@ -157,11 +157,10 @@
     ],
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/tools/assetsTransformer.js",
-      "\\.(css)$": "<rootDir>/tools/assetsTransformer.js",
       "\\.(scss)$": "<rootDir>/tools/assetsTransformer.js",
       "^src(.*)$": "<rootDir>/src$1",
       "^components(.*)$": "<rootDir>/src/components$1",
-      "^pages(.*)$": "<rootDir>/src/pages$1"
+      "^pages(.*)$": "<rootDir>/pages$1"
     },
     "setupFiles": [
       "raf/polyfill",
