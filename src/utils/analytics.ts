@@ -1,5 +1,4 @@
 import ReactGA from 'react-ga';
-import { History, Location } from 'history';
 
 const debug = false;
 const trackPageView = (location: string) => {

@@ -1,4 +1,4 @@
-/* eslint-disable no-undef, import/no-unresolved */
+/* eslint-disable no-undef, import/no-unresolved, @typescript-eslint/camelcase */
 import { executePaymentMethod, handleError } from '../../../api/utils/stripe';
 
 process.env.STRIPE_SERVER = 'sk_test_Fe8VrGftldFe2Vy3e38I65Gv00qN5qwLa5';
@@ -7,10 +7,10 @@ const mockPaymentIntentCreate = jest.fn();
 const mockPaymentIntentConfirm = jest.fn();
 
 const mockStripeModule: any = {
-    paymentIntents: {
-        create: mockPaymentIntentCreate,
-        confirm: mockPaymentIntentConfirm
-    }
+  paymentIntents: {
+    create: mockPaymentIntentCreate,
+    confirm: mockPaymentIntentConfirm
+  }
 };
 
 jest.mock('stripe', () => () => mockStripeModule);
@@ -18,95 +18,98 @@ jest.mock('stripe', () => () => mockStripeModule);
 jest.resetModules();
 
 describe('executePaymentMethod', () => {
-    const demoData = {
-        payment_method_id: '1234',
-        amount: 100,
-        taskText: 'This is my task',
-        metadata: {
-            email: 'test@example.com',
-            remoteAddress: '127.0.0.1',
-            name: 'Bob',
-            phone: '+44065485943433'
-        },
-        stripe: mockStripeModule
-    };
+  const demoData = {
+    payment_method_id: '1234',
+    amount: 100,
+    taskText: 'This is my task',
+    metadata: {
+      email: 'test@example.com',
+      remoteAddress: '127.0.0.1',
+      name: 'Bob',
+      phone: '+44065485943433'
+    },
+    stripe: mockStripeModule
+  };
 
-    it('resturns ok', async () => {
-        mockPaymentIntentCreate.mockReturnValueOnce({ status: 'succeeded' });
+  it('resturns ok', async () => {
+    mockPaymentIntentCreate.mockReturnValueOnce({ status: 'succeeded' });
 
-        const paymentCompleted = await executePaymentMethod(demoData);
+    const paymentCompleted = await executePaymentMethod(demoData);
 
-        expect(paymentCompleted).toEqual({ response: { success: true }, status: 200 });
+    expect(paymentCompleted).toEqual({ response: { success: true }, status: 200 });
 
-        expect(mockPaymentIntentCreate).toHaveBeenLastCalledWith({
-            amount: 100,
-            confirm: true,
-            confirmation_method: 'manual',
-            currency: 'gbp',
-            description: 'Task details: This is my task',
-            metadata: {
-                email: 'test@example.com',
-                remoteAddress: '127.0.0.1',
-                name: 'Bob',
-                phone: '+44065485943433'
-            },
-            payment_method: '1234',
-            receipt_email: 'test@example.com'
-        });
+    expect(mockPaymentIntentCreate).toHaveBeenLastCalledWith({
+      amount: 100,
+      confirm: true,
+      confirmation_method: 'manual',
+      currency: 'gbp',
+      description: 'Task details: This is my task',
+      metadata: {
+        email: 'test@example.com',
+        remoteAddress: '127.0.0.1',
+        name: 'Bob',
+        phone: '+44065485943433'
+      },
+      payment_method: '1234',
+      receipt_email: 'test@example.com'
     });
+  });
 
-    it('resturns error', async () => {
-        mockPaymentIntentCreate.mockReturnValueOnce(Promise.reject(new Error('Connection lost')));
+  it('resturns error', async () => {
+    mockPaymentIntentCreate.mockReturnValueOnce(Promise.reject(new Error('Connection lost')));
 
-        const paymentCompleted = await executePaymentMethod(demoData);
+    const paymentCompleted = await executePaymentMethod(demoData);
 
-        expect(paymentCompleted).toEqual({
-            response: {
-                error: new Error('Connection lost')
-            },
-            status: 500
-        });
+    expect(paymentCompleted).toEqual({
+      response: {
+        error: new Error('Connection lost')
+      },
+      status: 500
     });
+  });
 });
 
-
 describe('handleError', () => {
-    it('returns true if all good', async () => {
-        const result = await handleError(() => Promise.resolve(({
-            status: 'succeeded',
-            next_action: {
-                type: '123'
-            },
-            client_secret: '123432'
-        })));
+  it('returns true if all good', async () => {
+    const result = await handleError(() =>
+      Promise.resolve({
+        status: 'succeeded',
+        next_action: {
+          type: '123'
+        },
+        client_secret: '123432'
+      })
+    );
 
-        expect(result).toEqual({
-            response: {
-                success: true
-            },
-            status: 200
-        });
+    expect(result).toEqual({
+      response: {
+        success: true
+      },
+      status: 200
     });
+  });
 
-    it('returns false if func breaks', async () => {
-        const result = await handleError(() => Promise.reject(new Error('Connection lost')));
+  it('returns false if func breaks', async () => {
+    const result = await handleError(() => Promise.reject(new Error('Connection lost')));
 
-        expect(result).toEqual({
-            response: {
-                error: new Error('Connection lost')
-            },
-            status: 500
-        });
+    expect(result).toEqual({
+      response: {
+        error: new Error('Connection lost')
+      },
+      status: 500
     });
+  });
 
-    it('returns false if func returns empty', async () => {
-        const result = await handleError(() => Promise.resolve(({
-            status: 'error',
-        })));
+  it('returns false if func returns empty', async () => {
+    const result = await handleError(() =>
+      Promise.resolve({
+        status: 'error'
+      })
+    );
 
-        expect(result).toEqual({
-            error: 'Unknown error while executing payment',
-            status: 500
-        });
+    expect(result).toEqual({
+      error: 'Unknown error while executing payment',
+      status: 500
     });
+  });
 });

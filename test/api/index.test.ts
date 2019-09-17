@@ -5,7 +5,7 @@ describe('api /', () => {
     const req: any = jest.fn();
     const res: any = { send: jest.fn() };
 
-    const result = indexApi(req, res);
+    indexApi(req, res);
 
     expect(res.send).toHaveBeenCalledWith('Api index');
   });

@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import React, { useState } from 'react';
+import React from 'react';
 import 'src/styles/components/stripe.scss';
 import { connect } from 'react-redux';
 import CheckoutForm from './CheckoutForm';

@@ -269,22 +269,22 @@
         0
       ],
       "@typescript-eslint/ban-ts-ignore": [
-        1
+        0
       ],
       "import/no-unresolved": [
-        1
+        0
       ],
       "@typescript-eslint/no-var-requires": [
-        1
+        0
       ],
       "@typescript-eslint/camelcase": [
-        1
+        0
       ],
       "react/display-name": [
-        1
+        0
       ],
       "no-empty-pattern": [
-        1
+        0
       ],
       "react/prop-types": [
         1
@@ -294,6 +294,12 @@
       ],
       "no-global-assign": [
         1
+      ],
+      "@typescript-eslint/explicit-function-return-type": [
+        0
+      ],
+      "@typescript-eslint/no-explicit-any": [
+        0
       ]
     }
   }

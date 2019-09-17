@@ -1,11 +1,14 @@
 import React from 'react';
-import { injectStripe, PaymentRequestButtonElement } from 'react-stripe-elements';
+import {
+  injectStripe,
+  PaymentRequestButtonElement,
+  ReactStripeElements
+} from 'react-stripe-elements';
 import * as actions from 'src/actions/taskModalActions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { tryPayment } from 'src/utils/stripe';
 import { trackEvent } from 'src/utils/analytics';
-import { ReactStripeElements } from 'react-stripe-elements';
 
 type CheckoutApplePayProps = {
   actions: any;

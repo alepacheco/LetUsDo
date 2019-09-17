@@ -1,3 +1,4 @@
+/* eslint-disable no-global-assign */
 import { handler } from '../../../api/createPayment/index';
 process.env.STRIPE_SERVER = 'sk_test_Fe8VrGftldFe2Vy3e38I65Gv00qN5qwLa5';
 
@@ -8,7 +9,7 @@ const constantDate = new Date('Tue Jun 13 2017 04:41:20');
 constantDate.setUTCHours(0, 0, 0, 0);
 
 // @ts-ignore
-global.console = { log: jest.fn() }
+global.console = { log: jest.fn() };
 
 // @ts-ignore
 Date = class extends Date {
@@ -93,7 +94,7 @@ describe('/createPayment', () => {
         payment_method_id: 'payment_method_id_tok_fr',
         taskText: 'taskText',
         metadata: {
-          email: 'email@email.com',
+          email: 'email@email.com'
         }
       },
       connection: {
@@ -112,7 +113,7 @@ describe('/createPayment', () => {
       description: 'Task details: taskText',
       metadata: {
         email: 'email@email.com',
-        remoteAddress: '127.0.0.1',
+        remoteAddress: '127.0.0.1'
       },
       payment_method: 'payment_method_id_tok_fr',
       receipt_email: 'email@email.com'
@@ -153,7 +154,7 @@ describe('/createPayment', () => {
       description: 'Task details: taskText',
       metadata: {
         email: 'email@email.com',
-        remoteAddress: '127.0.0.1',
+        remoteAddress: '127.0.0.1'
       },
       payment_method: 'payment_method_id_tok_fr',
       receipt_email: 'email@email.com'

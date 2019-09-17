@@ -1,4 +1,4 @@
-/* eslint-disable no-undef, import/no-unresolved */
+/* eslint-disable no-undef, import/no-unresolved, @typescript-eslint/no-explicit-any */
 import React from 'react';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
