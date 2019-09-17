@@ -1,4 +1,4 @@
-/* eslint-disable no-undef */
+/* eslint-disable no-undef, import/no-unresolved */
 /* eslint no-global-assign:off */
 import React from 'react';
 import { shallow } from 'enzyme';

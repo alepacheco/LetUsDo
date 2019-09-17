@@ -3,11 +3,11 @@
 exports[`<HomePage /> renders 1`] = `
 <Fragment>
   <Component />
-  <Connect(Component) />
+  <LoadableComponent />
+  <Component />
+  <LoadableComponent />
   <Component />
   <Component />
-  <Component />
-  <Component />
-  <Connect(Component) />
+  <LoadableComponent />
 </Fragment>
 `;

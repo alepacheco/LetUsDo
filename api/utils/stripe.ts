@@ -1,11 +1,11 @@
 import * as Stripe from 'stripe';
 
 type HandleErrorArgs = {
-    status?: string,
+    status?: string;
     next_action?: {
-        type: string
-    },
-    client_secret?: string
+        type: string;
+    };
+    client_secret?: string;
 };
 
 export const handleError = async (func: () => Promise<HandleErrorArgs>) => {

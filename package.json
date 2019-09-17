@@ -7,13 +7,14 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint . --ext .js,.ts,.jsx,.tsx --color",
-    "fix": "eslint . --ext .js,.ts,.jsx,.tsx --fix",
+    "fix": "eslint . --ext .js,.ts,.jsx,.tsx --color --fix",
     "lint:watch": "npm run lint -- --watch",
     "jest": "jest",
     "test": "npm run lint && jest",
     "test:integration": "jest --runTestsByPath test/integration/index.test.ts --detectOpenHandles --forceExit",
     "test:CI": "npm run test && npm run test:integration",
-    "test:cover": "npm run test -- --coverage "
+    "test:cover": "npm run test -- --coverage ",
+    "test:send-cover": "jest --coverage --coverageReporters=text-lcov | coveralls"
   },
   "author": "Alejandro Pacheco",
   "license": "Unlicenced",
@@ -235,9 +236,9 @@
       "react",
       "@typescript-eslint"
     ],
-    "parser": "babel-eslint",
+    "parser": "@typescript-eslint/parser",
     "parserOptions": {
-      "ecmaVersion": 6,
+      "ecmaVersion": 2018,
       "sourceType": "module",
       "ecmaFeatures": {
         "jsx": true,
@@ -250,8 +251,29 @@
       "node": true,
       "jquery": true,
       "jest": true,
-      "mocha": true,
-      "jest/globals": true
+      "mocha": true
+    },
+    "settings": {
+      "import/resolver": {
+        "node": {
+          "moduleDirectory": [
+            "node_modules",
+            "src"
+          ]
+        }
+      }
+    },
+    "rules": {
+      "react/jsx-filename-extension": [0],
+      "@typescript-eslint/ban-ts-ignore": [1],
+      "import/no-unresolved": [1],
+      "@typescript-eslint/no-var-requires": [1],
+      "@typescript-eslint/camelcase": [1],
+      "react/display-name": [1],
+      "no-empty-pattern": [1],
+      "react/prop-types": [1],
+      "no-unused-vars": [1],
+      "no-global-assign": [1]
     }
   }
 }

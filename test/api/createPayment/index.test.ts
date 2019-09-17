@@ -35,7 +35,7 @@ describe('/createPayment', () => {
     mockPaymentIntentCreate.mockReset();
   });
 
-  const req = {
+  const req: any = {
     method: 'POST',
     body: {
       payment_intent_id: 'tok_fr',
@@ -46,7 +46,7 @@ describe('/createPayment', () => {
       remoteAddress: '127.0.0.1'
     }
   };
-  const res = {
+  const res: any = {
     send: jest.fn(),
     status: jest.fn(),
     json: jest.fn()
@@ -60,7 +60,7 @@ describe('/createPayment', () => {
       client_secret: null
     });
 
-    await handler(<any>req, <any>res);
+    await handler(req, res);
     expect(res.json).toHaveBeenLastCalledWith({ success: true });
     expect(res.status).toHaveBeenLastCalledWith(200);
     expect(mockPaymentIntentCreate).not.toHaveBeenCalled();
@@ -74,7 +74,7 @@ describe('/createPayment', () => {
       client_secret: 'clientSecret'
     });
 
-    await handler(<any>req, <any>res);
+    await handler(req, res);
     expect(res.json).toHaveBeenLastCalledWith({
       payment_intent_client_secret: 'clientSecret',
       requires_action: true
@@ -87,7 +87,7 @@ describe('/createPayment', () => {
   it('returns ok for second 2fa', async () => {
     mockPaymentIntentCreate.mockReturnValueOnce({ status: 'succeeded' });
 
-    const req = {
+    const req: any = {
       method: 'POST',
       body: {
         payment_method_id: 'payment_method_id_tok_fr',
@@ -101,7 +101,7 @@ describe('/createPayment', () => {
       }
     };
 
-    await handler(<any>req, <any>res);
+    await handler(req, res);
     expect(res.json).toHaveBeenLastCalledWith({ success: true });
     expect(res.status).toHaveBeenLastCalledWith(200);
     expect(mockPaymentIntentCreate).toHaveBeenLastCalledWith({
@@ -127,7 +127,7 @@ describe('/createPayment', () => {
       client_secret: 'clientSecret'
     });
 
-    const req = {
+    const req: any = {
       method: 'POST',
       body: {
         payment_method_id: 'payment_method_id_tok_fr',
@@ -139,7 +139,7 @@ describe('/createPayment', () => {
       }
     };
 
-    await handler(<any>req, <any>res);
+    await handler(req, res);
     expect(res.json).toHaveBeenLastCalledWith({
       payment_intent_client_secret: 'clientSecret',
       requires_action: true
@@ -164,7 +164,7 @@ describe('/createPayment', () => {
   it('returns an catched error', async () => {
     mockPaymentIntentConfirm.mockReturnValueOnce(Promise.reject(new Error('Connection lost')));
 
-    await handler(<any>req, <any>res);
+    await handler(req, res);
 
     expect(res.status).toHaveBeenLastCalledWith(500);
     expect(res.json).toHaveBeenLastCalledWith({ error: new Error('Connection lost') });

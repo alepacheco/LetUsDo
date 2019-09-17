@@ -11,7 +11,7 @@ import initGa from 'src/utils/analytics';
 const store = configureStore(initialState);
 
 class MyApp extends App {
-    constructor(props) {
+    constructor(props: any) {
         super(props)
         initGa();
     }
