@@ -2,11 +2,11 @@ import ReactGA from 'react-ga';
 import { History, Location } from 'history';
 
 const debug = false;
-const trackPageView = (location: Location) => {
+const trackPageView = (location: string) => {
   ReactGA.set({
-    page: location.pathname
+    page: location
   });
-  ReactGA.pageview(location.pathname);
+  ReactGA.pageview(location);
 };
 
 const trackModalView = (location: string) => {
@@ -21,7 +21,7 @@ const trackEvent = ({category, action, label}: {category: string, action: string
   });
 };
 
-const initGa = (history: History) => {
+const initGa = () => {
   ReactGA.initialize('UA-143596433-1', {
     debug,
     gaOptions: {
@@ -31,8 +31,7 @@ const initGa = (history: History) => {
   if (debug) {
     ReactGA.ga('set', 'sendHitTask', null);
   }
-  trackPageView(history.location);
-  history.listen(trackPageView);
+  trackPageView('/');
 };
 
 export { initGa as default, trackPageView, trackEvent, trackModalView };

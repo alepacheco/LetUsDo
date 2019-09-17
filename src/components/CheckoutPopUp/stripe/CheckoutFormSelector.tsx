@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import React, { useState } from 'react';
-import 'src/styles/components/stripe.css';
+import 'src/styles/components/stripe.scss';
 import CheckoutForm from './CheckoutForm';
 import CheckoutApplePay from './CheckoutApplePay';
 import { connect } from 'react-redux';

@@ -2,7 +2,7 @@ import React from 'react';
 import Modal from 'react-bootstrap/Modal';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import '../../styles/components/CheckoutPopUp.css';
+import '../../styles/components/CheckoutPopUp.scss';
 import { validateEmail } from '../../utils/generic';
 import * as checkoutPopUpActions from '../../actions/checkoutPopUpActions';
 import * as taskModalActions from '../../actions/taskModalActions';

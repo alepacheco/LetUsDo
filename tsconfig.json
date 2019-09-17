@@ -4,27 +4,43 @@
     "noImplicitAny": true,
     "module": "esnext",
     "target": "es6",
-    "jsx": "react",
+    "jsx": "preserve",
     "esModuleInterop": true,
     "strict": true,
     "allowSyntheticDefaultImports": true,
     "moduleResolution": "node",
-    "lib": ["es2018", "dom"],
+    "lib": [
+      "es2018",
+      "dom"
+    ],
     "baseUrl": ".",
     "paths": {
-      "src/*": ["./src/*"],
-      "components/*": ["./src/components/*"],
-      "pages/*": ["src/pages/*"],
-      "utils/*": ["src/utils/*"]
+      "src/*": [
+        "./src/*"
+      ],
+      "components/*": [
+        "./src/components/*"
+      ],
+      "pages/*": [
+        "src/pages/*"
+      ],
+      "utils/*": [
+        "src/utils/*"
+      ]
     },
     "allowJs": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "isolatedModules": true
   },
-  "include": ["./src/**/*"],
-  "exclude": ["./test/**/*"],
+  "include": [
+    "./src/**/*", "pages/HomePage.tsx"
+  ],
+  "exclude": [
+    "./test/**/*"
+  ],
   "esModuleInterop": true,
   "allowSyntheticDefaultImports": true
 }

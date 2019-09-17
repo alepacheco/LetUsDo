@@ -1,5 +1,3 @@
-type InitialState = {};
-
 const initialState: any = {
   taskModal: {
     checkoutPopupState: 'closed',
