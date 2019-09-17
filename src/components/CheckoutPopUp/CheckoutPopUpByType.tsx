@@ -7,9 +7,9 @@ import { validateEmail } from '../../utils/generic';
 import * as checkoutPopUpActions from '../../actions/checkoutPopUpActions';
 import * as taskModalActions from '../../actions/taskModalActions';
 
-import { CheckoutContent } from './CheckoutContent';
-import { PurchaseCompletedContent } from './PurchaseCompletedContent';
-import { PurchaseErrorContent } from './PurchaseErrorContent';
+import CheckoutContent from './CheckoutContent';
+import PurchaseCompletedContent from './PurchaseCompletedContent';
+import PurchaseErrorContent from './PurchaseErrorContent';
 
 type GetContentByTypeProps = {
   type: 'open' | 'purchaseCompleted' | 'closed' | 'purchaseError' | 'purchaseLoading';

@@ -34,37 +34,11 @@ exports[`<CheckoutPopUpByType /> renders closed 1`] = `
 `;
 
 exports[`<CheckoutPopUpByType /> renders open 1`] = `
-<Fragment>
-  <ModalHeader
-    closeButton={true}
-    closeLabel="Close"
-  >
-    <ModalTitle
-      id="contained-modal-title-vcenter"
-    >
-      Confirm order
-    </ModalTitle>
-  </ModalHeader>
-  <ModalBody>
-    <div
-      className="task-description-title"
-    >
-      Task description
-    </div>
-    <div
-      className="task-description-content"
-    >
-      This is my task description
-    </div>
-    <EmailForm
-      email="email@example.com"
-      onChangeEmail={[Function]}
-    />
-    <Component
-      loading={false}
-    />
-  </ModalBody>
-</Fragment>
+<Connect(Component)
+  email="email@example.com"
+  onChangeEmail={[Function]}
+  taskText="This is my task description"
+/>
 `;
 
 exports[`<CheckoutPopUpByType /> renders purchaseCompleted 1`] = `

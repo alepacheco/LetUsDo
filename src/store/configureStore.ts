@@ -1,6 +1,7 @@
 import { createStore, compose, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import createRootReducer from '../reducers';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 function configureStore(initialState: any) {
   const middlewares = [thunk];
@@ -8,7 +9,7 @@ function configureStore(initialState: any) {
   return createStore(
     createRootReducer(), // root reducer with router state
     initialState,
-    compose(applyMiddleware(...middlewares))
+    composeWithDevTools(applyMiddleware(...middlewares))
   );
 }
 

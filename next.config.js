@@ -1,6 +1,5 @@
 const path = require('path')
 const withSass = require('@zeit/next-sass')
-const withOffline = require('next-offline')
 
 require('dotenv').config()
 
@@ -18,7 +17,7 @@ function HACK_removeMinimizeOptionFromCssLoaders(config) {
   });
 }
 
-module.exports = withOffline(withSass({
+module.exports = withSass({
   webpack(config) {
     HACK_removeMinimizeOptionFromCssLoaders(config);
     config.resolve.alias.components = path.join(__dirname, 'src/components');
@@ -37,6 +36,5 @@ module.exports = withOffline(withSass({
     ];
 
     return config;
-  },
-  useFileSystemPublicRoutes: false,
-}));
+  }
+});

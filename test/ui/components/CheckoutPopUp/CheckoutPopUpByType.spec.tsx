@@ -26,7 +26,6 @@ describe('<CheckoutPopUpByType />', () => {
         wrapper
           .find('GetContentByType')
           .dive()
-          .dive()
       )
     ).toMatchSnapshot();
   });
