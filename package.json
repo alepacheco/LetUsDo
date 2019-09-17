@@ -4,6 +4,7 @@
   "description": "Outsourcing platform ",
   "scripts": {
     "dev": "next",
+    "prebuild": "npm run test",
     "build": "next build",
     "start": "next start",
     "lint": "eslint . --ext .js,.ts,.jsx,.tsx --color",

@@ -24,4 +24,3 @@ const HomePage = () => (
 );
 
 export default HomePage;
-export const config = { amp: true };

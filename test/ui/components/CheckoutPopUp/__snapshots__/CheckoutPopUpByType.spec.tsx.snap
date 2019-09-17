@@ -56,18 +56,10 @@ exports[`<CheckoutPopUpByType /> renders open 1`] = `
     >
       This is my task description
     </div>
-    <div
-      style={
-        Object {
-          "display": "block",
-        }
-      }
-    >
-      <EmailForm
-        email="email@example.com"
-        onChangeEmail={[Function]}
-      />
-    </div>
+    <EmailForm
+      email="email@example.com"
+      onChangeEmail={[Function]}
+    />
     <Component
       loading={false}
     />
