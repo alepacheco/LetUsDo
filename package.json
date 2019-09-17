@@ -176,6 +176,7 @@
     },
     "collectCoverageFrom": [
       "src/**/*.{js,jsx,ts,tsx}",
+      "pages/**/*.{js,jsx,ts,tsx}",
       "!<rootDir>/node_modules/",
       "api/**/**"
     ],
