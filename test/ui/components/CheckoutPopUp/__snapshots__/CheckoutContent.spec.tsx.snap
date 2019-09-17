@@ -24,10 +24,9 @@ exports[`<CheckoutContent /> renders 1`] = `
       This is a task
     </div>
     <div
-      id="email-form"
       style={
         Object {
-          "display": "none",
+          "display": "block",
         }
       }
     >

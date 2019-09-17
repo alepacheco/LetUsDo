@@ -69,11 +69,6 @@ export class CheckoutApplePay extends React.Component<
     paymentRequest.canMakePayment().then((result: any) => {
       this.setState({ canMakePayment: !!result });
       this.props.actions.setApplePayAvailable(!!result);
-
-      const emailFormElement = document.getElementById('email-form');
-      if (emailFormElement) {
-        emailFormElement.style.display = result ? 'none' : 'block';
-      }
     });
 
     this.state = {

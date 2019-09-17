@@ -10,7 +10,7 @@
     "fix": "eslint . --ext .js,.ts,.jsx,.tsx --color --fix",
     "lint:watch": "npm run lint -- --watch",
     "jest": "jest",
-    "test": "npm run lint && jest",
+    "test": "jest && npm run lint",
     "test:integration": "jest --runTestsByPath test/integration/index.test.ts --detectOpenHandles --forceExit",
     "test:CI": "npm run test && npm run test:integration",
     "test:cover": "npm run test -- --coverage ",
