@@ -1,4 +1,6 @@
+/* eslint-disable no-undef, import/no-unresolved */
 import { executePaymentMethod, handleError } from '../../../api/utils/stripe';
+
 process.env.STRIPE_SERVER = 'sk_test_Fe8VrGftldFe2Vy3e38I65Gv00qN5qwLa5';
 
 const mockPaymentIntentCreate = jest.fn();

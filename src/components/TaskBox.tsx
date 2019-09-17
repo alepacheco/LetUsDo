@@ -5,9 +5,9 @@ import Button from 'react-bootstrap/Button';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import '../styles/components/TaskBox.scss';
+import { trackEvent } from 'src/utils/analytics';
 import * as actions from '../actions/taskModalActions';
 import { CenteredContent } from './CenteredContent';
-import { trackEvent } from 'src/utils/analytics';
 
 type TaskBoxProps = {
   actions: {

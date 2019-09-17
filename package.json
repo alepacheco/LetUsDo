@@ -3,36 +3,29 @@
   "version": "1.0.0",
   "description": "Outsourcing platform ",
   "scripts": {
-    "start": "concurrently -k -r -s first \"npm run test:watch\" \"npm run open:src\" \"npm run lint:watch\"",
-    "dev": "npm run start",
-    "open:src": "cross-env TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" ts-node tools/srcServer.ts",
-    "open:dist": "cross-env TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" ts-node tools/distServer.ts",
-    "lint": "esw webpack.config.* src tools --color",
-    "fix": "esw webpack.config.* src tools --color --fix",
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint . --ext .js,.ts,.jsx,.tsx --color",
+    "fix": "eslint . --ext .js,.ts,.jsx,.tsx --color --fix",
     "lint:watch": "npm run lint -- --watch",
-    "clean-dist": "npm run remove-dist && mkdir dist",
-    "remove-dist": "rimraf ./dist",
-    "prebuild": "npm run lint && jest && npm run clean-dist",
-    "build-run": "cross-env TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" ts-node tools/build.ts && npm run open:dist",
-    "build": "cross-env TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" ts-node tools/build.ts",
-    "buildd": "npm run remove-dist && cross-env TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" ts-node tools/build.ts",
+    "jest": "jest",
     "test": "npm run lint && jest",
     "test:integration": "jest --runTestsByPath test/integration/index.test.ts --detectOpenHandles --forceExit",
     "test:CI": "npm run test && npm run test:integration",
     "test:cover": "npm run test -- --coverage ",
-    "test:send-cover": "jest --coverage --coverageReporters=text-lcov | coveralls",
-    "test:watch": "jest --watchAll",
-    "open:cover": "npm run test:cover && opn ./coverage/lcov-report/index.html",
-    "analyze-bundle": "cross-env TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" ts-node ./tools/analyzeBundle.ts"
+    "test:send-cover": "jest --coverage --coverageReporters=text-lcov | coveralls"
   },
   "author": "Alejandro Pacheco",
   "license": "Unlicenced",
   "dependencies": {
     "@hot-loader/react-dom": "16.9.0",
+    "@zeit/next-sass": "1.0.1",
     "axios": "0.19.0",
     "bootstrap": "4.3.1",
     "connected-react-router": "6.5.2",
     "enzyme-to-json": "3.4.0",
+    "next": "9.0.5",
     "object-assign": "4.1.1",
     "react": "16.9.0",
     "react-bootstrap": "1.0.0-beta.12",
@@ -75,6 +68,8 @@
     "@types/webpack": "4.39.1",
     "@types/webpack-dev-middleware": "2.0.3",
     "@types/webpack-hot-middleware": "2.16.5",
+    "@typescript-eslint/eslint-plugin": "2.3.0",
+    "@typescript-eslint/parser": "2.3.0",
     "acorn": "7.0.0",
     "ajv": "6.10.2",
     "autoprefixer": "9.6.1",
@@ -154,7 +149,6 @@
     "url": ""
   },
   "jest": {
-    "bail": true,
     "clearMocks": true,
     "coverageReporters": [
       "json",
@@ -166,11 +160,10 @@
     ],
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/tools/assetsTransformer.js",
-      "\\.(css)$": "<rootDir>/tools/assetsTransformer.js",
       "\\.(scss)$": "<rootDir>/tools/assetsTransformer.js",
       "^src(.*)$": "<rootDir>/src$1",
       "^components(.*)$": "<rootDir>/src/components$1",
-      "^pages(.*)$": "<rootDir>/src/pages$1"
+      "^pages(.*)$": "<rootDir>/pages$1"
     },
     "setupFiles": [
       "raf/polyfill",
@@ -183,16 +176,21 @@
     },
     "collectCoverageFrom": [
       "src/**/*.{js,jsx,ts,tsx}",
+      "pages/**/*.{js,jsx,ts,tsx}",
       "!<rootDir>/node_modules/",
       "api/**/**"
-    ]
+    ],
+    "globals": {
+      "ts-jest": {
+        "tsConfig": "tsconfig.test.json"
+      }
+    }
   },
   "babel": {
     "env": {
       "development": {
         "presets": [
-          "@babel/preset-env",
-          "@babel/preset-react"
+          "next/babel"
         ],
         "plugins": [
           "@babel/plugin-syntax-dynamic-import",
@@ -203,16 +201,7 @@
       },
       "production": {
         "presets": [
-          [
-            "@babel/preset-env",
-            {
-              "targets": {
-                "ie": 10
-              },
-              "forceAllTransforms": true
-            }
-          ],
-          "@babel/preset-react"
+          "next/babel"
         ],
         "plugins": [
           "@babel/plugin-syntax-dynamic-import",
@@ -224,8 +213,7 @@
       },
       "test": {
         "presets": [
-          "@babel/preset-env",
-          "@babel/preset-react"
+          "next/babel"
         ],
         "plugins": [
           "babel-plugin-transform-dynamic-import",
@@ -239,27 +227,24 @@
   "eslintConfig": {
     "root": true,
     "extends": [
+      "plugin:@typescript-eslint/recommended",
       "eslint:recommended",
       "plugin:import/errors",
       "plugin:import/warnings",
       "plugin:react/recommended"
     ],
     "plugins": [
-      "react"
+      "react",
+      "@typescript-eslint"
     ],
-    "parser": "babel-eslint",
+    "parser": "@typescript-eslint/parser",
     "parserOptions": {
-      "ecmaVersion": 6,
+      "ecmaVersion": 2018,
       "sourceType": "module",
       "ecmaFeatures": {
         "jsx": true,
         "experimentalObjectRestSpread": true
       }
-    },
-    "standard": {
-      "env": [
-        "mocha"
-      ]
     },
     "env": {
       "es6": true,
@@ -267,9 +252,49 @@
       "node": true,
       "jquery": true,
       "jest": true,
-      "mocha": true,
-      "jest/globals": true
+      "mocha": true
     },
-    "globals": {}
+    "settings": {
+      "import/resolver": {
+        "node": {
+          "moduleDirectory": [
+            "node_modules",
+            "src"
+          ]
+        }
+      }
+    },
+    "rules": {
+      "react/jsx-filename-extension": [
+        0
+      ],
+      "@typescript-eslint/ban-ts-ignore": [
+        1
+      ],
+      "import/no-unresolved": [
+        1
+      ],
+      "@typescript-eslint/no-var-requires": [
+        1
+      ],
+      "@typescript-eslint/camelcase": [
+        1
+      ],
+      "react/display-name": [
+        1
+      ],
+      "no-empty-pattern": [
+        1
+      ],
+      "react/prop-types": [
+        1
+      ],
+      "no-unused-vars": [
+        1
+      ],
+      "no-global-assign": [
+        1
+      ]
+    }
   }
 }

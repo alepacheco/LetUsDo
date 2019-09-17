@@ -19,7 +19,7 @@ export const FullFeature: React.FC<FullFeatureProps> = ({
     <CenteredContent reverse={imageSide === 'right'}>
       {Image && (
         <div className={`side-image ${hideImage ? 'hide-image' : ''}`}>
-          <Image width="250" height="250" />
+          <img src={Image} width="250" height="250" />
         </div>
       )}
       <div className={`text-bottom ${hideImage ? 'extra-top-margin' : ''}`}>

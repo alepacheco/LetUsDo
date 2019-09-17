@@ -1,3 +1,4 @@
+/* eslint-disable no-undef, import/no-unresolved */
 import { validateEmail } from 'src/utils/generic';
 
 describe('generic utils', () => {

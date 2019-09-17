@@ -1,9 +1,9 @@
 /* eslint-disable no-console */
 import React, { useState } from 'react';
-import 'src/styles/components/stripe.css';
+import 'src/styles/components/stripe.scss';
+import { connect } from 'react-redux';
 import CheckoutForm from './CheckoutForm';
 import CheckoutApplePay from './CheckoutApplePay';
-import { connect } from 'react-redux';
 
 export const CheckoutFormSelector: React.FC<{ applePayAvailable: boolean; loading: boolean }> = ({
   applePayAvailable,

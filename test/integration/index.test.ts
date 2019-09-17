@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { setup, teardown } from 'jest-dev-server';
 import axios from 'axios';
 
@@ -11,7 +12,7 @@ describe('Integration tests', () => {
     });
     jest.setTimeout(5000);
 
-    return;
+    
   });
 
   afterAll(async () => {
@@ -29,6 +30,8 @@ describe('Integration tests', () => {
     const { status, data } = await axios.get('http://localhost:9888/');
 
     expect(status).toBe(200);
-    expect(data.includes('<!doctype html>')).toEqual(true);
+    expect(data.includes('<html>')).toEqual(true);
   });
 });
+
+

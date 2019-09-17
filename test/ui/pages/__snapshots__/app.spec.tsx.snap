@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<MyApp /> renders 1`] = `
+<Fragment>
+  <Head>
+    <link
+      href="https://m.stripe.com"
+      rel="preconnect"
+    />
+    <script
+      async={true}
+      src="https://js.stripe.com/v3/"
+    />
+    <link
+      crossOrigin="anonymous"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      rel="stylesheet"
+    />
+    <link
+      href="/static/favicon.ico"
+      rel="icon"
+      type="image/x-icon"
+    />
+    <link
+      href="/static/favicon.ico"
+      rel="shortcut icon"
+      type="image/png"
+    />
+    <title>
+      Let Us Do
+    </title>
+  </Head>
+  <Provider
+    store={
+      Object {
+        "dispatch": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+        Symbol(observable): [Function],
+      }
+    }
+  >
+    <FakeComponent
+      foo="bar"
+    />
+  </Provider>
+</Fragment>
+`;
+
+exports[`<MyApp /> renders 2`] = `
+<p>
+  bar
+</p>
+`;

@@ -6,7 +6,7 @@ import Badge from 'react-bootstrap/Badge';
 import { connect } from 'react-redux';
 import { CardElement, injectStripe, ReactStripeElements } from 'react-stripe-elements';
 import { trackEvent } from 'src/utils/analytics';
-import 'src/styles/components/stripe.css';
+import 'src/styles/components/stripe.scss';
 import { submitPayment } from 'src/utils/stripe';
 // @ts-ignore
 import * as actions from 'src/actions/taskModalActions';

@@ -3,7 +3,7 @@ import { methodFilter } from '../../../api/utils/middleware';
 describe('middleware', () => {
   describe('methodFilter', () => {
     it('should send request if method is correct', () => {
-      const res = {
+      const res: any = {
         send: jest.fn(),
         status: jest.fn()
       };
@@ -14,13 +14,14 @@ describe('middleware', () => {
 
       const filteredHandler = methodFilter(handler, 'POST');
 
-      filteredHandler(<any>{ method: 'POST' }, <any>res);
+      const args: any = { method: 'POST' };
+      filteredHandler(args, res);
 
       expect(res.send).toHaveBeenCalledWith('OK');
     });
 
     it('should send 500 if method is correct', () => {
-      const res = {
+      const res: any = {
         status: jest.fn(),
         send: jest.fn()
       };
@@ -33,7 +34,8 @@ describe('middleware', () => {
 
       const filteredHandler = methodFilter(handler, 'POST');
 
-      filteredHandler(<any>{ method: 'GET' }, <any>res);
+      const args: any = { method: 'GET' };
+      filteredHandler(args, res);
 
       expect(res.status).toHaveBeenCalledWith(500);
       expect(res.send).toHaveBeenCalledWith('500');
