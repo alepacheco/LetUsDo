@@ -8,9 +8,11 @@ const StripeFactory: StripeFactory = require('stripe');
 
 export const handler = async (req: NowRequest, res: NowResponse) => {
   const { payment_method_id, payment_intent_id, taskText, metadata } = req.body || {};
-  const forwardedHeader = req.headers && req.headers['x-forwarded-for'] as string;
-  const remoteAddress = forwardedHeader ? forwardedHeader.split(',')[0].trim() : req.connection.remoteAddress
-    const serializedData = {
+  const forwardedHeader = req.headers && (req.headers['x-forwarded-for'] as string);
+  const remoteAddress = forwardedHeader
+    ? forwardedHeader.split(',')[0].trim()
+    : req.connection.remoteAddress;
+  const serializedData = {
     remoteAddress,
     metadata,
     payment_method_id,
