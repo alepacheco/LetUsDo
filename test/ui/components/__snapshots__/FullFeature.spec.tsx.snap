@@ -12,7 +12,7 @@ exports[`<FullFeature /> renders 1`] = `
     >
       <img
         height="250"
-        src={[Function]}
+        src="/static/img.png"
         width="250"
       />
     </div>

@@ -4,6 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import propTypes from 'prop-types';
 import '../styles/components/TaskBox.scss';
 import { trackEvent } from 'src/utils/analytics';
 import * as actions from '../actions/taskModalActions';
@@ -70,6 +71,11 @@ export const TaskBox: React.FC<TaskBoxProps> = ({ actions, taskText }) => {
       </CenteredContent>
     </div>
   );
+};
+
+TaskBox.propTypes = {
+  taskText: propTypes.string.isRequired,
+  actions: propTypes.any
 };
 
 function mapStateToProps(state: any) {

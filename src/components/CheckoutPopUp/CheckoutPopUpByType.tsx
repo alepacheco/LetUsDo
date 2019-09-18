@@ -2,6 +2,7 @@ import React from 'react';
 import Modal from 'react-bootstrap/Modal';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import propTypes from 'prop-types';
 import '../../styles/components/CheckoutPopUp.scss';
 import { validateEmail } from '../../utils/generic';
 import * as checkoutPopUpActions from '../../actions/checkoutPopUpActions';
@@ -16,6 +17,7 @@ type GetContentByTypeProps = {
   taskText: string;
   onChangeEmail: (email: string) => void;
   email: string;
+  children?: any;
 };
 const GetContentByType = ({ type, taskText, onChangeEmail, email }: GetContentByTypeProps) => {
   if (type === 'open') {
@@ -47,6 +49,7 @@ type CheckoutPopUpByTypeProps = {
   checkoutPopupState: 'open' | 'purchaseCompleted' | 'closed' | 'purchaseError' | 'purchaseLoading';
   taskText: string;
   email: string;
+  children?: any;
 };
 export const CheckoutPopUpByType: React.FC<CheckoutPopUpByTypeProps> = ({
   actions,
@@ -82,6 +85,13 @@ export const CheckoutPopUpByType: React.FC<CheckoutPopUpByTypeProps> = ({
     </Modal>
   );
 };
+
+CheckoutPopUpByType.propTypes = {
+  actions: propTypes.any.isRequired,
+  children: propTypes.any,
+  email: propTypes.string.isRequired,
+  checkoutPopupState: propTypes.any.isRequired
+}
 
 const mapStateToProps = (state: any) => ({
   taskText: state.taskModal.taskText,
