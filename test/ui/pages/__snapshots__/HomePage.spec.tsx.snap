@@ -9,5 +9,12 @@ exports[`<HomePage /> renders 1`] = `
   <Component />
   <Component />
   <LoadableComponent />
+  <Head>
+    <script
+      async={true}
+      defer={true}
+      src="https://client.crisp.chat/l.js"
+    />
+  </Head>
 </Fragment>
 `;
