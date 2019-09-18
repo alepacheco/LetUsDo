@@ -5,8 +5,6 @@ exports[`<HomePage /> renders 1`] = `
   <Component />
   <LoadableComponent />
   <Component />
-  <LoadableComponent />
-  <Component />
   <Component />
   <LoadableComponent />
   <Head>

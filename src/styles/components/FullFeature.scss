@@ -20,7 +20,7 @@
   .feature-title {
     font-family: JelleeRoman, Sans-Serif;
     font-size: 24px;
-    margin: auto 8px 0;
+    margin: auto 8px 4px;
   }
   .feature-text {
     font-family: Quicksand, Sans-Serif;
@@ -28,6 +28,10 @@
     text-align: justify;
     margin: auto 8px 36px;
     display: inline-block;
+  }
+
+  .text-header {
+    margin-bottom: 24px;
   }
 
   .text-bottom {

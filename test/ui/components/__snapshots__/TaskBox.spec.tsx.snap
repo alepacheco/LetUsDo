@@ -26,7 +26,7 @@ exports[`<TaskBox /> on form type  1`] = `
               as="textarea"
               className="task-form-input"
               onChange={[Function]}
-              placeholder="What task do you need done?"
+              placeholder="Describe us your task with as much details as possible"
               rows="3"
               value="Sample task"
             />
@@ -78,7 +78,7 @@ exports[`<TaskBox /> onClick 1`] = `
               as="textarea"
               className="task-form-input"
               onChange={[Function]}
-              placeholder="What task do you need done?"
+              placeholder="Describe us your task with as much details as possible"
               rows="3"
               value="Sample task"
             />
@@ -130,7 +130,7 @@ exports[`<TaskBox /> renders 1`] = `
               as="textarea"
               className="task-form-input"
               onChange={[Function]}
-              placeholder="What task do you need done?"
+              placeholder="Describe us your task with as much details as possible"
               rows="3"
               value="Sample task"
             />
