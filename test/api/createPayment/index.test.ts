@@ -106,7 +106,7 @@ describe('/createPayment', () => {
     expect(res.json).toHaveBeenLastCalledWith({ success: true });
     expect(res.status).toHaveBeenLastCalledWith(200);
     expect(mockPaymentIntentCreate).toHaveBeenLastCalledWith({
-      amount: 50,
+      amount: 2000,
       confirm: true,
       confirmation_method: 'manual',
       currency: 'gbp',
@@ -147,7 +147,7 @@ describe('/createPayment', () => {
     });
     expect(res.status).toHaveBeenLastCalledWith(200);
     expect(mockPaymentIntentCreate).toHaveBeenLastCalledWith({
-      amount: 50,
+      amount: 2000,
       confirm: true,
       confirmation_method: 'manual',
       currency: 'gbp',

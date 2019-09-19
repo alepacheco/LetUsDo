@@ -26,7 +26,7 @@ export const handler = async (req: NowRequest, res: NowResponse) => {
 
   if (payment_method_id) {
     const { status, response } = await executePaymentMethod({
-      amount: 50, // cents
+      amount: 2000, // cents
       payment_method_id,
       taskText,
       metadata: {
