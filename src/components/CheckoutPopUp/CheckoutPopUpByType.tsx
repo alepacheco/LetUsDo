@@ -91,7 +91,7 @@ CheckoutPopUpByType.propTypes = {
   children: propTypes.any,
   email: propTypes.string.isRequired,
   checkoutPopupState: propTypes.any.isRequired
-}
+};
 
 const mapStateToProps = (state: any) => ({
   taskText: state.taskModal.taskText,

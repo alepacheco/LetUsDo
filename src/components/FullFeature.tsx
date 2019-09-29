@@ -40,6 +40,6 @@ FullFeature.propTypes = {
   title: propTypes.string.isRequired,
   hideImage: propTypes.bool,
   children: propTypes.any
-}
+};
 
 export default FullFeature;

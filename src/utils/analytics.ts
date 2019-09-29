@@ -12,7 +12,15 @@ const trackModalView = (location: string) => {
   ReactGA.modalview(location);
 };
 
-const trackEvent = ({category, action, label}: {category: string; action: string; label?: string}) => {
+const trackEvent = ({
+  category,
+  action,
+  label
+}: {
+  category: string;
+  action: string;
+  label?: string;
+}) => {
   ReactGA.event({
     category,
     action,
