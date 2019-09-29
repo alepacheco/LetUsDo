@@ -8,11 +8,11 @@ describe('Integration tests', () => {
     await setup({
       command: `now dev --listen 9888`,
       launchTimeout: 300000,
-      port: 9888
+      port: 9888,
+      // @ts-ignore
+      allowExistingServer: true
     });
     jest.setTimeout(5000);
-
-    
   });
 
   afterAll(async () => {
