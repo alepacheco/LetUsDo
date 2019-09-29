@@ -24,13 +24,21 @@
   ],
   "build": {
     "env": {
+      "IS_NOW": "true",
+      "ENV": "PROD",
+      "CRISP_WEBSITE_ID": "@crisp_website_id",
       "STRIPE_SERVER": "@stripe-server-live",
-      "STRIPE_FRONT": "@stripe-front-live"
+      "STRIPE_FRONT": "@stripe-front-live",
+      "GOOGLE_ANALYTICS": "@google-analytics"
     }
   },
   "env": {
     "IS_NOW": "true",
+    "ENV": "PROD",
+    "CRISP_WEBSITE_ID": "@crisp_website_id",
     "STRIPE_SERVER": "@stripe-server-live",
-    "STRIPE_FRONT": "@stripe-front-live"
+    "STRIPE_FRONT": "@stripe-front-live",
+    "GOOGLE_ANALYTICS": "@google-analytics"
+
   }
 }

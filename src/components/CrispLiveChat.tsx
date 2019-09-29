@@ -6,7 +6,7 @@ class CrispLiveChat extends React.Component {
     // @ts-ignore
     window.$crisp = [];
     // @ts-ignore
-    window.CRISP_WEBSITE_ID = '1235c6ea-ec25-4935-8480-4517d1b2c930';
+    window.CRISP_WEBSITE_ID = process.env.CRISP_WEBSITE_ID;
   }
 
   render() {

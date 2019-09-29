@@ -57,7 +57,7 @@ export const TaskBox: React.FC<TaskBoxProps> = ({ actions, taskText }) => {
                   className="task-form-input"
                   as="textarea"
                   rows="3"
-                  placeholder="Describe us your task with as much details as possible"
+                  placeholder="Write down what you need us to do, remember that it should take less than an hour to perform by one of our staff menbers. If we have more questions we will contact you."
                 />
               </Form.Group>
             </Form>

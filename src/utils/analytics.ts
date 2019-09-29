@@ -29,7 +29,7 @@ const trackEvent = ({
 };
 
 const initGa = () => {
-  ReactGA.initialize('UA-143596433-1', {
+  ReactGA.initialize(process.env.GOOGLE_ANALYTICS || '', {
     debug,
     gaOptions: {
       siteSpeedSampleRate: 20
