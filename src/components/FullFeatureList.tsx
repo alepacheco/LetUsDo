@@ -2,7 +2,7 @@ import React from 'react';
 import { FullFeature } from './FullFeature';
 
 export const FullFeatureList = () => (
-  <div className="full-feature-list">
+  <div>
     <FullFeature
       image="static/images/undraw_design_sprint.svg"
       title="Why we do it"
@@ -16,13 +16,11 @@ export const FullFeatureList = () => (
 
     <FullFeature image="static/images/undraw_selection.svg" title="What do we do">
       We help people and organisations automate and delegate simple task in a on demand way. Whether
-      you need to do a virtual/online task or get something done in real life (central London for
-      now) we can help you. Using our website or out API we find and arrange someone to solve your
-      task without any overhead on your side. We solve your problems and don’t create more overhead
-      in your busy life.
+      you need to do a virtual/online task we can help you. Using our website or out API we find and
+      arrange someone to solve your task without any overhead on your side
     </FullFeature>
 
-    <FullFeature
+    {/* <FullFeature
       image="static/images/undraw_at_the_park.svg"
       title="How do we do it"
       imageSide="right"
@@ -31,9 +29,9 @@ export const FullFeatureList = () => (
       will do whatever needs to be done to complete it They will only contact you in case you
       specify it or in ultimate necessity. We want to give a complete smooth experience and complete
       the task without bothering you, any inconvenience that happens is up to our staff to resolve.
-    </FullFeature>
+    </FullFeature> */}
 
-    <FullFeature image="static/images/undraw_terms.png" title="What can I order" imageSide="left">
+    {/* <FullFeature image="static/images/undraw_terms.png" title="What can I order" imageSide="left">
       <div className="text-header">
         While we want to be very flexible there are certain points to take into account. If we
         cannot accept your task we will give you a complete refund.
@@ -50,7 +48,7 @@ export const FullFeatureList = () => (
           Tasks should be able to be completed by someone with no domain knowledge about them.
         </li>
       </ul>
-    </FullFeature>
+    </FullFeature> */}
   </div>
 );
 
