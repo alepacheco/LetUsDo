@@ -1,9 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<FullFeatureList /> renders 1`] = `
-<div
-  className="full-feature-list"
->
+<div>
   <Component
     hideImage={true}
     image="static/images/undraw_design_sprint.svg"
@@ -16,45 +14,7 @@ exports[`<FullFeatureList /> renders 1`] = `
     image="static/images/undraw_selection.svg"
     title="What do we do"
   >
-    We help people and organisations automate and delegate simple task in a on demand way. Whether you need to do a virtual/online task or get something done in real life (central London for now) we can help you. Using our website or out API we find and arrange someone to solve your task without any overhead on your side. We solve your problems and don’t create more overhead in your busy life.
-  </Component>
-  <Component
-    image="static/images/undraw_at_the_park.svg"
-    imageSide="right"
-    title="How do we do it"
-  >
-    When we receive a task from you we will assign it to one of our internal staff and then they will do whatever needs to be done to complete it They will only contact you in case you specify it or in ultimate necessity. We want to give a complete smooth experience and complete the task without bothering you, any inconvenience that happens is up to our staff to resolve.
-  </Component>
-  <Component
-    image="static/images/undraw_terms.png"
-    imageSide="left"
-    title="What can I order"
-  >
-    <div
-      className="text-header"
-    >
-      While we want to be very flexible there are certain points to take into account. If we cannot accept your task we will give you a complete refund.
-    </div>
-    <ul>
-      <li>
-        You can order online or on-site tasks
-      </li>
-      <li>
-        On-site tasks are limited to 
-        <b>
-          London zones 1-3
-        </b>
-      </li>
-      <li>
-        Tasks should be able to be completed in around 
-        <b>
-          one hour
-        </b>
-      </li>
-      <li>
-        Tasks should be able to be completed by someone with no domain knowledge about them.
-      </li>
-    </ul>
+    We help people and organisations automate and delegate simple task in a on demand way. Whether you need to do a virtual/online task we can help you. Using our website or out API we find and arrange someone to solve your task without any overhead on your side
   </Component>
 </div>
 `;
